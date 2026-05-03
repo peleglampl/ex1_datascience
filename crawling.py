@@ -127,8 +127,7 @@ def crawl_bookdelivery():
 
                     book_data = get_book_data_from_soup(
                         book_soup,
-                        category_source=category_name,
-                        book_url=book_url
+                        category_source=category_name
                     )
 
                     all_books.append(book_data)
@@ -196,7 +195,6 @@ def get_book_data_from_soup(soup, category_source):
     format_book = extract_between_labels(meta_block, "Format", labels)
     dim_raw = extract_between_labels(meta_block, "Dimensions", labels)
     weight_raw = extract_between_labels(meta_block, "Weight", labels)
-    # isbn = extract_between_labels(meta_block, "ISBN13", labels)
     isbn_match = re.search(r"ISBN13\s+(\d+)", page_text, re.IGNORECASE)
     isbn = isbn_match.group(1) if isbn_match else "None"
 
