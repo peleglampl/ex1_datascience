@@ -1,32 +1,834 @@
-2026-05-04 09:20:48,804 | DEBUG    | book_crawler | crawling.py:48 | Attempting to fetch URL: https://www.bookdelivery.com/il-en/books/biographies-literature-literay-studies
-2026-05-04 09:20:48,804 | WARNING  | book_crawler | crawling.py:50 | Driver session not found. Creating new instance.
-2026-05-04 09:20:48,804 | DEBUG    | book_crawler | crawling.py:27 | Initializing Chrome driver with options...
-2026-05-04 09:20:53,151 | INFO     | book_crawler | crawling.py:38 | Chrome driver successfully started in 4.35s
-2026-05-04 09:20:55,076 | DEBUG    | book_crawler | crawling.py:56 | Page load triggered for https://www.bookdelivery.com/il-en/books/biographies-literature-literay-studies. Took 1.92s for initial response.
-2026-05-04 09:20:55,077 | WARNING  | book_crawler | crawling.py:63 | === INTERVENTION REQUIRED: Please solve verification in the browser window ===
-2026-05-04 09:21:24,316 | DEBUG    | book_crawler | crawling.py:69 | Enforcing mandatory politeness delay of 5s...
-2026-05-04 09:21:29,420 | INFO     | book_crawler | crawling.py:75 | Successfully parsed 429697 bytes from https://www.bookdelivery.com/il-en/books/biographies-literature-literay-studies
-2026-05-04 09:21:38,068 | DEBUG    | book_crawler | crawling.py:48 | Attempting to fetch URL: https://www.bookdelivery.com/il-en/books/arts?page=6
-2026-05-04 09:21:38,069 | WARNING  | book_crawler | crawling.py:50 | Driver session not found. Creating new instance.
-2026-05-04 09:21:38,069 | DEBUG    | book_crawler | crawling.py:27 | Initializing Chrome driver with options...
-2026-05-04 09:21:39,465 | INFO     | book_crawler | crawling.py:38 | Chrome driver successfully started in 1.40s
-2026-05-04 09:21:40,967 | DEBUG    | book_crawler | crawling.py:56 | Page load triggered for https://www.bookdelivery.com/il-en/books/arts?page=6. Took 1.50s for initial response.
-2026-05-04 09:21:40,967 | WARNING  | book_crawler | crawling.py:63 | === INTERVENTION REQUIRED: Please solve verification in the browser window ===
-2026-05-04 09:21:58,650 | DEBUG    | book_crawler | crawling.py:69 | Enforcing mandatory politeness delay of 5s...
-2026-05-04 09:22:03,750 | INFO     | book_crawler | crawling.py:75 | Successfully parsed 428420 bytes from https://www.bookdelivery.com/il-en/books/arts?page=6
-2026-05-04 09:22:14,226 | DEBUG    | book_crawler | crawling.py:48 | Attempting to fetch URL: https://www.bookdelivery.com/il-en/
-2026-05-04 09:22:14,226 | WARNING  | book_crawler | crawling.py:50 | Driver session not found. Creating new instance.
-2026-05-04 09:22:14,226 | DEBUG    | book_crawler | crawling.py:27 | Initializing Chrome driver with options...
-2026-05-04 09:22:15,558 | INFO     | book_crawler | crawling.py:38 | Chrome driver successfully started in 1.33s
-2026-05-04 09:22:17,624 | DEBUG    | book_crawler | crawling.py:56 | Page load triggered for https://www.bookdelivery.com/il-en/. Took 2.07s for initial response.
-2026-05-04 09:22:17,626 | WARNING  | book_crawler | crawling.py:63 | === INTERVENTION REQUIRED: Please solve verification in the browser window ===
-2026-05-04 09:23:09,283 | DEBUG    | book_crawler | crawling.py:69 | Enforcing mandatory politeness delay of 5s...
-2026-05-04 09:23:14,293 | INFO     | book_crawler | crawling.py:75 | Successfully parsed 9894 bytes from https://www.bookdelivery.com/il-en/
-2026-05-04 09:23:14,293 | INFO     | book_crawler | crawling.py:87 | Starting category extraction from homepage...
-2026-05-04 09:23:14,294 | INFO     | book_crawler | crawling.py:107 | Extraction complete. Found 0 valid categories.
-2026-05-04 09:23:23,449 | DEBUG    | book_crawler | crawling.py:48 | Attempting to fetch URL: https://www.bookdelivery.com/il-en/
-2026-05-04 09:23:23,449 | WARNING  | book_crawler | crawling.py:50 | Driver session not found. Creating new instance.
-2026-05-04 09:23:23,451 | DEBUG    | book_crawler | crawling.py:27 | Initializing Chrome driver with options...
-2026-05-04 09:23:24,790 | INFO     | book_crawler | crawling.py:38 | Chrome driver successfully started in 1.34s
-2026-05-04 09:23:26,152 | DEBUG    | book_crawler | crawling.py:56 | Page load triggered for https://www.bookdelivery.com/il-en/. Took 1.36s for initial response.
-2026-05-04 09:23:26,152 | WARNING  | book_crawler | crawling.py:63 | === INTERVENTION REQUIRED: Please solve verification in the browser window ===
+2026-05-04 15:44:31,329 | CRITICAL | book_crawler | crawling.py:62 | FAILED TO START CHROME DRIVER: Message: session not created: Chrome instance exited. Examine ChromeDriver verbose log to determine the cause.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#sessionnotcreatedexception
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff666cfa8e5+14e45]
+	chromedriver!GetHandleVerifier [0x7ff666cfa950+14eb0]
+	chromedriver!(No symbol) [0x7ff666a6d6ed]
+	chromedriver!(No symbol) [0x7ff666aae0f8]
+	chromedriver!(No symbol) [0x7ff666aa9629]
+	chromedriver!(No symbol) [0x7ff666afdce1]
+	chromedriver!(No symbol) [0x7ff666afd546]
+	chromedriver!(No symbol) [0x7ff666ab90e8]
+	chromedriver!(No symbol) [0x7ff666ab9fc3]
+	chromedriver!GetHandleVerifier [0x7ff667010149+32a6a9]
+	chromedriver!GetHandleVerifier [0x7ff66700a715+324c75]
+	chromedriver!GetHandleVerifier [0x7ff66702c012+346572]
+	chromedriver!GetHandleVerifier [0x7ff666d17cb5+32215]
+	chromedriver!GetHandleVerifier [0x7ff666d2087c+3addc]
+	chromedriver!GetHandleVerifier [0x7ff666d040e4+1e644]
+	chromedriver!GetHandleVerifier [0x7ff666d04296+1e7f6]
+	chromedriver!GetHandleVerifier [0x7ff666ce8737+2c97]
+	KERNEL32!BaseThreadInitThunk [0x7ffd969de8d7+17]
+	ntdll!RtlUserThreadStart [0x7ffd97e4c3fc+2c]
+
+2026-05-04 15:44:31,342 | ERROR    | book_crawler | crawling.py:129 | Selenium error (attempt 1/3) for https://www.bookdelivery.com/il-en/: Message: session not created: Chrome instance exited. Examine ChromeDriver verbose log to determine the cause.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#sessionnotcreatedexception
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff666cfa8e5+14e45]
+	chromedriver!GetHandleVerifier [0x7ff666cfa950+14eb0]
+	chromedriver!(No symbol) [0x7ff666a6d6ed]
+	chromedriver!(No symbol) [0x7ff666aae0f8]
+	chromedriver!(No symbol) [0x7ff666aa9629]
+	chromedriver!(No symbol) [0x7ff666afdce1]
+	chromedriver!(No symbol) [0x7ff666afd546]
+	chromedriver!(No symbol) [0x7ff666ab90e8]
+	chromedriver!(No symbol) [0x7ff666ab9fc3]
+	chromedriver!GetHandleVerifier [0x7ff667010149+32a6a9]
+	chromedriver!GetHandleVerifier [0x7ff66700a715+324c75]
+	chromedriver!GetHandleVerifier [0x7ff66702c012+346572]
+	chromedriver!GetHandleVerifier [0x7ff666d17cb5+32215]
+	chromedriver!GetHandleVerifier [0x7ff666d2087c+3addc]
+	chromedriver!GetHandleVerifier [0x7ff666d040e4+1e644]
+	chromedriver!GetHandleVerifier [0x7ff666d04296+1e7f6]
+	chromedriver!GetHandleVerifier [0x7ff666ce8737+2c97]
+	KERNEL32!BaseThreadInitThunk [0x7ffd969de8d7+17]
+	ntdll!RtlUserThreadStart [0x7ffd97e4c3fc+2c]
+
+2026-05-04 15:44:32,657 | INFO     | book_crawler | crawling.py:59 | Stealth Chrome driver started.
+2026-05-04 15:44:53,003 | INFO     | book_crawler | crawling.py:115 | Page detected (585140 bytes). Waiting for JS render...
+2026-05-04 15:44:58,094 | INFO     | book_crawler | crawling.py:118 | After JS wait: 585140 bytes
+2026-05-04 15:45:03,302 | INFO     | book_crawler | crawling.py:239 | Found 20 categories to explore.
+2026-05-04 15:45:03,302 | INFO     | book_crawler | crawling.py:244 | --- Category: Arts (Current Total: 0) ---
+2026-05-04 15:45:03,302 | INFO     | book_crawler | crawling.py:250 |   Fetching Category Page 1...
+2026-05-04 15:45:05,483 | INFO     | book_crawler | crawling.py:115 | Page detected (429825 bytes). Waiting for JS render...
+2026-05-04 15:45:10,517 | INFO     | book_crawler | crawling.py:118 | After JS wait: 430497 bytes
+2026-05-04 15:45:18,410 | INFO     | book_crawler | crawling.py:290 |     [1] Indexed: Berserk Deluxe Volume 1  - Kentaro Miura
+2026-05-04 15:45:22,109 | INFO     | book_crawler | crawling.py:290 |     [2] Indexed: Berserk Deluxe Volume 1  - Kentaro Miura
+2026-05-04 15:45:25,629 | INFO     | book_crawler | crawling.py:290 |     [3] Indexed: Armonía Ilustrada (in Spanish) - Brian Callipari
+2026-05-04 15:45:29,332 | INFO     | book_crawler | crawling.py:290 |     [4] Indexed: Armonía Ilustrada (in Spanish) - Brian Callipari
+2026-05-04 15:45:33,076 | INFO     | book_crawler | crawling.py:290 |     [5] Indexed: Berserk Deluxe Volume 2  - Kentaro Miura
+2026-05-04 15:45:36,617 | INFO     | book_crawler | crawling.py:290 |     [6] Indexed: Berserk Deluxe Volume 2  - Kentaro Miura
+2026-05-04 15:45:40,212 | INFO     | book_crawler | crawling.py:290 |     [7] Indexed: Adult Piano Adventures All-In-One Piano Course Boo
+2026-05-04 15:45:44,081 | INFO     | book_crawler | crawling.py:290 |     [8] Indexed: Adult Piano Adventures All-In-One Piano Course Boo
+2026-05-04 15:45:47,935 | INFO     | book_crawler | crawling.py:290 |     [9] Indexed: Stranger Things: The Ultimate Pop-Up Book - Kyle L
+2026-05-04 15:45:52,252 | INFO     | book_crawler | crawling.py:290 |     [10] Indexed: Stranger Things: The Ultimate Pop-Up Book - Kyle L
+2026-05-04 15:45:56,851 | INFO     | book_crawler | crawling.py:290 |     [11] Indexed: Jojo's Bizarre Adventure: Part 7--Steel Ball Run, 
+2026-05-04 15:46:01,054 | INFO     | book_crawler | crawling.py:290 |     [12] Indexed: Jojo's Bizarre Adventure: Part 7--Steel Ball Run, 
+2026-05-04 15:46:06,734 | INFO     | book_crawler | crawling.py:290 |     [13] Indexed: Avatar the way of Water the Visual Dictionary  - I
+2026-05-04 15:46:11,422 | INFO     | book_crawler | crawling.py:290 |     [14] Indexed: Avatar the way of Water the Visual Dictionary  - I
+2026-05-04 15:46:16,024 | INFO     | book_crawler | crawling.py:290 |     [15] Indexed: Ghibli Best Stories: Original Edition  - Joe Hisai
+2026-05-04 15:46:20,261 | INFO     | book_crawler | crawling.py:290 |     [16] Indexed: Ghibli Best Stories: Original Edition  - Joe Hisai
+2026-05-04 15:46:25,089 | INFO     | book_crawler | crawling.py:290 |     [17] Indexed: The Creative Act: A way of Being  - Rick Rubin
+2026-05-04 15:46:29,410 | INFO     | book_crawler | crawling.py:290 |     [18] Indexed: The Creative Act: A way of Being  - Rick Rubin
+2026-05-04 15:46:33,130 | INFO     | book_crawler | crawling.py:290 |     [19] Indexed: Sneaker Freaker. the Ultimate Sneaker Book. 40th E
+2026-05-04 15:46:36,597 | INFO     | book_crawler | crawling.py:290 |     [20] Indexed: Sneaker Freaker. the Ultimate Sneaker Book. 40th E
+2026-05-04 15:46:40,108 | INFO     | book_crawler | crawling.py:290 |     [21] Indexed: The Secret History - Tartt, Donna
+2026-05-04 15:46:43,666 | INFO     | book_crawler | crawling.py:290 |     [22] Indexed: The Secret History - Tartt, Donna
+2026-05-04 15:46:47,141 | INFO     | book_crawler | crawling.py:290 |     [23] Indexed: Godzilla: The Official Pop-Up Book - Matthew Reinh
+2026-05-04 15:46:50,629 | INFO     | book_crawler | crawling.py:290 |     [24] Indexed: Godzilla: The Official Pop-Up Book - Matthew Reinh
+2026-05-04 15:46:54,121 | INFO     | book_crawler | crawling.py:290 |     [25] Indexed: adult all-in-one course level 1,lesson-theory-tech
+2026-05-04 15:46:57,610 | INFO     | book_crawler | crawling.py:290 |     [26] Indexed: adult all-in-one course level 1,lesson-theory-tech
+2026-05-04 15:47:01,092 | INFO     | book_crawler | crawling.py:290 |     [27] Indexed: mastering composition,techniques and principles to
+2026-05-04 15:47:04,631 | INFO     | book_crawler | crawling.py:290 |     [28] Indexed: mastering composition,techniques and principles to
+2026-05-04 15:47:08,246 | INFO     | book_crawler | crawling.py:290 |     [29] Indexed: Five Nights at Freddy's: Ticket to Fun Ephemera Ki
+2026-05-04 15:47:11,701 | INFO     | book_crawler | crawling.py:290 |     [30] Indexed: Five Nights at Freddy's: Ticket to Fun Ephemera Ki
+2026-05-04 15:47:15,174 | INFO     | book_crawler | crawling.py:290 |     [31] Indexed: Der Klang der Familie: Berlin, Techno and the Fall
+2026-05-04 15:47:18,631 | INFO     | book_crawler | crawling.py:290 |     [32] Indexed: Der Klang der Familie: Berlin, Techno and the Fall
+2026-05-04 15:47:22,099 | INFO     | book_crawler | crawling.py:290 |     [33] Indexed: Magnum Contact Sheets  - Lubben, Kristen
+2026-05-04 15:47:25,554 | INFO     | book_crawler | crawling.py:290 |     [34] Indexed: Magnum Contact Sheets  - Lubben, Kristen
+2026-05-04 15:47:29,137 | INFO     | book_crawler | crawling.py:290 |     [35] Indexed: Out of the Box: The Rise of Sneaker Culture  - Gar
+2026-05-04 15:47:32,596 | INFO     | book_crawler | crawling.py:290 |     [36] Indexed: Out of the Box: The Rise of Sneaker Culture  - Gar
+2026-05-04 15:47:36,058 | INFO     | book_crawler | crawling.py:290 |     [37] Indexed: Disney Dreams Collection Thomas Kinkade Studios Di
+2026-05-04 15:47:39,566 | INFO     | book_crawler | crawling.py:290 |     [38] Indexed: Disney Dreams Collection Thomas Kinkade Studios Di
+2026-05-04 15:47:43,065 | INFO     | book_crawler | crawling.py:290 |     [39] Indexed: Jojo A-Go!go! - Hirohiko Araki
+2026-05-04 15:47:46,528 | INFO     | book_crawler | crawling.py:290 |     [40] Indexed: Jojo A-Go!go! - Hirohiko Araki
+2026-05-04 15:47:50,079 | INFO     | book_crawler | crawling.py:290 |     [41] Indexed: Remember the Time: Protecting Michael Jackson in h
+2026-05-04 15:47:53,576 | INFO     | book_crawler | crawling.py:290 |     [42] Indexed: Remember the Time: Protecting Michael Jackson in h
+2026-05-04 15:47:57,024 | INFO     | book_crawler | crawling.py:290 |     [43] Indexed: the suffering of light,thirty years of photographs
+2026-05-04 15:48:00,488 | INFO     | book_crawler | crawling.py:290 |     [44] Indexed: the suffering of light,thirty years of photographs
+2026-05-04 15:48:03,926 | INFO     | book_crawler | crawling.py:290 |     [45] Indexed: Architectural Digest at 100: A Century of Style  -
+2026-05-04 15:48:07,384 | INFO     | book_crawler | crawling.py:290 |     [46] Indexed: Architectural Digest at 100: A Century of Style  -
+2026-05-04 15:48:10,912 | INFO     | book_crawler | crawling.py:290 |     [47] Indexed: John Derian Sticker Book (John Derian Paper Goods)
+2026-05-04 15:48:14,466 | INFO     | book_crawler | crawling.py:290 |     [48] Indexed: John Derian Sticker Book (John Derian Paper Goods)
+2026-05-04 15:48:17,963 | INFO     | book_crawler | crawling.py:290 |     [49] Indexed: Jojo 6251: The World of Hirohiko Araki  - Araki, H
+2026-05-04 15:48:21,415 | INFO     | book_crawler | crawling.py:290 |     [50] Indexed: Jojo 6251: The World of Hirohiko Araki  - Araki, H
+2026-05-04 15:48:24,897 | INFO     | book_crawler | crawling.py:290 |     [51] Indexed: The Last Resort: Photographs of New Brighton - Mar
+2026-05-04 15:48:28,545 | INFO     | book_crawler | crawling.py:290 |     [52] Indexed: The Last Resort: Photographs of New Brighton - Mar
+2026-05-04 15:48:32,037 | INFO     | book_crawler | crawling.py:290 |     [53] Indexed: Useless Magic: Lyrics and Poetry  - Welch, Florenc
+2026-05-04 15:48:35,558 | INFO     | book_crawler | crawling.py:290 |     [54] Indexed: Useless Magic: Lyrics and Poetry  - Welch, Florenc
+2026-05-04 15:48:39,067 | INFO     | book_crawler | crawling.py:290 |     [55] Indexed: Dune: Exposures - Brolin, Josh ; Fraser, Greig
+2026-05-04 15:48:42,518 | INFO     | book_crawler | crawling.py:290 |     [56] Indexed: Dune: Exposures - Brolin, Josh ; Fraser, Greig
+2026-05-04 15:48:46,068 | INFO     | book_crawler | crawling.py:290 |     [57] Indexed: Creative Abstract Watercolor: The Beginner's Guide
+2026-05-04 15:48:49,618 | INFO     | book_crawler | crawling.py:290 |     [58] Indexed: Creative Abstract Watercolor: The Beginner's Guide
+2026-05-04 15:48:53,080 | INFO     | book_crawler | crawling.py:290 |     [59] Indexed: Everybody Likes the Piano: A Direct Modern Approac
+2026-05-04 15:48:56,533 | INFO     | book_crawler | crawling.py:290 |     [60] Indexed: Everybody Likes the Piano: A Direct Modern Approac
+2026-05-04 15:49:00,017 | INFO     | book_crawler | crawling.py:290 |     [61] Indexed: Witchcraft. The Library of Esoterica  - Jessica Hu
+2026-05-04 15:49:03,487 | INFO     | book_crawler | crawling.py:290 |     [62] Indexed: Witchcraft. The Library of Esoterica  - Jessica Hu
+2026-05-04 15:49:07,011 | INFO     | book_crawler | crawling.py:290 |     [63] Indexed: Artists' Master Series: Color and Light  - Publish
+2026-05-04 15:49:10,471 | INFO     | book_crawler | crawling.py:290 |     [64] Indexed: Artists' Master Series: Color and Light  - Publish
+2026-05-04 15:49:13,960 | INFO     | book_crawler | crawling.py:290 |     [65] Indexed: Everybody Likes the Piano: A Direct Modern Approac
+2026-05-04 15:49:17,497 | INFO     | book_crawler | crawling.py:290 |     [66] Indexed: Everybody Likes the Piano: A Direct Modern Approac
+2026-05-04 15:49:21,022 | INFO     | book_crawler | crawling.py:290 |     [67] Indexed: The Making of Star Wars: The Definitive Story Behi
+2026-05-04 15:49:24,521 | INFO     | book_crawler | crawling.py:290 |     [68] Indexed: The Making of Star Wars: The Definitive Story Behi
+2026-05-04 15:49:28,062 | INFO     | book_crawler | crawling.py:290 |     [69] Indexed: Botany for the Artist  - Sarah Simblet
+2026-05-04 15:49:31,698 | INFO     | book_crawler | crawling.py:290 |     [70] Indexed: Botany for the Artist  - Sarah Simblet
+2026-05-04 15:49:35,161 | INFO     | book_crawler | crawling.py:290 |     [71] Indexed: The Legend of Zelda™: Tears of the Kingdom – the C
+2026-05-04 15:49:38,629 | INFO     | book_crawler | crawling.py:290 |     [72] Indexed: The Legend of Zelda™: Tears of the Kingdom – the C
+2026-05-04 15:49:42,215 | INFO     | book_crawler | crawling.py:290 |     [73] Indexed: Art Deco: 50 Works of art you Should Know (50's Se
+2026-05-04 15:49:45,698 | INFO     | book_crawler | crawling.py:290 |     [74] Indexed: Art Deco: 50 Works of art you Should Know (50's Se
+2026-05-04 15:49:49,235 | INFO     | book_crawler | crawling.py:290 |     [75] Indexed: Trinity College London Rock & pop 2018 Drums Grade
+2026-05-04 15:49:52,701 | INFO     | book_crawler | crawling.py:290 |     [76] Indexed: Trinity College London Rock & pop 2018 Drums Grade
+2026-05-04 15:49:56,189 | INFO     | book_crawler | crawling.py:290 |     [77] Indexed: 89 color-coded flash cards: flash cards - Alfred M
+2026-05-04 15:49:59,634 | INFO     | book_crawler | crawling.py:290 |     [78] Indexed: 89 color-coded flash cards: flash cards - Alfred M
+2026-05-04 15:50:03,134 | INFO     | book_crawler | crawling.py:290 |     [79] Indexed: Sonatina Album: Schirmer Library of Classics Volum
+2026-05-04 15:50:06,829 | INFO     | book_crawler | crawling.py:290 |     [80] Indexed: Sonatina Album: Schirmer Library of Classics Volum
+2026-05-04 15:50:10,288 | INFO     | book_crawler | crawling.py:290 |     [81] Indexed: franz wohlfahrt - 60 studies, op. 45 complete,book
+2026-05-04 15:50:13,755 | INFO     | book_crawler | crawling.py:290 |     [82] Indexed: franz wohlfahrt - 60 studies, op. 45 complete,book
+2026-05-04 15:50:17,249 | INFO     | book_crawler | crawling.py:290 |     [83] Indexed: all-in-one piano lessons book b - Kern, Fred ; Kre
+2026-05-04 15:50:20,755 | INFO     | book_crawler | crawling.py:290 |     [84] Indexed: all-in-one piano lessons book b - Kern, Fred ; Kre
+2026-05-04 15:50:24,228 | INFO     | book_crawler | crawling.py:290 |     [85] Indexed: Beauty is in the Street: A Visual Record of the ma
+2026-05-04 15:50:27,733 | INFO     | book_crawler | crawling.py:290 |     [86] Indexed: Beauty is in the Street: A Visual Record of the ma
+2026-05-04 15:50:31,182 | INFO     | book_crawler | crawling.py:290 |     [87] Indexed: the well-tempered clavier 48 preludes and fugues,c
+2026-05-04 15:50:34,639 | INFO     | book_crawler | crawling.py:290 |     [88] Indexed: the well-tempered clavier 48 preludes and fugues,c
+2026-05-04 15:50:38,144 | INFO     | book_crawler | crawling.py:290 |     [89] Indexed: Kinfolk Travel: Slower Ways to see the World  - Bu
+2026-05-04 15:50:41,687 | INFO     | book_crawler | crawling.py:290 |     [90] Indexed: Kinfolk Travel: Slower Ways to see the World  - Bu
+2026-05-04 15:50:45,306 | INFO     | book_crawler | crawling.py:290 |     [91] Indexed: John Thompson's Adult Piano Course - Book 2: Later
+2026-05-04 15:50:48,882 | INFO     | book_crawler | crawling.py:290 |     [92] Indexed: John Thompson's Adult Piano Course - Book 2: Later
+2026-05-04 15:50:52,363 | INFO     | book_crawler | crawling.py:290 |     [93] Indexed: The Complete Pattern Directory: 1500 Designs From 
+2026-05-04 15:50:55,859 | INFO     | book_crawler | crawling.py:290 |     [94] Indexed: The Complete Pattern Directory: 1500 Designs From 
+2026-05-04 15:50:59,394 | INFO     | book_crawler | crawling.py:290 |     [95] Indexed: The Virtuoso Pianist in Sixty Exercises for the Pi
+2026-05-04 15:51:02,908 | INFO     | book_crawler | crawling.py:290 |     [96] Indexed: The Virtuoso Pianist in Sixty Exercises for the Pi
+2026-05-04 15:51:06,344 | INFO     | book_crawler | crawling.py:290 |     [97] Indexed: Bedtime Stories for Privileged Children: Charming 
+2026-05-04 15:51:09,898 | INFO     | book_crawler | crawling.py:290 |     [98] Indexed: Bedtime Stories for Privileged Children: Charming 
+2026-05-04 15:51:13,427 | INFO     | book_crawler | crawling.py:290 |     [99] Indexed: The Art of DreamWorks the Wild Robot - Peter Brown
+2026-05-04 15:51:17,047 | INFO     | book_crawler | crawling.py:290 |     [100] Indexed: The Art of DreamWorks the Wild Robot - Peter Brown
+2026-05-04 15:51:20,054 | INFO     | book_crawler | crawling.py:250 |   Fetching Category Page 2...
+2026-05-04 15:51:21,915 | INFO     | book_crawler | crawling.py:115 | Page detected (428820 bytes). Waiting for JS render...
+2026-05-04 15:51:26,951 | INFO     | book_crawler | crawling.py:118 | After JS wait: 429330 bytes
+2026-05-04 15:51:32,609 | INFO     | book_crawler | crawling.py:290 |     [101] Indexed: Best Wishes, Warmest Regards: The Story of Schitt'
+2026-05-04 15:51:36,319 | INFO     | book_crawler | crawling.py:290 |     [102] Indexed: Best Wishes, Warmest Regards: The Story of Schitt'
+2026-05-04 15:51:39,801 | INFO     | book_crawler | crawling.py:290 |     [103] Indexed: Mortal Kombat: Flawless Victory: A Visual History 
+2026-05-04 15:51:43,262 | INFO     | book_crawler | crawling.py:290 |     [104] Indexed: Mortal Kombat: Flawless Victory: A Visual History 
+2026-05-04 15:51:46,727 | INFO     | book_crawler | crawling.py:290 |     [105] Indexed: Wipeout Futurism: The Visual Archives - Harris, Du
+2026-05-04 15:51:50,231 | INFO     | book_crawler | crawling.py:290 |     [106] Indexed: Wipeout Futurism: The Visual Archives - Harris, Du
+2026-05-04 15:51:53,769 | INFO     | book_crawler | crawling.py:290 |     [107] Indexed: Japanese Cooking: A Simple art  - Tsuji, Shizuo ; 
+2026-05-04 15:51:57,230 | INFO     | book_crawler | crawling.py:290 |     [108] Indexed: Japanese Cooking: A Simple art  - Tsuji, Shizuo ; 
+2026-05-04 15:52:00,695 | INFO     | book_crawler | crawling.py:290 |     [109] Indexed: Color and Light: A Guide for the Realist Painter  
+2026-05-04 15:52:04,200 | INFO     | book_crawler | crawling.py:290 |     [110] Indexed: Color and Light: A Guide for the Realist Painter  
+2026-05-04 15:52:07,660 | INFO     | book_crawler | crawling.py:290 |     [111] Indexed: Black and White - Updated: The Singapore House 189
+2026-05-04 15:52:11,127 | INFO     | book_crawler | crawling.py:290 |     [112] Indexed: Black and White - Updated: The Singapore House 189
+2026-05-04 15:52:14,675 | INFO     | book_crawler | crawling.py:290 |     [113] Indexed: Practical Method for Beginners, op. 599: Schirmer 
+2026-05-04 15:52:18,259 | INFO     | book_crawler | crawling.py:290 |     [114] Indexed: Practical Method for Beginners, op. 599: Schirmer 
+2026-05-04 15:52:21,720 | INFO     | book_crawler | crawling.py:290 |     [115] Indexed: Armonía ilustrada 2 (in Spanish) - Brian Callipari
+2026-05-04 15:52:25,312 | INFO     | book_crawler | crawling.py:290 |     [116] Indexed: Armonía ilustrada 2 (in Spanish) - Brian Callipari
+2026-05-04 15:52:28,786 | INFO     | book_crawler | crawling.py:290 |     [117] Indexed: Bittersweet: Noma Bar: Graphic Story Telling  - No
+2026-05-04 15:52:32,231 | INFO     | book_crawler | crawling.py:290 |     [118] Indexed: Bittersweet: Noma Bar: Graphic Story Telling  - No
+2026-05-04 15:52:35,664 | INFO     | book_crawler | crawling.py:290 |     [119] Indexed: Utamaro, Hokusai, Hiroshige: Geisha, Samurai and t
+2026-05-04 15:52:39,119 | INFO     | book_crawler | crawling.py:290 |     [120] Indexed: Utamaro, Hokusai, Hiroshige: Geisha, Samurai and t
+2026-05-04 15:52:42,572 | INFO     | book_crawler | crawling.py:290 |     [121] Indexed: Indoor Green: Living With Plants - Bree Claffey
+2026-05-04 15:52:46,096 | INFO     | book_crawler | crawling.py:290 |     [122] Indexed: Indoor Green: Living With Plants - Bree Claffey
+2026-05-04 15:52:49,567 | INFO     | book_crawler | crawling.py:290 |     [123] Indexed: everybody likes the piano: a direct modern approac
+2026-05-04 15:52:53,078 | INFO     | book_crawler | crawling.py:290 |     [124] Indexed: everybody likes the piano: a direct modern approac
+2026-05-04 15:52:56,578 | INFO     | book_crawler | crawling.py:290 |     [125] Indexed: Blue Velvet - Atkinson, Michael
+2026-05-04 15:53:00,247 | INFO     | book_crawler | crawling.py:290 |     [126] Indexed: Blue Velvet - Atkinson, Michael
+2026-05-04 15:53:03,705 | INFO     | book_crawler | crawling.py:290 |     [127] Indexed: Wolfgang Tillmans: To Look Without Fear  - Tillman
+2026-05-04 15:53:07,286 | INFO     | book_crawler | crawling.py:290 |     [128] Indexed: Wolfgang Tillmans: To Look Without Fear  - Tillman
+2026-05-04 15:53:10,823 | INFO     | book_crawler | crawling.py:290 |     [129] Indexed: my first piano adventure,writing book a - Randall 
+2026-05-04 15:53:14,500 | INFO     | book_crawler | crawling.py:290 |     [130] Indexed: my first piano adventure,writing book a - Randall 
+2026-05-04 15:53:18,175 | INFO     | book_crawler | crawling.py:290 |     [131] Indexed: Drawing Architecture: The Beginner'S Guide to Draw
+2026-05-04 15:53:21,703 | INFO     | book_crawler | crawling.py:290 |     [132] Indexed: Drawing Architecture: The Beginner'S Guide to Draw
+2026-05-04 15:53:25,142 | INFO     | book_crawler | crawling.py:290 |     [133] Indexed: Seeing Making: Room for Thought - Buck-Morss, Susa
+2026-05-04 15:53:28,613 | INFO     | book_crawler | crawling.py:290 |     [134] Indexed: Seeing Making: Room for Thought - Buck-Morss, Susa
+2026-05-04 15:53:32,127 | INFO     | book_crawler | crawling.py:290 |     [135] Indexed: Abstract Painting: 20 Projects & Creative Techniqu
+2026-05-04 15:53:35,714 | INFO     | book_crawler | crawling.py:290 |     [136] Indexed: Abstract Painting: 20 Projects & Creative Techniqu
+2026-05-04 15:53:39,194 | INFO     | book_crawler | crawling.py:290 |     [137] Indexed: Leonardo. The Complete Paintings and Drawings - Fr
+2026-05-04 15:53:42,676 | INFO     | book_crawler | crawling.py:290 |     [138] Indexed: Leonardo. The Complete Paintings and Drawings - Fr
+2026-05-04 15:53:46,144 | INFO     | book_crawler | crawling.py:290 |     [139] Indexed: Fieldwork for Future Ecologies: Radical Practice f
+2026-05-04 15:53:49,622 | INFO     | book_crawler | crawling.py:290 |     [140] Indexed: Fieldwork for Future Ecologies: Radical Practice f
+2026-05-04 15:53:53,223 | INFO     | book_crawler | crawling.py:290 |     [141] Indexed: Japanese Knitting Stitch Bible: 260 Exquisite Patt
+2026-05-04 15:53:56,733 | INFO     | book_crawler | crawling.py:290 |     [142] Indexed: Japanese Knitting Stitch Bible: 260 Exquisite Patt
+2026-05-04 15:54:00,301 | INFO     | book_crawler | crawling.py:290 |     [143] Indexed: The Antiquarian Sticker Book: Over 1,000 Exquisite
+2026-05-04 15:54:03,812 | INFO     | book_crawler | crawling.py:290 |     [144] Indexed: The Antiquarian Sticker Book: Over 1,000 Exquisite
+2026-05-04 15:54:07,340 | INFO     | book_crawler | crawling.py:290 |     [145] Indexed: The Earth from the Air: 365 New Days - Arthus-Bert
+2026-05-04 15:54:10,808 | INFO     | book_crawler | crawling.py:290 |     [146] Indexed: The Earth from the Air: 365 New Days - Arthus-Bert
+2026-05-04 15:54:14,251 | INFO     | book_crawler | crawling.py:290 |     [147] Indexed: Petite Messe Solennelle: For Satb Soli, Choir and 
+2026-05-04 15:54:17,703 | INFO     | book_crawler | crawling.py:290 |     [148] Indexed: Petite Messe Solennelle: For Satb Soli, Choir and 
+2026-05-04 15:54:21,638 | INFO     | book_crawler | crawling.py:290 |     [149] Indexed: Gus van Sant: The art of Making Movies  - Tylevich
+2026-05-04 15:54:25,073 | INFO     | book_crawler | crawling.py:290 |     [150] Indexed: Gus van Sant: The art of Making Movies  - Tylevich
+2026-05-04 15:54:28,572 | INFO     | book_crawler | crawling.py:290 |     [151] Indexed: The Botanist's Sticker Anthology -  DK
+2026-05-04 15:54:32,011 | INFO     | book_crawler | crawling.py:290 |     [152] Indexed: The Botanist's Sticker Anthology -  DK
+2026-05-04 15:54:35,574 | INFO     | book_crawler | crawling.py:290 |     [153] Indexed: Alice Starmore's Charts for Color Knitting: New an
+2026-05-04 15:54:39,031 | INFO     | book_crawler | crawling.py:290 |     [154] Indexed: Alice Starmore's Charts for Color Knitting: New an
+2026-05-04 15:54:42,652 | INFO     | book_crawler | crawling.py:290 |     [155] Indexed: no regrets: a rock  ` n `  roll memoir - Frehley, 
+2026-05-04 15:54:46,157 | INFO     | book_crawler | crawling.py:290 |     [156] Indexed: no regrets: a rock  ` n `  roll memoir - Frehley, 
+2026-05-04 15:54:49,604 | INFO     | book_crawler | crawling.py:290 |     [157] Indexed: Todd Mcfarlane's Spider-Man Artist’S Edition  - To
+2026-05-04 15:54:53,072 | INFO     | book_crawler | crawling.py:290 |     [158] Indexed: Todd Mcfarlane's Spider-Man Artist’S Edition  - To
+2026-05-04 15:54:56,640 | INFO     | book_crawler | crawling.py:290 |     [159] Indexed: Beethoven: Selected Piano Pieces - Early Advanced 
+2026-05-04 15:55:00,114 | INFO     | book_crawler | crawling.py:290 |     [160] Indexed: Beethoven: Selected Piano Pieces - Early Advanced 
+2026-05-04 15:55:03,542 | INFO     | book_crawler | crawling.py:290 |     [161] Indexed: Large Print Dot To Dot Book For Seniors: Large Pri
+2026-05-04 15:55:07,038 | INFO     | book_crawler | crawling.py:290 |     [162] Indexed: Large Print Dot To Dot Book For Seniors: Large Pri
+2026-05-04 15:55:10,494 | INFO     | book_crawler | crawling.py:290 |     [163] Indexed: Architecture: Form, Space, and Order - Francis D. 
+2026-05-04 15:55:13,960 | INFO     | book_crawler | crawling.py:290 |     [164] Indexed: Architecture: Form, Space, and Order - Francis D. 
+2026-05-04 15:55:17,487 | INFO     | book_crawler | crawling.py:290 |     [165] Indexed: Landscape Painting Now: From pop Abstraction to ne
+2026-05-04 15:55:21,026 | INFO     | book_crawler | crawling.py:290 |     [166] Indexed: Landscape Painting Now: From pop Abstraction to ne
+2026-05-04 15:55:24,462 | INFO     | book_crawler | crawling.py:290 |     [167] Indexed: None
+2026-05-04 15:55:27,906 | INFO     | book_crawler | crawling.py:290 |     [168] Indexed: None
+2026-05-04 15:55:31,331 | INFO     | book_crawler | crawling.py:290 |     [169] Indexed: Music Theory is Fun: Book 1: Volume 1  - Maureen C
+2026-05-04 15:55:34,779 | INFO     | book_crawler | crawling.py:290 |     [170] Indexed: Music Theory is Fun: Book 1: Volume 1  - Maureen C
+2026-05-04 15:55:38,265 | INFO     | book_crawler | crawling.py:290 |     [171] Indexed: Metric Pattern Cutting for Women's Wear - Aldrich,
+2026-05-04 15:55:41,860 | INFO     | book_crawler | crawling.py:290 |     [172] Indexed: Metric Pattern Cutting for Women's Wear - Aldrich,
+2026-05-04 15:55:45,319 | INFO     | book_crawler | crawling.py:290 |     [173] Indexed: the book of life,daily meditations with krishnamur
+2026-05-04 15:55:48,873 | INFO     | book_crawler | crawling.py:290 |     [174] Indexed: the book of life,daily meditations with krishnamur
+2026-05-04 15:55:52,302 | INFO     | book_crawler | crawling.py:290 |     [175] Indexed: Avatar: The Last Airbender: Legacy  - Teitelbaum, 
+2026-05-04 15:55:55,760 | INFO     | book_crawler | crawling.py:290 |     [176] Indexed: Avatar: The Last Airbender: Legacy  - Teitelbaum, 
+2026-05-04 15:55:59,229 | INFO     | book_crawler | crawling.py:290 |     [177] Indexed: essay on the true art of playing keyboard instrume
+2026-05-04 15:56:02,666 | INFO     | book_crawler | crawling.py:290 |     [178] Indexed: essay on the true art of playing keyboard instrume
+2026-05-04 15:56:06,226 | INFO     | book_crawler | crawling.py:290 |     [179] Indexed: Simple Sabotage Field Manual  - Oss, United States
+2026-05-04 15:56:09,660 | INFO     | book_crawler | crawling.py:290 |     [180] Indexed: Simple Sabotage Field Manual  - Oss, United States
+2026-05-04 15:56:13,108 | INFO     | book_crawler | crawling.py:290 |     [181] Indexed: Elton John - Super Easy Songbook - Elton John
+2026-05-04 15:56:16,582 | INFO     | book_crawler | crawling.py:290 |     [182] Indexed: Elton John - Super Easy Songbook - Elton John
+2026-05-04 15:56:20,042 | INFO     | book_crawler | crawling.py:290 |     [183] Indexed: the classic piano course,book 1, starting to play:
+2026-05-04 15:56:23,568 | INFO     | book_crawler | crawling.py:290 |     [184] Indexed: the classic piano course,book 1, starting to play:
+2026-05-04 15:56:27,067 | INFO     | book_crawler | crawling.py:290 |     [185] Indexed: shelter - Kahn, Lloyd ; Easton, Bob
+2026-05-04 15:56:30,540 | INFO     | book_crawler | crawling.py:290 |     [186] Indexed: shelter - Kahn, Lloyd ; Easton, Bob
+2026-05-04 15:56:33,987 | INFO     | book_crawler | crawling.py:290 |     [187] Indexed: Everybody Likes the Piano, Book II: A Piano Course
+2026-05-04 15:56:37,512 | INFO     | book_crawler | crawling.py:290 |     [188] Indexed: Everybody Likes the Piano, Book II: A Piano Course
+2026-05-04 15:56:40,950 | INFO     | book_crawler | crawling.py:290 |     [189] Indexed: Bridgman'S Complete Guide to Drawing From Life  - 
+2026-05-04 15:56:44,477 | INFO     | book_crawler | crawling.py:290 |     [190] Indexed: Bridgman'S Complete Guide to Drawing From Life  - 
+2026-05-04 15:56:47,979 | INFO     | book_crawler | crawling.py:290 |     [191] Indexed: David Hockney. My Window  - Taschen ; Hockney, Dav
+2026-05-04 15:56:51,496 | INFO     | book_crawler | crawling.py:290 |     [192] Indexed: David Hockney. My Window  - Taschen ; Hockney, Dav
+2026-05-04 15:56:54,955 | INFO     | book_crawler | crawling.py:290 |     [193] Indexed: Ghibli Recipe Book  - Vilanova, Thibaud
+2026-05-04 15:56:58,456 | INFO     | book_crawler | crawling.py:290 |     [194] Indexed: Ghibli Recipe Book  - Vilanova, Thibaud
+2026-05-04 15:57:02,068 | INFO     | book_crawler | crawling.py:290 |     [195] Indexed: Peter Lindbergh. On Fashion Photography. 40Th Anni
+2026-05-04 15:57:05,543 | INFO     | book_crawler | crawling.py:290 |     [196] Indexed: Peter Lindbergh. On Fashion Photography. 40Th Anni
+2026-05-04 15:57:08,992 | INFO     | book_crawler | crawling.py:290 |     [197] Indexed: Halo Encyclopedia  - Microsoft
+2026-05-04 15:57:12,459 | INFO     | book_crawler | crawling.py:290 |     [198] Indexed: Halo Encyclopedia  - Microsoft
+2026-05-04 15:57:15,901 | INFO     | book_crawler | crawling.py:290 |     [199] Indexed: Nathalie Lété Sticker Book - Lété Nathalie
+2026-05-04 15:57:19,350 | INFO     | book_crawler | crawling.py:290 |     [200] Indexed: Nathalie Lété Sticker Book - Lété Nathalie
+2026-05-04 15:57:22,364 | INFO     | book_crawler | crawling.py:250 |   Fetching Category Page 3...
+2026-05-04 15:57:24,295 | INFO     | book_crawler | crawling.py:115 | Page detected (430658 bytes). Waiting for JS render...
+2026-05-04 15:57:29,329 | INFO     | book_crawler | crawling.py:118 | After JS wait: 431168 bytes
+2026-05-04 15:57:34,969 | INFO     | book_crawler | crawling.py:290 |     [201] Indexed: Rush: Wandering the Face of the Earth: The Officia
+2026-05-04 15:57:38,411 | INFO     | book_crawler | crawling.py:290 |     [202] Indexed: Rush: Wandering the Face of the Earth: The Officia
+2026-05-04 15:57:41,879 | INFO     | book_crawler | crawling.py:290 |     [203] Indexed: Avatar Last Airbender art Animated Series hc (Avat
+2026-05-04 15:57:45,359 | INFO     | book_crawler | crawling.py:290 |     [204] Indexed: Avatar Last Airbender art Animated Series hc (Avat
+2026-05-04 15:57:48,806 | INFO     | book_crawler | crawling.py:290 |     [205] Indexed: Monster Hunter Illustrations 3  -  Capcom
+2026-05-04 15:57:52,259 | INFO     | book_crawler | crawling.py:290 |     [206] Indexed: Monster Hunter Illustrations 3  -  Capcom
+2026-05-04 15:57:55,789 | INFO     | book_crawler | crawling.py:290 |     [207] Indexed: Anti-Stress dot to Dot: Relaxing & Inspirational A
+2026-05-04 15:57:59,253 | INFO     | book_crawler | crawling.py:290 |     [208] Indexed: Anti-Stress dot to Dot: Relaxing & Inspirational A
+2026-05-04 15:58:02,735 | INFO     | book_crawler | crawling.py:290 |     [209] Indexed: The Tennis Court: A Journey to Discover the World'
+2026-05-04 15:58:06,374 | INFO     | book_crawler | crawling.py:290 |     [210] Indexed: The Tennis Court: A Journey to Discover the World'
+2026-05-04 15:58:09,913 | INFO     | book_crawler | crawling.py:290 |     [211] Indexed: Ocean Anatomy: The Curious Parts & Pieces of the W
+2026-05-04 15:58:13,401 | INFO     | book_crawler | crawling.py:290 |     [212] Indexed: Ocean Anatomy: The Curious Parts & Pieces of the W
+2026-05-04 15:58:16,855 | INFO     | book_crawler | crawling.py:290 |     [213] Indexed: Scp Foundation art Book Yellow Journal - Para Book
+2026-05-04 15:58:20,492 | INFO     | book_crawler | crawling.py:290 |     [214] Indexed: Scp Foundation art Book Yellow Journal - Para Book
+2026-05-04 15:58:23,939 | INFO     | book_crawler | crawling.py:290 |     [215] Indexed: joplin - complete rags for piano - Joplin, Scott
+2026-05-04 15:58:27,402 | INFO     | book_crawler | crawling.py:290 |     [216] Indexed: joplin - complete rags for piano - Joplin, Scott
+2026-05-04 15:58:30,843 | INFO     | book_crawler | crawling.py:290 |     [217] Indexed: The Giant Book of Intermediate Classical Piano Mus
+2026-05-04 15:58:34,344 | INFO     | book_crawler | crawling.py:290 |     [218] Indexed: The Giant Book of Intermediate Classical Piano Mus
+2026-05-04 15:58:37,791 | INFO     | book_crawler | crawling.py:290 |     [219] Indexed: Eat, Drink, Nap: Bringing the House Home  - Soho H
+2026-05-04 15:58:41,248 | INFO     | book_crawler | crawling.py:290 |     [220] Indexed: Eat, Drink, Nap: Bringing the House Home  - Soho H
+2026-05-04 15:58:44,695 | INFO     | book_crawler | crawling.py:290 |     [221] Indexed: hal leonard baritone ukulele method - Lil' Rev
+2026-05-04 15:58:48,157 | INFO     | book_crawler | crawling.py:290 |     [222] Indexed: hal leonard baritone ukulele method - Lil' Rev
+2026-05-04 15:58:51,625 | INFO     | book_crawler | crawling.py:290 |     [223] Indexed: Mickey Baker's Complete Course in Jazz Guitar: Boo
+2026-05-04 15:58:55,044 | INFO     | book_crawler | crawling.py:290 |     [224] Indexed: Mickey Baker's Complete Course in Jazz Guitar: Boo
+2026-05-04 15:58:58,508 | INFO     | book_crawler | crawling.py:290 |     [225] Indexed: I am Ozzy  - Ozzy Osbourne
+2026-05-04 15:59:01,989 | INFO     | book_crawler | crawling.py:290 |     [226] Indexed: I am Ozzy  - Ozzy Osbourne
+2026-05-04 15:59:05,550 | INFO     | book_crawler | crawling.py:290 |     [227] Indexed: The Animator's Survival Kit: A Manual of Methods, 
+2026-05-04 15:59:09,042 | INFO     | book_crawler | crawling.py:290 |     [228] Indexed: The Animator's Survival Kit: A Manual of Methods, 
+2026-05-04 15:59:12,515 | INFO     | book_crawler | crawling.py:290 |     [229] Indexed: Transformers Vol. 4: Conquer and Control - Daniel 
+2026-05-04 15:59:15,989 | INFO     | book_crawler | crawling.py:290 |     [230] Indexed: Transformers Vol. 4: Conquer and Control - Daniel 
+2026-05-04 15:59:19,516 | INFO     | book_crawler | crawling.py:290 |     [231] Indexed: Chopin: Pianist and Teacher Paperback: As Seen by 
+2026-05-04 15:59:22,960 | INFO     | book_crawler | crawling.py:290 |     [232] Indexed: Chopin: Pianist and Teacher Paperback: As Seen by 
+2026-05-04 15:59:26,454 | INFO     | book_crawler | crawling.py:290 |     [233] Indexed: Pan-Judah! Political Cartoons of "Der Stürmer", 19
+2026-05-04 15:59:29,908 | INFO     | book_crawler | crawling.py:290 |     [234] Indexed: Pan-Judah! Political Cartoons of "Der Stürmer", 19
+2026-05-04 15:59:33,399 | INFO     | book_crawler | crawling.py:290 |     [235] Indexed: Design of the 20Th Century - Charlotte Fiell; Pete
+2026-05-04 15:59:36,889 | INFO     | book_crawler | crawling.py:290 |     [236] Indexed: Design of the 20Th Century - Charlotte Fiell; Pete
+2026-05-04 15:59:40,350 | INFO     | book_crawler | crawling.py:290 |     [237] Indexed: Stephen Shore: Uncommon Places: The Complete Works
+2026-05-04 15:59:43,841 | INFO     | book_crawler | crawling.py:290 |     [238] Indexed: Stephen Shore: Uncommon Places: The Complete Works
+2026-05-04 15:59:47,366 | INFO     | book_crawler | crawling.py:290 |     [239] Indexed: The Backyard Astronomer'S Guide  - Dickinson, Tere
+2026-05-04 15:59:50,844 | INFO     | book_crawler | crawling.py:290 |     [240] Indexed: The Backyard Astronomer'S Guide  - Dickinson, Tere
+2026-05-04 15:59:54,304 | INFO     | book_crawler | crawling.py:290 |     [241] Indexed: Anatomy for Artists: Drawing Form & Pose: The Ulti
+2026-05-04 15:59:57,833 | INFO     | book_crawler | crawling.py:290 |     [242] Indexed: Anatomy for Artists: Drawing Form & Pose: The Ulti
+2026-05-04 16:00:01,372 | INFO     | book_crawler | crawling.py:290 |     [243] Indexed: Interaction of Color: 50Th Anniversary Edition  - 
+2026-05-04 16:00:04,817 | INFO     | book_crawler | crawling.py:290 |     [244] Indexed: Interaction of Color: 50Th Anniversary Edition  - 
+2026-05-04 16:00:08,336 | INFO     | book_crawler | crawling.py:290 |     [245] Indexed: Effortless Mastery: Liberating the Master Musician
+2026-05-04 16:00:11,830 | INFO     | book_crawler | crawling.py:290 |     [246] Indexed: Effortless Mastery: Liberating the Master Musician
+2026-05-04 16:00:15,364 | INFO     | book_crawler | crawling.py:290 |     [247] Indexed: 1000 Chairs (Bibliotheca Universalis) - Fiell ; Ta
+2026-05-04 16:00:18,995 | INFO     | book_crawler | crawling.py:290 |     [248] Indexed: 1000 Chairs (Bibliotheca Universalis) - Fiell ; Ta
+2026-05-04 16:00:22,463 | INFO     | book_crawler | crawling.py:290 |     [249] Indexed: Mastering Stand-Up: The Complete Guide to Becoming
+2026-05-04 16:00:25,947 | INFO     | book_crawler | crawling.py:290 |     [250] Indexed: Mastering Stand-Up: The Complete Guide to Becoming
+2026-05-04 16:00:29,413 | INFO     | book_crawler | crawling.py:290 |     [251] Indexed: Around the World Trip - Dot to Dot Puzzle (Extreme
+2026-05-04 16:00:32,972 | INFO     | book_crawler | crawling.py:290 |     [252] Indexed: Around the World Trip - Dot to Dot Puzzle (Extreme
+2026-05-04 16:00:36,483 | INFO     | book_crawler | crawling.py:290 |     [253] Indexed: Magic (Whitechapel: Documents of Contemporary Art)
+2026-05-04 16:00:40,024 | INFO     | book_crawler | crawling.py:290 |     [254] Indexed: Magic (Whitechapel: Documents of Contemporary Art)
+2026-05-04 16:00:43,474 | INFO     | book_crawler | crawling.py:290 |     [255] Indexed: How to Make art for Joy'S Sake: Free-Spirited Wate
+2026-05-04 16:00:46,937 | INFO     | book_crawler | crawling.py:290 |     [256] Indexed: How to Make art for Joy'S Sake: Free-Spirited Wate
+2026-05-04 16:00:50,372 | INFO     | book_crawler | crawling.py:290 |     [257] Indexed: Alvar Aalto: Paradise For The Man In The Street - 
+2026-05-04 16:00:53,857 | INFO     | book_crawler | crawling.py:290 |     [258] Indexed: Alvar Aalto: Paradise For The Man In The Street - 
+2026-05-04 16:00:57,299 | INFO     | book_crawler | crawling.py:290 |     [259] Indexed: The Four Loves - C. S. Lewis
+2026-05-04 16:01:00,803 | INFO     | book_crawler | crawling.py:290 |     [260] Indexed: The Four Loves - C. S. Lewis
+2026-05-04 16:01:04,269 | INFO     | book_crawler | crawling.py:290 |     [261] Indexed: Caravaggio. The Complete Works. 40Th ed.  - Schütz
+2026-05-04 16:01:07,716 | INFO     | book_crawler | crawling.py:290 |     [262] Indexed: Caravaggio. The Complete Works. 40Th ed.  - Schütz
+2026-05-04 16:01:11,204 | INFO     | book_crawler | crawling.py:290 |     [263] Indexed: The Art Of Smallfilms: The Work Of Oliver Postgate
+2026-05-04 16:01:14,665 | INFO     | book_crawler | crawling.py:290 |     [264] Indexed: The Art Of Smallfilms: The Work Of Oliver Postgate
+2026-05-04 16:01:18,413 | INFO     | book_crawler | crawling.py:290 |     [265] Indexed: Thelma & Louise - Sturken, Marita
+2026-05-04 16:01:21,952 | INFO     | book_crawler | crawling.py:290 |     [266] Indexed: Thelma & Louise - Sturken, Marita
+2026-05-04 16:01:25,384 | INFO     | book_crawler | crawling.py:290 |     [267] Indexed: The Cello and the Nightingales: The Life of Beatri
+2026-05-04 16:01:29,270 | INFO     | book_crawler | crawling.py:290 |     [268] Indexed: The Cello and the Nightingales: The Life of Beatri
+2026-05-04 16:01:32,837 | INFO     | book_crawler | crawling.py:290 |     [269] Indexed: A Forger's Tale: Confessions of the Bolton Forger 
+2026-05-04 16:01:36,389 | INFO     | book_crawler | crawling.py:290 |     [270] Indexed: A Forger's Tale: Confessions of the Bolton Forger 
+2026-05-04 16:01:39,848 | INFO     | book_crawler | crawling.py:290 |     [271] Indexed: Charlotte Perriand: Objects and Furniture Design -
+2026-05-04 16:01:43,307 | INFO     | book_crawler | crawling.py:290 |     [272] Indexed: Charlotte Perriand: Objects and Furniture Design -
+2026-05-04 16:01:46,837 | INFO     | book_crawler | crawling.py:290 |     [273] Indexed: London Then and Now(r): Revised Second Edition - G
+2026-05-04 16:01:50,340 | INFO     | book_crawler | crawling.py:290 |     [274] Indexed: London Then and Now(r): Revised Second Edition - G
+2026-05-04 16:01:53,880 | INFO     | book_crawler | crawling.py:290 |     [275] Indexed: Really Easy Piano: The Beatles Collection  - Beatl
+2026-05-04 16:01:57,356 | INFO     | book_crawler | crawling.py:290 |     [276] Indexed: Really Easy Piano: The Beatles Collection  - Beatl
+2026-05-04 16:02:00,826 | INFO     | book_crawler | crawling.py:290 |     [277] Indexed: The new Design Rules: How to Decorate and Renovate
+2026-05-04 16:02:04,469 | INFO     | book_crawler | crawling.py:290 |     [278] Indexed: The new Design Rules: How to Decorate and Renovate
+2026-05-04 16:02:08,258 | INFO     | book_crawler | crawling.py:290 |     [279] Indexed: The Art of Song, Grade 6 (High Voice): A Selection
+2026-05-04 16:02:11,709 | INFO     | book_crawler | crawling.py:290 |     [280] Indexed: The Art of Song, Grade 6 (High Voice): A Selection
+2026-05-04 16:02:15,179 | INFO     | book_crawler | crawling.py:290 |     [281] Indexed: Raphael. The Complete Works. Paintings, Frescoes, 
+2026-05-04 16:02:18,671 | INFO     | book_crawler | crawling.py:290 |     [282] Indexed: Raphael. The Complete Works. Paintings, Frescoes, 
+2026-05-04 16:02:22,139 | INFO     | book_crawler | crawling.py:290 |     [283] Indexed: 1,500 Color Mixing Recipes for Oil, Acrylic & Wate
+2026-05-04 16:02:25,597 | INFO     | book_crawler | crawling.py:290 |     [284] Indexed: 1,500 Color Mixing Recipes for Oil, Acrylic & Wate
+2026-05-04 16:02:29,100 | INFO     | book_crawler | crawling.py:290 |     [285] Indexed: melodious double-stops for violin, book i - trott,
+2026-05-04 16:02:32,588 | INFO     | book_crawler | crawling.py:290 |     [286] Indexed: melodious double-stops for violin, book i - trott,
+2026-05-04 16:02:36,066 | INFO     | book_crawler | crawling.py:290 |     [287] Indexed: 51 Large Print Dot to Dot Book: Jumbo Dot-to-Dot F
+2026-05-04 16:02:39,505 | INFO     | book_crawler | crawling.py:290 |     [288] Indexed: 51 Large Print Dot to Dot Book: Jumbo Dot-to-Dot F
+2026-05-04 16:02:43,008 | INFO     | book_crawler | crawling.py:290 |     [289] Indexed: The Beginner’S Guide to oil Painting: Simple Still
+2026-05-04 16:02:46,668 | INFO     | book_crawler | crawling.py:290 |     [290] Indexed: The Beginner’S Guide to oil Painting: Simple Still
+2026-05-04 16:02:50,129 | INFO     | book_crawler | crawling.py:290 |     [291] Indexed: Elia Kazan: A Life  - Kazan, Elia
+2026-05-04 16:02:53,607 | INFO     | book_crawler | crawling.py:290 |     [292] Indexed: Elia Kazan: A Life  - Kazan, Elia
+2026-05-04 16:02:57,203 | INFO     | book_crawler | crawling.py:290 |     [293] Indexed: David Bowie all the Songs: The Story Behind Every 
+2026-05-04 16:03:00,884 | INFO     | book_crawler | crawling.py:290 |     [294] Indexed: David Bowie all the Songs: The Story Behind Every 
+2026-05-04 16:03:04,341 | INFO     | book_crawler | crawling.py:290 |     [295] Indexed: Making Faces  - Aucoin, Kevyn
+2026-05-04 16:03:07,951 | INFO     | book_crawler | crawling.py:290 |     [296] Indexed: Making Faces  - Aucoin, Kevyn
+2026-05-04 16:03:11,385 | INFO     | book_crawler | crawling.py:290 |     [297] Indexed: Trinity College London Rock & pop 2018 Guitar Grad
+2026-05-04 16:03:14,903 | INFO     | book_crawler | crawling.py:290 |     [298] Indexed: Trinity College London Rock & pop 2018 Guitar Grad
+2026-05-04 16:03:18,376 | INFO     | book_crawler | crawling.py:290 |     [299] Indexed: The art of Kumiko: Learn to Make Beautiful Panels 
+2026-05-04 16:03:21,809 | INFO     | book_crawler | crawling.py:290 |     [300] Indexed: The art of Kumiko: Learn to Make Beautiful Panels 
+2026-05-04 16:03:24,822 | INFO     | book_crawler | crawling.py:250 |   Fetching Category Page 4...
+2026-05-04 16:03:26,816 | INFO     | book_crawler | crawling.py:115 | Page detected (428979 bytes). Waiting for JS render...
+2026-05-04 16:03:31,861 | INFO     | book_crawler | crawling.py:118 | After JS wait: 429489 bytes
+2026-05-04 16:03:37,382 | INFO     | book_crawler | crawling.py:290 |     [301] Indexed: Virtuoso Pianist in 60 Exercises - Book 1: Schirme
+2026-05-04 16:03:40,927 | INFO     | book_crawler | crawling.py:290 |     [302] Indexed: Virtuoso Pianist in 60 Exercises - Book 1: Schirme
+2026-05-04 16:03:44,360 | INFO     | book_crawler | crawling.py:290 |     [303] Indexed: St. Matthew Passion, Vocal Score (New Novello Chor
+2026-05-04 16:03:47,825 | INFO     | book_crawler | crawling.py:290 |     [304] Indexed: St. Matthew Passion, Vocal Score (New Novello Chor
+2026-05-04 16:03:51,323 | INFO     | book_crawler | crawling.py:290 |     [305] Indexed: Making Collagraph Prints  - Suzie Mackenzie
+2026-05-04 16:03:54,929 | INFO     | book_crawler | crawling.py:290 |     [306] Indexed: Making Collagraph Prints  - Suzie Mackenzie
+2026-05-04 16:03:58,384 | INFO     | book_crawler | crawling.py:290 |     [307] Indexed: None
+2026-05-04 16:04:02,332 | INFO     | book_crawler | crawling.py:290 |     [308] Indexed: None
+2026-05-04 16:04:05,863 | INFO     | book_crawler | crawling.py:290 |     [309] Indexed: Pixar: The Official Cookbook - S. T. Bende
+2026-05-04 16:04:09,352 | INFO     | book_crawler | crawling.py:290 |     [310] Indexed: Pixar: The Official Cookbook - S. T. Bende
+2026-05-04 16:04:12,837 | INFO     | book_crawler | crawling.py:290 |     [311] Indexed: Queen for Classical Piano - Phillip Keveren Series
+2026-05-04 16:04:16,409 | INFO     | book_crawler | crawling.py:290 |     [312] Indexed: Queen for Classical Piano - Phillip Keveren Series
+2026-05-04 16:04:19,972 | INFO     | book_crawler | crawling.py:290 |     [313] Indexed: Minecraft: Mobs Glow-In-The-Dark Lock & key Diary 
+2026-05-04 16:04:23,442 | INFO     | book_crawler | crawling.py:290 |     [314] Indexed: Minecraft: Mobs Glow-In-The-Dark Lock & key Diary 
+2026-05-04 16:04:27,080 | INFO     | book_crawler | crawling.py:290 |     [315] Indexed: Bauhaus  - Magdalena Droste
+2026-05-04 16:04:30,772 | INFO     | book_crawler | crawling.py:290 |     [316] Indexed: Bauhaus  - Magdalena Droste
+2026-05-04 16:04:34,314 | INFO     | book_crawler | crawling.py:290 |     [317] Indexed: SURFING 1778 TODAY 40TH ED - HEIMANN,JIM
+2026-05-04 16:04:37,956 | INFO     | book_crawler | crawling.py:290 |     [318] Indexed: SURFING 1778 TODAY 40TH ED - HEIMANN,JIM
+2026-05-04 16:04:41,544 | INFO     | book_crawler | crawling.py:290 |     [319] Indexed: piano adventures level 2a,theory book - Randall y 
+2026-05-04 16:04:45,314 | INFO     | book_crawler | crawling.py:290 |     [320] Indexed: piano adventures level 2a,theory book - Randall y 
+2026-05-04 16:04:48,856 | INFO     | book_crawler | crawling.py:290 |     [321] Indexed: Gaddiments by Steve Gadd - With Online Video of St
+2026-05-04 16:04:52,448 | INFO     | book_crawler | crawling.py:290 |     [322] Indexed: Gaddiments by Steve Gadd - With Online Video of St
+2026-05-04 16:04:55,954 | INFO     | book_crawler | crawling.py:290 |     [323] Indexed: Studio Ghibli: Architecture in Animation - Studio 
+2026-05-04 16:05:00,010 | INFO     | book_crawler | crawling.py:290 |     [324] Indexed: Studio Ghibli: Architecture in Animation - Studio 
+2026-05-04 16:05:03,749 | INFO     | book_crawler | crawling.py:290 |     [325] Indexed: Tom Ford  - Ford, Tom ; Wintour, Anna ; Carter, Gr
+2026-05-04 16:05:07,493 | INFO     | book_crawler | crawling.py:290 |     [326] Indexed: Tom Ford  - Ford, Tom ; Wintour, Anna ; Carter, Gr
+2026-05-04 16:05:11,145 | INFO     | book_crawler | crawling.py:290 |     [327] Indexed: None
+2026-05-04 16:05:15,039 | INFO     | book_crawler | crawling.py:290 |     [328] Indexed: None
+2026-05-04 16:05:19,210 | INFO     | book_crawler | crawling.py:290 |     [329] Indexed: A-Z Collection of Behaviour Tales, An (Storytellin
+2026-05-04 16:05:23,002 | INFO     | book_crawler | crawling.py:290 |     [330] Indexed: A-Z Collection of Behaviour Tales, An (Storytellin
+2026-05-04 16:05:27,015 | INFO     | book_crawler | crawling.py:290 |     [331] Indexed: solos for the tenor saxophone player - Varios Auto
+2026-05-04 16:05:30,607 | INFO     | book_crawler | crawling.py:290 |     [332] Indexed: solos for the tenor saxophone player - Varios Auto
+2026-05-04 16:05:34,071 | INFO     | book_crawler | crawling.py:290 |     [333] Indexed: Apocalypse Now: The Lost Photo Archive  - Chas Ger
+2026-05-04 16:05:37,595 | INFO     | book_crawler | crawling.py:290 |     [334] Indexed: Apocalypse Now: The Lost Photo Archive  - Chas Ger
+2026-05-04 16:05:41,303 | INFO     | book_crawler | crawling.py:290 |     [335] Indexed: First Lessons in Bach, Complete: Schirmer Library 
+2026-05-04 16:05:44,903 | INFO     | book_crawler | crawling.py:290 |     [336] Indexed: First Lessons in Bach, Complete: Schirmer Library 
+2026-05-04 16:05:48,452 | INFO     | book_crawler | crawling.py:290 |     [337] Indexed: john thompson´s modern course for the piano - John
+2026-05-04 16:05:52,010 | INFO     | book_crawler | crawling.py:290 |     [338] Indexed: john thompson´s modern course for the piano - John
+2026-05-04 16:05:55,587 | INFO     | book_crawler | crawling.py:290 |     [339] Indexed: Secrets of the Whales  - Skerry, Brian ; Cameron, 
+2026-05-04 16:05:59,153 | INFO     | book_crawler | crawling.py:290 |     [340] Indexed: Secrets of the Whales  - Skerry, Brian ; Cameron, 
+2026-05-04 16:06:03,028 | INFO     | book_crawler | crawling.py:290 |     [341] Indexed: The Costumes of Downton Abbey - Emma Marriott
+2026-05-04 16:06:06,507 | INFO     | book_crawler | crawling.py:290 |     [342] Indexed: The Costumes of Downton Abbey - Emma Marriott
+2026-05-04 16:06:10,008 | INFO     | book_crawler | crawling.py:290 |     [343] Indexed: Ghosts of My Life: Writings on Depression, Hauntol
+2026-05-04 16:06:13,495 | INFO     | book_crawler | crawling.py:290 |     [344] Indexed: Ghosts of My Life: Writings on Depression, Hauntol
+2026-05-04 16:06:17,001 | INFO     | book_crawler | crawling.py:290 |     [345] Indexed: Avatar: The Last Airbender: Legacy of the Fire Nat
+2026-05-04 16:06:20,535 | INFO     | book_crawler | crawling.py:290 |     [346] Indexed: Avatar: The Last Airbender: Legacy of the Fire Nat
+2026-05-04 16:06:24,002 | INFO     | book_crawler | crawling.py:290 |     [347] Indexed: Luna Coloring Book  - Trolle, Maria
+2026-05-04 16:06:27,454 | INFO     | book_crawler | crawling.py:290 |     [348] Indexed: Luna Coloring Book  - Trolle, Maria
+2026-05-04 16:06:30,962 | INFO     | book_crawler | crawling.py:290 |     [349] Indexed: Dali: Tarot Universal  - Johannes Fiebig
+2026-05-04 16:06:34,483 | INFO     | book_crawler | crawling.py:290 |     [350] Indexed: Dali: Tarot Universal  - Johannes Fiebig
+2026-05-04 16:06:38,055 | INFO     | book_crawler | crawling.py:290 |     [351] Indexed: Photographers  - Nourmand, Tony ; Pritchard, Micha
+2026-05-04 16:06:41,516 | INFO     | book_crawler | crawling.py:290 |     [352] Indexed: Photographers  - Nourmand, Tony ; Pritchard, Micha
+2026-05-04 16:06:44,987 | INFO     | book_crawler | crawling.py:290 |     [353] Indexed: Inspired by Nature: Creating a Personal and Natura
+2026-05-04 16:06:48,857 | INFO     | book_crawler | crawling.py:290 |     [354] Indexed: Inspired by Nature: Creating a Personal and Natura
+2026-05-04 16:06:52,511 | INFO     | book_crawler | crawling.py:290 |     [355] Indexed: Position Pieces for Cello  - Mooney, Rick
+2026-05-04 16:06:55,998 | INFO     | book_crawler | crawling.py:290 |     [356] Indexed: Position Pieces for Cello  - Mooney, Rick
+2026-05-04 16:06:59,460 | INFO     | book_crawler | crawling.py:290 |     [357] Indexed: Faber Studio Collection - Selections from Bigtime 
+2026-05-04 16:07:03,189 | INFO     | book_crawler | crawling.py:290 |     [358] Indexed: Faber Studio Collection - Selections from Bigtime 
+2026-05-04 16:07:06,652 | INFO     | book_crawler | crawling.py:290 |     [359] Indexed: Nomad at Home: Designing the Home More Traveled  -
+2026-05-04 16:07:10,102 | INFO     | book_crawler | crawling.py:290 |     [360] Indexed: Nomad at Home: Designing the Home More Traveled  -
+2026-05-04 16:07:13,655 | INFO     | book_crawler | crawling.py:290 |     [361] Indexed: Dragon Ball: A Visual History  - Akira Toriyama
+2026-05-04 16:07:17,152 | INFO     | book_crawler | crawling.py:290 |     [362] Indexed: Dragon Ball: A Visual History  - Akira Toriyama
+2026-05-04 16:07:20,633 | INFO     | book_crawler | crawling.py:290 |     [363] Indexed: The Faber Music Piano Anthology: Best-Loved Origin
+2026-05-04 16:07:24,155 | INFO     | book_crawler | crawling.py:290 |     [364] Indexed: The Faber Music Piano Anthology: Best-Loved Origin
+2026-05-04 16:07:27,629 | INFO     | book_crawler | crawling.py:290 |     [365] Indexed: Toccata and Fugue in d Minor Bwv565: Schirmer's Li
+2026-05-04 16:07:31,138 | INFO     | book_crawler | crawling.py:290 |     [366] Indexed: Toccata and Fugue in d Minor Bwv565: Schirmer's Li
+2026-05-04 16:07:34,696 | INFO     | book_crawler | crawling.py:290 |     [367] Indexed: Close Encounters of the Third Kind - Polan, Dana
+2026-05-04 16:07:38,216 | INFO     | book_crawler | crawling.py:290 |     [368] Indexed: Close Encounters of the Third Kind - Polan, Dana
+2026-05-04 16:07:41,678 | INFO     | book_crawler | crawling.py:290 |     [369] Indexed: None
+2026-05-04 16:07:45,232 | INFO     | book_crawler | crawling.py:290 |     [370] Indexed: None
+2026-05-04 16:07:48,703 | INFO     | book_crawler | crawling.py:290 |     [371] Indexed: Animals of the World - Dot to Dot Puzzle (Extreme 
+2026-05-04 16:07:52,129 | INFO     | book_crawler | crawling.py:290 |     [372] Indexed: Animals of the World - Dot to Dot Puzzle (Extreme 
+2026-05-04 16:07:55,661 | INFO     | book_crawler | crawling.py:290 |     [373] Indexed: rubank intermediate method - flute or piccolo - A.
+2026-05-04 16:07:59,124 | INFO     | book_crawler | crawling.py:290 |     [374] Indexed: rubank intermediate method - flute or piccolo - A.
+2026-05-04 16:08:02,634 | INFO     | book_crawler | crawling.py:290 |     [375] Indexed: The wes Anderson Collection: Isle of Dogs  - Wilfo
+2026-05-04 16:08:06,180 | INFO     | book_crawler | crawling.py:290 |     [376] Indexed: The wes Anderson Collection: Isle of Dogs  - Wilfo
+2026-05-04 16:08:09,630 | INFO     | book_crawler | crawling.py:290 |     [377] Indexed: The World of Urban Sketching: Celebrating the Evol
+2026-05-04 16:08:13,172 | INFO     | book_crawler | crawling.py:290 |     [378] Indexed: The World of Urban Sketching: Celebrating the Evol
+2026-05-04 16:08:16,655 | INFO     | book_crawler | crawling.py:290 |     [379] Indexed: The Beatles - Super Easy Songbook - The Beatles
+2026-05-04 16:08:20,231 | INFO     | book_crawler | crawling.py:290 |     [380] Indexed: The Beatles - Super Easy Songbook - The Beatles
+2026-05-04 16:08:23,732 | INFO     | book_crawler | crawling.py:290 |     [381] Indexed: Cinephile: A Card Game  - Everett, Cory ; Isaacs, 
+2026-05-04 16:08:27,503 | INFO     | book_crawler | crawling.py:290 |     [382] Indexed: Cinephile: A Card Game  - Everett, Cory ; Isaacs, 
+2026-05-04 16:08:30,961 | INFO     | book_crawler | crawling.py:290 |     [383] Indexed: The Stone Skeleton: Structural Engineering of Maso
+2026-05-04 16:08:34,410 | INFO     | book_crawler | crawling.py:290 |     [384] Indexed: The Stone Skeleton: Structural Engineering of Maso
+2026-05-04 16:08:37,956 | INFO     | book_crawler | crawling.py:290 |     [385] Indexed: The Goldfinger Files: The Making of the Iconic Alp
+2026-05-04 16:08:41,968 | INFO     | book_crawler | crawling.py:290 |     [386] Indexed: The Goldfinger Files: The Making of the Iconic Alp
+2026-05-04 16:08:45,554 | INFO     | book_crawler | crawling.py:290 |     [387] Indexed: Soulful Stitch: Finding Creativity in Crisis - Hol
+2026-05-04 16:08:49,305 | INFO     | book_crawler | crawling.py:290 |     [388] Indexed: Soulful Stitch: Finding Creativity in Crisis - Hol
+2026-05-04 16:08:52,866 | INFO     | book_crawler | crawling.py:290 |     [389] Indexed: Japandi Aesthetics: Harmonious, Minimalist and Fun
+2026-05-04 16:08:57,129 | INFO     | book_crawler | crawling.py:290 |     [390] Indexed: Japandi Aesthetics: Harmonious, Minimalist and Fun
+2026-05-04 16:09:00,864 | INFO     | book_crawler | crawling.py:290 |     [391] Indexed: all-in-one piano lessons book c - Kern, Fred ; Kre
+2026-05-04 16:09:04,348 | INFO     | book_crawler | crawling.py:290 |     [392] Indexed: all-in-one piano lessons book c - Kern, Fred ; Kre
+2026-05-04 16:09:08,759 | INFO     | book_crawler | crawling.py:290 |     [393] Indexed: A Dozen a day Book 1 (a Dozen a day Series)  - Edn
+2026-05-04 16:09:12,324 | INFO     | book_crawler | crawling.py:290 |     [394] Indexed: A Dozen a day Book 1 (a Dozen a day Series)  - Edn
+2026-05-04 16:09:16,130 | INFO     | book_crawler | crawling.py:290 |     [395] Indexed: Diva: An Illustrated Guide to the Glamorous Person
+2026-05-04 16:09:19,768 | INFO     | book_crawler | crawling.py:290 |     [396] Indexed: Diva: An Illustrated Guide to the Glamorous Person
+2026-05-04 16:09:23,323 | INFO     | book_crawler | crawling.py:290 |     [397] Indexed: Theory Drill Games - Book 2: Elementary Level - Jo
+2026-05-04 16:09:26,806 | INFO     | book_crawler | crawling.py:290 |     [398] Indexed: Theory Drill Games - Book 2: Elementary Level - Jo
+2026-05-04 16:09:30,296 | INFO     | book_crawler | crawling.py:290 |     [399] Indexed: Read This If You Want to Take Great Photographs - 
+2026-05-04 16:09:33,748 | INFO     | book_crawler | crawling.py:290 |     [400] Indexed: Read This If You Want to Take Great Photographs - 
+2026-05-04 16:09:36,778 | INFO     | book_crawler | crawling.py:250 |   Fetching Category Page 5...
+2026-05-04 16:09:39,251 | INFO     | book_crawler | crawling.py:115 | Page detected (430894 bytes). Waiting for JS render...
+2026-05-04 16:09:44,312 | INFO     | book_crawler | crawling.py:118 | After JS wait: 430894 bytes
+2026-05-04 16:09:50,382 | INFO     | book_crawler | crawling.py:290 |     [401] Indexed: Punk Paradox: A Memoir  - Graffin, Greg
+2026-05-04 16:09:54,022 | INFO     | book_crawler | crawling.py:290 |     [402] Indexed: Punk Paradox: A Memoir  - Graffin, Greg
+2026-05-04 16:09:57,573 | INFO     | book_crawler | crawling.py:290 |     [403] Indexed: School of Velocity Op. 299 for Piano: Sheet - Czer
+2026-05-04 16:10:01,071 | INFO     | book_crawler | crawling.py:290 |     [404] Indexed: School of Velocity Op. 299 for Piano: Sheet - Czer
+2026-05-04 16:10:04,550 | INFO     | book_crawler | crawling.py:290 |     [405] Indexed: 1000 Design Classics  - Phaidon Editors
+2026-05-04 16:10:08,057 | INFO     | book_crawler | crawling.py:290 |     [406] Indexed: 1000 Design Classics  - Phaidon Editors
+2026-05-04 16:10:11,578 | INFO     | book_crawler | crawling.py:290 |     [407] Indexed: Cristina García Rodero: Lalibela - Rodero, Cristin
+2026-05-04 16:10:15,114 | INFO     | book_crawler | crawling.py:290 |     [408] Indexed: Cristina García Rodero: Lalibela - Rodero, Cristin
+2026-05-04 16:10:18,631 | INFO     | book_crawler | crawling.py:290 |     [409] Indexed: The Big Book of Drawing Anime: The Complete Step-B
+2026-05-04 16:10:22,243 | INFO     | book_crawler | crawling.py:290 |     [410] Indexed: The Big Book of Drawing Anime: The Complete Step-B
+2026-05-04 16:10:25,808 | INFO     | book_crawler | crawling.py:290 |     [411] Indexed: The Interior Design Handbook: Furnish, Decorate, a
+2026-05-04 16:10:29,265 | INFO     | book_crawler | crawling.py:290 |     [412] Indexed: The Interior Design Handbook: Furnish, Decorate, a
+2026-05-04 16:10:32,730 | INFO     | book_crawler | crawling.py:290 |     [413] Indexed: Harry Potter: A Pop-Up Guide to Hogwarts  - Matthe
+2026-05-04 16:10:36,207 | INFO     | book_crawler | crawling.py:290 |     [414] Indexed: Harry Potter: A Pop-Up Guide to Hogwarts  - Matthe
+2026-05-04 16:10:39,822 | INFO     | book_crawler | crawling.py:290 |     [415] Indexed: Inspired: How to Create Tech Products Customers Lo
+2026-05-04 16:10:43,292 | INFO     | book_crawler | crawling.py:290 |     [416] Indexed: Inspired: How to Create Tech Products Customers Lo
+2026-05-04 16:10:46,722 | INFO     | book_crawler | crawling.py:290 |     [417] Indexed: Ernst Haeckel – 40Th Anniversary Edition  - Willma
+2026-05-04 16:10:50,213 | INFO     | book_crawler | crawling.py:290 |     [418] Indexed: Ernst Haeckel – 40Th Anniversary Edition  - Willma
+2026-05-04 16:10:53,710 | INFO     | book_crawler | crawling.py:290 |     [419] Indexed: everybody likes the piano: a direct modern approac
+2026-05-04 16:10:57,152 | INFO     | book_crawler | crawling.py:290 |     [420] Indexed: everybody likes the piano: a direct modern approac
+2026-05-04 16:11:00,601 | INFO     | book_crawler | crawling.py:290 |     [421] Indexed: big book of beginner´s piano classics,83 favorite 
+2026-05-04 16:11:04,045 | INFO     | book_crawler | crawling.py:290 |     [422] Indexed: big book of beginner´s piano classics,83 favorite 
+2026-05-04 16:11:07,546 | INFO     | book_crawler | crawling.py:290 |     [423] Indexed: Mini-Forest Revolution: Using the Miyawaki Method 
+2026-05-04 16:11:11,044 | INFO     | book_crawler | crawling.py:290 |     [424] Indexed: Mini-Forest Revolution: Using the Miyawaki Method 
+2026-05-04 16:11:14,554 | INFO     | book_crawler | crawling.py:290 |     [425] Indexed: Lee Scratch Perry: Black Ark - Perry, Lee Scratch 
+2026-05-04 16:11:18,032 | INFO     | book_crawler | crawling.py:290 |     [426] Indexed: Lee Scratch Perry: Black Ark - Perry, Lee Scratch 
+2026-05-04 16:11:21,491 | INFO     | book_crawler | crawling.py:290 |     [427] Indexed: Dungeons and Dragons art and Arcana: A Visual Hist
+2026-05-04 16:11:25,043 | INFO     | book_crawler | crawling.py:290 |     [428] Indexed: Dungeons and Dragons art and Arcana: A Visual Hist
+2026-05-04 16:11:28,624 | INFO     | book_crawler | crawling.py:290 |     [429] Indexed: Leonardo da Vinci  - Isaacson, Walter
+2026-05-04 16:11:32,078 | INFO     | book_crawler | crawling.py:290 |     [430] Indexed: Leonardo da Vinci  - Isaacson, Walter
+2026-05-04 16:11:35,561 | INFO     | book_crawler | crawling.py:290 |     [431] Indexed: How to Draw: Drawing and Sketching Objects and Env
+2026-05-04 16:11:39,027 | INFO     | book_crawler | crawling.py:290 |     [432] Indexed: How to Draw: Drawing and Sketching Objects and Env
+2026-05-04 16:11:42,485 | INFO     | book_crawler | crawling.py:290 |     [433] Indexed: Fairy Tales  - Collins, Petra ; Demie, Alexa
+2026-05-04 16:11:45,982 | INFO     | book_crawler | crawling.py:290 |     [434] Indexed: Fairy Tales  - Collins, Petra ; Demie, Alexa
+2026-05-04 16:11:49,506 | INFO     | book_crawler | crawling.py:290 |     [435] Indexed: The Art of Haikyu!!: Endings and Beginnings - Furu
+2026-05-04 16:11:53,124 | INFO     | book_crawler | crawling.py:290 |     [436] Indexed: The Art of Haikyu!!: Endings and Beginnings - Furu
+2026-05-04 16:11:56,624 | INFO     | book_crawler | crawling.py:290 |     [437] Indexed: Live Beautiful  - Calderone, Athena
+2026-05-04 16:12:00,118 | INFO     | book_crawler | crawling.py:290 |     [438] Indexed: Live Beautiful  - Calderone, Athena
+2026-05-04 16:12:03,939 | INFO     | book_crawler | crawling.py:290 |     [439] Indexed: sacred woman, sacred dance: awakening spirituality
+2026-05-04 16:12:07,937 | INFO     | book_crawler | crawling.py:290 |     [440] Indexed: sacred woman, sacred dance: awakening spirituality
+2026-05-04 16:12:11,421 | INFO     | book_crawler | crawling.py:290 |     [441] Indexed: Complete Bach Transcriptions for Solo Piano (Dover
+2026-05-04 16:12:14,869 | INFO     | book_crawler | crawling.py:290 |     [442] Indexed: Complete Bach Transcriptions for Solo Piano (Dover
+2026-05-04 16:12:18,374 | INFO     | book_crawler | crawling.py:290 |     [443] Indexed: The Thing (Bfi Film Classics)  - Billson, Anne
+2026-05-04 16:12:21,851 | INFO     | book_crawler | crawling.py:290 |     [444] Indexed: The Thing (Bfi Film Classics)  - Billson, Anne
+2026-05-04 16:12:25,365 | INFO     | book_crawler | crawling.py:290 |     [445] Indexed: The Gurdjieff Movements: A Communication of Ancien
+2026-05-04 16:12:28,908 | INFO     | book_crawler | crawling.py:290 |     [446] Indexed: The Gurdjieff Movements: A Communication of Ancien
+2026-05-04 16:12:32,377 | INFO     | book_crawler | crawling.py:290 |     [447] Indexed: Never too Small: Reimagining Small Space Living  -
+2026-05-04 16:12:35,828 | INFO     | book_crawler | crawling.py:290 |     [448] Indexed: Never too Small: Reimagining Small Space Living  -
+2026-05-04 16:12:39,336 | INFO     | book_crawler | crawling.py:290 |     [449] Indexed: Dc Comics: Anatomy of a Metahuman  - Ming Doyle
+2026-05-04 16:12:42,872 | INFO     | book_crawler | crawling.py:290 |     [450] Indexed: Dc Comics: Anatomy of a Metahuman  - Ming Doyle
+2026-05-04 16:12:46,366 | INFO     | book_crawler | crawling.py:290 |     [451] Indexed: The Nightmare Before Christmas Tarot Deck and Guid
+2026-05-04 16:12:49,929 | INFO     | book_crawler | crawling.py:290 |     [452] Indexed: The Nightmare Before Christmas Tarot Deck and Guid
+2026-05-04 16:12:53,530 | INFO     | book_crawler | crawling.py:290 |     [453] Indexed: The art of Ratatouille  - Lasseter, John ; Bird, B
+2026-05-04 16:12:57,017 | INFO     | book_crawler | crawling.py:290 |     [454] Indexed: The art of Ratatouille  - Lasseter, John ; Bird, B
+2026-05-04 16:13:00,521 | INFO     | book_crawler | crawling.py:290 |     [455] Indexed: piano adventures level 5 performance book - Randal
+2026-05-04 16:13:03,973 | INFO     | book_crawler | crawling.py:290 |     [456] Indexed: piano adventures level 5 performance book - Randal
+2026-05-04 16:13:07,451 | INFO     | book_crawler | crawling.py:290 |     [457] Indexed: None
+2026-05-04 16:13:11,040 | INFO     | book_crawler | crawling.py:290 |     [458] Indexed: None
+2026-05-04 16:13:14,480 | INFO     | book_crawler | crawling.py:290 |     [459] Indexed: Magnificat in D (Jenkins) Vocal Score - Bach ; Jen
+2026-05-04 16:13:17,956 | INFO     | book_crawler | crawling.py:290 |     [460] Indexed: Magnificat in D (Jenkins) Vocal Score - Bach ; Jen
+2026-05-04 16:13:21,405 | INFO     | book_crawler | crawling.py:290 |     [461] Indexed: Painting for the Absolute and Utter Beginner  - Cl
+2026-05-04 16:13:24,854 | INFO     | book_crawler | crawling.py:290 |     [462] Indexed: Painting for the Absolute and Utter Beginner  - Cl
+2026-05-04 16:13:28,383 | INFO     | book_crawler | crawling.py:290 |     [463] Indexed: 101 Worship Songs for Violin. Instrumental Folio S
+2026-05-04 16:13:31,865 | INFO     | book_crawler | crawling.py:290 |     [464] Indexed: 101 Worship Songs for Violin. Instrumental Folio S
+2026-05-04 16:13:35,433 | INFO     | book_crawler | crawling.py:290 |     [465] Indexed: Hard to Handle: The Life and Death of the Black Cr
+2026-05-04 16:13:39,205 | INFO     | book_crawler | crawling.py:290 |     [466] Indexed: Hard to Handle: The Life and Death of the Black Cr
+2026-05-04 16:13:42,714 | INFO     | book_crawler | crawling.py:290 |     [467] Indexed: At Home in France: Inspiration and Style in Town a
+2026-05-04 16:13:46,205 | INFO     | book_crawler | crawling.py:290 |     [468] Indexed: At Home in France: Inspiration and Style in Town a
+2026-05-04 16:13:49,655 | INFO     | book_crawler | crawling.py:290 |     [469] Indexed: The Ceramics Bible: The Complete Guide to Material
+2026-05-04 16:13:53,185 | INFO     | book_crawler | crawling.py:290 |     [470] Indexed: The Ceramics Bible: The Complete Guide to Material
+2026-05-04 16:13:56,661 | INFO     | book_crawler | crawling.py:290 |     [471] Indexed: The red Book: A Reader's Edition (Philemon)  - Car
+2026-05-04 16:14:00,128 | INFO     | book_crawler | crawling.py:290 |     [472] Indexed: The red Book: A Reader's Edition (Philemon)  - Car
+2026-05-04 16:14:03,608 | INFO     | book_crawler | crawling.py:290 |     [473] Indexed: The Moth Presents all These Wonders: True Stories 
+2026-05-04 16:14:07,100 | INFO     | book_crawler | crawling.py:290 |     [474] Indexed: The Moth Presents all These Wonders: True Stories 
+2026-05-04 16:14:10,542 | INFO     | book_crawler | crawling.py:290 |     [475] Indexed: The Sound Reinforcement Handbook - Second Edition 
+2026-05-04 16:14:14,028 | INFO     | book_crawler | crawling.py:290 |     [476] Indexed: The Sound Reinforcement Handbook - Second Edition 
+2026-05-04 16:14:17,538 | INFO     | book_crawler | crawling.py:290 |     [477] Indexed: Tokyo Ghoul: Re Illustrations: Zakki  - Sui Ishida
+2026-05-04 16:14:20,983 | INFO     | book_crawler | crawling.py:290 |     [478] Indexed: Tokyo Ghoul: Re Illustrations: Zakki  - Sui Ishida
+2026-05-04 16:14:24,441 | INFO     | book_crawler | crawling.py:290 |     [479] Indexed: Palette Perfect  - Wager, Lauren
+2026-05-04 16:14:27,934 | INFO     | book_crawler | crawling.py:290 |     [480] Indexed: Palette Perfect  - Wager, Lauren
+2026-05-04 16:14:31,497 | INFO     | book_crawler | crawling.py:290 |     [481] Indexed: Icons by Oscar  - Abolafia, Oscar
+2026-05-04 16:14:35,011 | INFO     | book_crawler | crawling.py:290 |     [482] Indexed: Icons by Oscar  - Abolafia, Oscar
+2026-05-04 16:14:38,484 | INFO     | book_crawler | crawling.py:290 |     [483] Indexed: Making Color Sing, 25Th Anniversary Edition: Pract
+2026-05-04 16:14:41,912 | INFO     | book_crawler | crawling.py:290 |     [484] Indexed: Making Color Sing, 25Th Anniversary Edition: Pract
+2026-05-04 16:14:45,352 | INFO     | book_crawler | crawling.py:290 |     [485] Indexed: Healing Trauma in Children With Clay Field Therapy
+2026-05-04 16:14:48,936 | INFO     | book_crawler | crawling.py:290 |     [486] Indexed: Healing Trauma in Children With Clay Field Therapy
+2026-05-04 16:14:52,403 | INFO     | book_crawler | crawling.py:290 |     [487] Indexed: Russian Criminal Tattoo: 1 (Russian Criminal Tatto
+2026-05-04 16:14:55,865 | INFO     | book_crawler | crawling.py:290 |     [488] Indexed: Russian Criminal Tattoo: 1 (Russian Criminal Tatto
+2026-05-04 16:14:59,302 | INFO     | book_crawler | crawling.py:290 |     [489] Indexed: Watercolor With me  - Fox, Dana
+2026-05-04 16:15:02,837 | INFO     | book_crawler | crawling.py:290 |     [490] Indexed: Watercolor With me  - Fox, Dana
+2026-05-04 16:15:06,310 | INFO     | book_crawler | crawling.py:290 |     [491] Indexed: Framed Ink: Drawing and Composition for Visual Sto
+2026-05-04 16:15:09,753 | INFO     | book_crawler | crawling.py:290 |     [492] Indexed: Framed Ink: Drawing and Composition for Visual Sto
+2026-05-04 16:15:13,228 | INFO     | book_crawler | crawling.py:290 |     [493] Indexed: Dark Souls II: Design Works (DARK SOULS DESIGN WOR
+2026-05-04 16:15:16,726 | INFO     | book_crawler | crawling.py:290 |     [494] Indexed: Dark Souls II: Design Works (DARK SOULS DESIGN WOR
+2026-05-04 16:15:20,185 | INFO     | book_crawler | crawling.py:290 |     [495] Indexed: The Complete Guide to Anatomy for Artists & Illust
+2026-05-04 16:15:23,683 | INFO     | book_crawler | crawling.py:290 |     [496] Indexed: The Complete Guide to Anatomy for Artists & Illust
+2026-05-04 16:15:27,403 | INFO     | book_crawler | crawling.py:290 |     [497] Indexed: Human Thread: Photography of Joe Coca - Coca, Joe
+2026-05-04 16:15:30,875 | INFO     | book_crawler | crawling.py:290 |     [498] Indexed: Human Thread: Photography of Joe Coca - Coca, Joe
+2026-05-04 16:15:34,360 | INFO     | book_crawler | crawling.py:290 |     [499] Indexed: Fantasie in B Minor Op. 28 for Piano: Sheet - Scri
+2026-05-04 16:15:37,807 | INFO     | book_crawler | crawling.py:290 |     [500] Indexed: Fantasie in B Minor Op. 28 for Piano: Sheet - Scri
+2026-05-04 16:15:40,830 | INFO     | book_crawler | crawling.py:250 |   Fetching Category Page 6...
+2026-05-04 16:15:42,890 | INFO     | book_crawler | crawling.py:115 | Page detected (425359 bytes). Waiting for JS render...
+2026-05-04 16:15:47,947 | INFO     | book_crawler | crawling.py:118 | After JS wait: 425359 bytes
+2026-05-04 16:15:54,314 | INFO     | book_crawler | crawling.py:290 |     [501] Indexed: Dissemblage: Machinic Capitalism and Molecular Rev
+2026-05-04 16:15:57,814 | INFO     | book_crawler | crawling.py:290 |     [502] Indexed: Dissemblage: Machinic Capitalism and Molecular Rev
+2026-05-04 16:16:01,372 | INFO     | book_crawler | crawling.py:290 |     [503] Indexed: Clair de Lune from Suite Bergamasque for Piano: Ur
+2026-05-04 16:16:04,807 | INFO     | book_crawler | crawling.py:290 |     [504] Indexed: Clair de Lune from Suite Bergamasque for Piano: Ur
+2026-05-04 16:16:08,288 | INFO     | book_crawler | crawling.py:290 |     [505] Indexed: I Lie for Money: Candid, Outrageous Stories from a
+2026-05-04 16:16:11,787 | INFO     | book_crawler | crawling.py:290 |     [506] Indexed: I Lie for Money: Candid, Outrageous Stories from a
+2026-05-04 16:16:15,706 | INFO     | book_crawler | crawling.py:290 |     [507] Indexed: Concerto for 2 Violins in D Minor Bwv 1043 (Editio
+2026-05-04 16:16:19,148 | INFO     | book_crawler | crawling.py:290 |     [508] Indexed: Concerto for 2 Violins in D Minor Bwv 1043 (Editio
+2026-05-04 16:16:22,771 | INFO     | book_crawler | crawling.py:290 |     [509] Indexed: Magnificat in D Bwv 243 (Vocal Score) - Bach, Joha
+2026-05-04 16:16:26,213 | INFO     | book_crawler | crawling.py:290 |     [510] Indexed: Magnificat in D Bwv 243 (Vocal Score) - Bach, Joha
+2026-05-04 16:16:30,204 | INFO     | book_crawler | crawling.py:290 |     [511] Indexed: Right@sight for Piano, Grade 1 - Evans, Caroline
+2026-05-04 16:16:33,690 | INFO     | book_crawler | crawling.py:290 |     [512] Indexed: Right@sight for Piano, Grade 1 - Evans, Caroline
+2026-05-04 16:16:37,743 | INFO     | book_crawler | crawling.py:290 |     [513] Indexed: Mixed Media Landscapes and Seascapes - Forsey, Chr
+2026-05-04 16:16:41,206 | INFO     | book_crawler | crawling.py:290 |     [514] Indexed: Mixed Media Landscapes and Seascapes - Forsey, Chr
+2026-05-04 16:16:44,684 | INFO     | book_crawler | crawling.py:290 |     [515] Indexed: I've got Something to say  - Danko Jones
+2026-05-04 16:16:48,144 | INFO     | book_crawler | crawling.py:290 |     [516] Indexed: I've got Something to say  - Danko Jones
+2026-05-04 16:16:52,178 | INFO     | book_crawler | crawling.py:290 |     [517] Indexed: Alina Szapocznikow: Sculpture Undone, 1955-1972  -
+2026-05-04 16:16:55,665 | INFO     | book_crawler | crawling.py:290 |     [518] Indexed: Alina Szapocznikow: Sculpture Undone, 1955-1972  -
+2026-05-04 16:17:00,324 | INFO     | book_crawler | crawling.py:290 |     [519] Indexed: Rijksmuseum in Detail - Pijbes, Wim
+2026-05-04 16:17:03,779 | INFO     | book_crawler | crawling.py:290 |     [520] Indexed: Rijksmuseum in Detail - Pijbes, Wim
+2026-05-04 16:17:07,829 | INFO     | book_crawler | crawling.py:290 |     [521] Indexed: The Annie Sloan Collection: 75 Step-By-Step Paint 
+2026-05-04 16:17:11,355 | INFO     | book_crawler | crawling.py:290 |     [522] Indexed: The Annie Sloan Collection: 75 Step-By-Step Paint 
+2026-05-04 16:17:15,184 | INFO     | book_crawler | crawling.py:290 |     [523] Indexed: A-26 Invader: Douglas A-26/B-26 from WWII Through 
+2026-05-04 16:17:18,699 | INFO     | book_crawler | crawling.py:290 |     [524] Indexed: A-26 Invader: Douglas A-26/B-26 from WWII Through 
+2026-05-04 16:17:22,693 | INFO     | book_crawler | crawling.py:290 |     [525] Indexed: Meet George Gershwin at the Keyboard - Gershwin, G
+2026-05-04 16:17:26,242 | INFO     | book_crawler | crawling.py:290 |     [526] Indexed: Meet George Gershwin at the Keyboard - Gershwin, G
+2026-05-04 16:17:30,240 | INFO     | book_crawler | crawling.py:290 |     [527] Indexed: Concert Repertoire for Alto Saxophone with Piano -
+2026-05-04 16:17:33,701 | INFO     | book_crawler | crawling.py:290 |     [528] Indexed: Concert Repertoire for Alto Saxophone with Piano -
+2026-05-04 16:17:38,201 | INFO     | book_crawler | crawling.py:290 |     [529] Indexed: Improve Your Sight-Reading! Flute, Grade 6-8: A Wo
+2026-05-04 16:17:41,727 | INFO     | book_crawler | crawling.py:290 |     [530] Indexed: Improve Your Sight-Reading! Flute, Grade 6-8: A Wo
+2026-05-04 16:17:45,407 | INFO     | book_crawler | crawling.py:290 |     [531] Indexed: Harry Potter: Hermione Granger Hardcover Ruled Jou
+2026-05-04 16:17:48,876 | INFO     | book_crawler | crawling.py:290 |     [532] Indexed: Harry Potter: Hermione Granger Hardcover Ruled Jou
+2026-05-04 16:17:52,878 | INFO     | book_crawler | crawling.py:290 |     [533] Indexed: None
+2026-05-04 16:17:56,308 | INFO     | book_crawler | crawling.py:290 |     [534] Indexed: None
+2026-05-04 16:18:00,044 | INFO     | book_crawler | crawling.py:290 |     [535] Indexed: Claude Monet: Bridge Over a Pond of Water Lilies (
+2026-05-04 16:18:03,507 | INFO     | book_crawler | crawling.py:290 |     [536] Indexed: Claude Monet: Bridge Over a Pond of Water Lilies (
+2026-05-04 16:18:07,290 | INFO     | book_crawler | crawling.py:290 |     [537] Indexed: Remembering African Wild Dogs: 6 (Remembering Wild
+2026-05-04 16:18:10,724 | INFO     | book_crawler | crawling.py:290 |     [538] Indexed: Remembering African Wild Dogs: 6 (Remembering Wild
+2026-05-04 16:18:14,792 | INFO     | book_crawler | crawling.py:290 |     [539] Indexed: Card Tricks for Beginners (Dover Magic Books)  - J
+2026-05-04 16:18:18,325 | INFO     | book_crawler | crawling.py:290 |     [540] Indexed: Card Tricks for Beginners (Dover Magic Books)  - J
+2026-05-04 16:18:22,234 | INFO     | book_crawler | crawling.py:290 |     [541] Indexed: A Better Approach to Pencil Drawing  - Rines, Fran
+2026-05-04 16:18:25,701 | INFO     | book_crawler | crawling.py:290 |     [542] Indexed: A Better Approach to Pencil Drawing  - Rines, Fran
+2026-05-04 16:18:29,476 | INFO     | book_crawler | crawling.py:290 |     [543] Indexed: Dynamic Seascapes: How to Paint Seas and Skies wit
+2026-05-04 16:18:32,958 | INFO     | book_crawler | crawling.py:290 |     [544] Indexed: Dynamic Seascapes: How to Paint Seas and Skies wit
+2026-05-04 16:18:36,900 | INFO     | book_crawler | crawling.py:290 |     [545] Indexed: Kurt Cowling: Gospel Piano (Hal Leonard Keyboard S
+2026-05-04 16:18:40,391 | INFO     | book_crawler | crawling.py:290 |     [546] Indexed: Kurt Cowling: Gospel Piano (Hal Leonard Keyboard S
+2026-05-04 16:18:45,336 | INFO     | book_crawler | crawling.py:290 |     [547] Indexed: Book of the Dead: The Complete History of Zombie C
+2026-05-04 16:18:48,763 | INFO     | book_crawler | crawling.py:290 |     [548] Indexed: Book of the Dead: The Complete History of Zombie C
+2026-05-04 16:18:52,681 | INFO     | book_crawler | crawling.py:290 |     [549] Indexed: Where the Wildness Pleases: The English Garden Cel
+2026-05-04 16:18:56,175 | INFO     | book_crawler | crawling.py:290 |     [550] Indexed: Where the Wildness Pleases: The English Garden Cel
+2026-05-04 16:19:00,423 | INFO     | book_crawler | crawling.py:290 |     [551] Indexed: Revolt. She Said. Revolt Again. - Birch, Alice
+2026-05-04 16:19:03,856 | INFO     | book_crawler | crawling.py:290 |     [552] Indexed: Revolt. She Said. Revolt Again. - Birch, Alice
+2026-05-04 16:19:07,901 | INFO     | book_crawler | crawling.py:290 |     [553] Indexed: The Colouring Book of Glasgow  - Eilidh Muldoon
+2026-05-04 16:19:11,400 | INFO     | book_crawler | crawling.py:290 |     [554] Indexed: The Colouring Book of Glasgow  - Eilidh Muldoon
+2026-05-04 16:19:14,931 | INFO     | book_crawler | crawling.py:290 |     [555] Indexed: The Great Tapestry of Scotland - Moffat, Alistair 
+2026-05-04 16:19:18,398 | INFO     | book_crawler | crawling.py:290 |     [556] Indexed: The Great Tapestry of Scotland - Moffat, Alistair 
+2026-05-04 16:19:22,223 | INFO     | book_crawler | crawling.py:290 |     [557] Indexed: None
+2026-05-04 16:19:25,689 | INFO     | book_crawler | crawling.py:290 |     [558] Indexed: None
+2026-05-04 16:19:29,873 | INFO     | book_crawler | crawling.py:290 |     [559] Indexed: 40 Most-Streamed Disney Songs: Easy Guitar With No
+2026-05-04 16:19:33,341 | INFO     | book_crawler | crawling.py:290 |     [560] Indexed: 40 Most-Streamed Disney Songs: Easy Guitar With No
+2026-05-04 16:19:38,428 | INFO     | book_crawler | crawling.py:290 |     [561] Indexed: Best Children's Songs Ever - Hal Leonard Corp
+2026-05-04 16:19:41,932 | INFO     | book_crawler | crawling.py:290 |     [562] Indexed: Best Children's Songs Ever - Hal Leonard Corp
+2026-05-04 16:19:46,243 | INFO     | book_crawler | crawling.py:290 |     [563] Indexed: Disney Songs for Two Violins: Easy Instrumental Du
+2026-05-04 16:19:50,034 | INFO     | book_crawler | crawling.py:290 |     [564] Indexed: Disney Songs for Two Violins: Easy Instrumental Du
+2026-05-04 16:19:54,138 | INFO     | book_crawler | crawling.py:290 |     [565] Indexed: First 50 Hymns You Should Play on Piano - Hal Leon
+2026-05-04 16:19:57,855 | INFO     | book_crawler | crawling.py:290 |     [566] Indexed: First 50 Hymns You Should Play on Piano - Hal Leon
+2026-05-04 16:20:01,818 | INFO     | book_crawler | crawling.py:290 |     [567] Indexed: Piano Adventures - Popular Repertoire Book - Level
+2026-05-04 16:20:05,328 | INFO     | book_crawler | crawling.py:290 |     [568] Indexed: Piano Adventures - Popular Repertoire Book - Level
+2026-05-04 16:20:09,701 | INFO     | book_crawler | crawling.py:290 |     [569] Indexed: piano adventures,technique & artistry book, level 
+2026-05-04 16:20:13,176 | INFO     | book_crawler | crawling.py:290 |     [570] Indexed: piano adventures,technique & artistry book, level 
+2026-05-04 16:20:17,171 | INFO     | book_crawler | crawling.py:290 |     [571] Indexed: palm springs mid-century modern - dolly faibyshev
+2026-05-04 16:20:20,648 | INFO     | book_crawler | crawling.py:290 |     [572] Indexed: palm springs mid-century modern - dolly faibyshev
+2026-05-04 16:20:24,499 | INFO     | book_crawler | crawling.py:290 |     [573] Indexed: damascus steel: theory and practice - lbach, gunth
+2026-05-04 16:20:28,146 | INFO     | book_crawler | crawling.py:290 |     [574] Indexed: damascus steel: theory and practice - lbach, gunth
+2026-05-04 16:20:31,926 | INFO     | book_crawler | crawling.py:290 |     [575] Indexed: Alien: 40 Years 40 Artists  - Varios Autores
+2026-05-04 16:20:35,457 | INFO     | book_crawler | crawling.py:290 |     [576] Indexed: Alien: 40 Years 40 Artists  - Varios Autores
+2026-05-04 16:20:39,016 | INFO     | book_crawler | crawling.py:290 |     [577] Indexed: That Photo Makes me Hungry: Photographing Food for
+2026-05-04 16:20:42,437 | INFO     | book_crawler | crawling.py:290 |     [578] Indexed: That Photo Makes me Hungry: Photographing Food for
+2026-05-04 16:20:46,292 | INFO     | book_crawler | crawling.py:290 |     [579] Indexed: The Beatles 100: One Hundred Pivotal Moments in Be
+2026-05-04 16:20:49,861 | INFO     | book_crawler | crawling.py:290 |     [580] Indexed: The Beatles 100: One Hundred Pivotal Moments in Be
+2026-05-04 16:20:53,474 | INFO     | book_crawler | crawling.py:290 |     [581] Indexed: Tom Stoppard: A Life - Lee, Hermione
+2026-05-04 16:20:56,971 | INFO     | book_crawler | crawling.py:290 |     [582] Indexed: Tom Stoppard: A Life - Lee, Hermione
+2026-05-04 16:21:01,024 | INFO     | book_crawler | crawling.py:290 |     [583] Indexed: Buchner Bründler--Buildings II - Balland, Ludovic 
+2026-05-04 16:21:04,491 | INFO     | book_crawler | crawling.py:290 |     [584] Indexed: Buchner Bründler--Buildings II - Balland, Ludovic 
+2026-05-04 16:21:07,938 | INFO     | book_crawler | crawling.py:290 |     [585] Indexed: The Lensball Photography Handbook: The Ultimate Gu
+2026-05-04 16:21:11,407 | INFO     | book_crawler | crawling.py:290 |     [586] Indexed: The Lensball Photography Handbook: The Ultimate Gu
+2026-05-04 16:21:15,656 | INFO     | book_crawler | crawling.py:290 |     [587] Indexed: Russian Criminal Tattoo Archive  - Murray, Damon ;
+2026-05-04 16:21:19,100 | INFO     | book_crawler | crawling.py:290 |     [588] Indexed: Russian Criminal Tattoo Archive  - Murray, Damon ;
+2026-05-04 16:21:22,904 | INFO     | book_crawler | crawling.py:290 |     [589] Indexed: 50 Pop Songs for Kids for Trumpet - Hal Leonard Co
+2026-05-04 16:21:26,362 | INFO     | book_crawler | crawling.py:290 |     [590] Indexed: 50 Pop Songs for Kids for Trumpet - Hal Leonard Co
+2026-05-04 16:21:30,312 | INFO     | book_crawler | crawling.py:290 |     [591] Indexed: teaching little fingers to play more - Kaplan, Lei
+2026-05-04 16:21:33,780 | INFO     | book_crawler | crawling.py:290 |     [592] Indexed: teaching little fingers to play more - Kaplan, Lei
+2026-05-04 16:21:37,961 | INFO     | book_crawler | crawling.py:290 |     [593] Indexed: The Craft of Songwriting: Music, Meaning, & Emotio
+2026-05-04 16:21:41,458 | INFO     | book_crawler | crawling.py:290 |     [594] Indexed: The Craft of Songwriting: Music, Meaning, & Emotio
+2026-05-04 16:21:46,332 | INFO     | book_crawler | crawling.py:290 |     [595] Indexed: Funk & Soul Covers  - Paulo, Joaquim ; Wiedemann, 
+2026-05-04 16:21:49,918 | INFO     | book_crawler | crawling.py:290 |     [596] Indexed: Funk & Soul Covers  - Paulo, Joaquim ; Wiedemann, 
+2026-05-04 16:21:53,956 | INFO     | book_crawler | crawling.py:290 |     [597] Indexed: Pippa Garner: Better Living Catalog - Garner, Pipp
+2026-05-04 16:21:57,505 | INFO     | book_crawler | crawling.py:290 |     [598] Indexed: Pippa Garner: Better Living Catalog - Garner, Pipp
+2026-05-04 16:22:01,291 | INFO     | book_crawler | crawling.py:290 |     [599] Indexed: Remembering Tigers - Raggett, Margot ; Wildlife Ph
+2026-05-04 16:22:04,761 | INFO     | book_crawler | crawling.py:290 |     [600] Indexed: Remembering Tigers - Raggett, Margot ; Wildlife Ph
+2026-05-04 16:22:07,786 | INFO     | book_crawler | crawling.py:250 |   Fetching Category Page 7...
+2026-05-04 16:23:04,838 | WARNING  | book_crawler | crawling.py:111 | === MANUAL INTERVENTION REQUIRED: SOLVE CAPTCHA ===
+2026-05-04 16:23:09,860 | INFO     | book_crawler | crawling.py:115 | Page detected (185144 bytes). Waiting for JS render...
+2026-05-04 16:23:14,884 | INFO     | book_crawler | crawling.py:118 | After JS wait: 185144 bytes
+2026-05-04 16:23:19,916 | INFO     | book_crawler | crawling.py:260 |   No more books found in Arts at page 7.
+2026-05-04 16:23:19,917 | INFO     | book_crawler | crawling.py:244 | --- Category: Biography, Literature And Literary Studies (Current Total: 600) ---
+2026-05-04 16:23:19,917 | INFO     | book_crawler | crawling.py:250 |   Fetching Category Page 1...
+2026-05-04 16:23:22,499 | INFO     | book_crawler | crawling.py:115 | Page detected (428393 bytes). Waiting for JS render...
+2026-05-04 16:23:27,550 | INFO     | book_crawler | crawling.py:118 | After JS wait: 428393 bytes
+2026-05-04 16:23:33,842 | INFO     | book_crawler | crawling.py:290 |     [601] Indexed: Consecration to St. Joseph: The Wonders of our Spi
+2026-05-04 16:23:37,452 | INFO     | book_crawler | crawling.py:290 |     [602] Indexed: Consecration to St. Joseph: The Wonders of our Spi
+2026-05-04 16:23:40,888 | INFO     | book_crawler | crawling.py:290 |     [603] Indexed: Everybody Is a Poem: Midlife in Rhymes - Brierton,
+2026-05-04 16:23:44,322 | INFO     | book_crawler | crawling.py:290 |     [604] Indexed: Everybody Is a Poem: Midlife in Rhymes - Brierton,
+2026-05-04 16:23:47,739 | INFO     | book_crawler | crawling.py:290 |     [605] Indexed: The Power Broker: Robert Moses and the Fall of new
+2026-05-04 16:23:51,218 | INFO     | book_crawler | crawling.py:290 |     [606] Indexed: The Power Broker: Robert Moses and the Fall of new
+2026-05-04 16:23:54,624 | INFO     | book_crawler | crawling.py:290 |     [607] Indexed: "Surely You're Joking, mr. Feynman! "S Adventures 
+2026-05-04 16:23:58,077 | INFO     | book_crawler | crawling.py:290 |     [608] Indexed: "Surely You're Joking, mr. Feynman! "S Adventures 
+2026-05-04 16:24:01,502 | INFO     | book_crawler | crawling.py:290 |     [609] Indexed: The Billionaire who Wasn't: How Chuck Feeney Secre
+2026-05-04 16:24:05,024 | INFO     | book_crawler | crawling.py:290 |     [610] Indexed: The Billionaire who Wasn't: How Chuck Feeney Secre
+2026-05-04 16:24:08,505 | INFO     | book_crawler | crawling.py:290 |     [611] Indexed: what remains,a memoir of fate, friendship, and lov
+2026-05-04 16:24:11,944 | INFO     | book_crawler | crawling.py:290 |     [612] Indexed: what remains,a memoir of fate, friendship, and lov
+2026-05-04 16:24:15,344 | INFO     | book_crawler | crawling.py:290 |     [613] Indexed: The Year of Magical Thinking  - Joan Didion
+2026-05-04 16:24:18,755 | INFO     | book_crawler | crawling.py:290 |     [614] Indexed: The Year of Magical Thinking  - Joan Didion
+2026-05-04 16:24:22,251 | INFO     | book_crawler | crawling.py:290 |     [615] Indexed: Dancing at the Edge of the World: Thoughts on Word
+2026-05-04 16:24:25,707 | INFO     | book_crawler | crawling.py:290 |     [616] Indexed: Dancing at the Edge of the World: Thoughts on Word
+2026-05-04 16:24:29,122 | INFO     | book_crawler | crawling.py:290 |     [617] Indexed: Napoleon: A Life  - Roberts, Andrew
+2026-05-04 16:24:32,540 | INFO     | book_crawler | crawling.py:290 |     [618] Indexed: Napoleon: A Life  - Roberts, Andrew
+2026-05-04 16:24:35,979 | INFO     | book_crawler | crawling.py:290 |     [619] Indexed: Mein Kampf : The Official 1939 Edition - Adolf Hit
+2026-05-04 16:24:39,408 | INFO     | book_crawler | crawling.py:290 |     [620] Indexed: Mein Kampf : The Official 1939 Edition - Adolf Hit
+2026-05-04 16:24:42,913 | INFO     | book_crawler | crawling.py:290 |     [621] Indexed: Devotions: The Selected Poems of Mary Oliver - Mar
+2026-05-04 16:24:46,452 | INFO     | book_crawler | crawling.py:290 |     [622] Indexed: Devotions: The Selected Poems of Mary Oliver - Mar
+2026-05-04 16:24:49,850 | INFO     | book_crawler | crawling.py:290 |     [623] Indexed: The Myth of Sisyphus (Vintage International)  - Al
+2026-05-04 16:24:53,276 | INFO     | book_crawler | crawling.py:290 |     [624] Indexed: The Myth of Sisyphus (Vintage International)  - Al
+2026-05-04 16:24:56,714 | INFO     | book_crawler | crawling.py:290 |     [625] Indexed: How to Read a Book: The Classic Guide to Intellige
+2026-05-04 16:25:00,158 | INFO     | book_crawler | crawling.py:290 |     [626] Indexed: How to Read a Book: The Classic Guide to Intellige
+2026-05-04 16:25:03,635 | INFO     | book_crawler | crawling.py:290 |     [627] Indexed: Nobody's Girl: A Memoir of Surviving Abuse and Fig
+2026-05-04 16:25:07,103 | INFO     | book_crawler | crawling.py:290 |     [628] Indexed: Nobody's Girl: A Memoir of Surviving Abuse and Fig
+2026-05-04 16:25:10,510 | INFO     | book_crawler | crawling.py:290 |     [629] Indexed: Into the Planet: My Life as a Cave Diver  - Heiner
+2026-05-04 16:25:13,916 | INFO     | book_crawler | crawling.py:290 |     [630] Indexed: Into the Planet: My Life as a Cave Diver  - Heiner
+2026-05-04 16:25:17,358 | INFO     | book_crawler | crawling.py:290 |     [631] Indexed: Come to the Edge  - Christina Haag
+2026-05-04 16:25:20,753 | INFO     | book_crawler | crawling.py:290 |     [632] Indexed: Come to the Edge  - Christina Haag
+2026-05-04 16:25:24,160 | INFO     | book_crawler | crawling.py:290 |     [633] Indexed: diary,divine mercy in my soul - Kowalska, Maria Fa
+2026-05-04 16:25:27,579 | INFO     | book_crawler | crawling.py:290 |     [634] Indexed: diary,divine mercy in my soul - Kowalska, Maria Fa
+2026-05-04 16:25:30,982 | INFO     | book_crawler | crawling.py:290 |     [635] Indexed: Meditations (Marcus Aurelius)  - Aurelius, Marcus
+2026-05-04 16:25:34,421 | INFO     | book_crawler | crawling.py:290 |     [636] Indexed: Meditations (Marcus Aurelius)  - Aurelius, Marcus
+2026-05-04 16:25:37,814 | INFO     | book_crawler | crawling.py:290 |     [637] Indexed: Man's Search for Meaning  - Frankl, Viktor E. ; Ku
+2026-05-04 16:25:41,200 | INFO     | book_crawler | crawling.py:290 |     [638] Indexed: Man's Search for Meaning  - Frankl, Viktor E. ; Ku
+2026-05-04 16:25:44,600 | INFO     | book_crawler | crawling.py:290 |     [639] Indexed: Meditations (Collins Classics)  - Marcus Aurelius
+2026-05-04 16:25:48,002 | INFO     | book_crawler | crawling.py:290 |     [640] Indexed: Meditations (Collins Classics)  - Marcus Aurelius
+2026-05-04 16:25:51,536 | INFO     | book_crawler | crawling.py:290 |     [641] Indexed: The House with All the Lights on: Three Generation
+2026-05-04 16:25:54,973 | INFO     | book_crawler | crawling.py:290 |     [642] Indexed: The House with All the Lights on: Three Generation
+2026-05-04 16:25:58,719 | INFO     | book_crawler | crawling.py:290 |     [643] Indexed: Beating the Street  - Lynch, Peter ; Rothchild, Jo
+2026-05-04 16:26:02,141 | INFO     | book_crawler | crawling.py:290 |     [644] Indexed: Beating the Street  - Lynch, Peter ; Rothchild, Jo
+2026-05-04 16:26:05,556 | INFO     | book_crawler | crawling.py:290 |     [645] Indexed: Mein Kampf (German Language Edition) (in German) -
+2026-05-04 16:26:08,976 | INFO     | book_crawler | crawling.py:290 |     [646] Indexed: Mein Kampf (German Language Edition) (in German) -
+2026-05-04 16:26:12,393 | INFO     | book_crawler | crawling.py:290 |     [647] Indexed: Arcanum Unbounded: The Cosmere Collection - Brando
+2026-05-04 16:26:15,873 | INFO     | book_crawler | crawling.py:290 |     [648] Indexed: Arcanum Unbounded: The Cosmere Collection - Brando
+2026-05-04 16:26:19,281 | INFO     | book_crawler | crawling.py:290 |     [649] Indexed: How to Starve Cancer: And Then Kill it With Ferrop
+2026-05-04 16:26:22,708 | INFO     | book_crawler | crawling.py:290 |     [650] Indexed: How to Starve Cancer: And Then Kill it With Ferrop
+2026-05-04 16:26:26,130 | INFO     | book_crawler | crawling.py:290 |     [651] Indexed: Never Finished: Unshackle Your Mind and win the wa
+2026-05-04 16:26:29,605 | INFO     | book_crawler | crawling.py:290 |     [652] Indexed: Never Finished: Unshackle Your Mind and win the wa
+2026-05-04 16:26:33,045 | INFO     | book_crawler | crawling.py:290 |     [653] Indexed: Mi año de sexo y relajación (in Spanish) - Romina 
+2026-05-04 16:26:36,700 | INFO     | book_crawler | crawling.py:290 |     [654] Indexed: Mi año de sexo y relajación (in Spanish) - Romina 
+2026-05-04 16:26:40,268 | INFO     | book_crawler | crawling.py:290 |     [655] Indexed: Tihkal: The Continuation  - Shulgin, Alexander ; S
+2026-05-04 16:26:43,789 | INFO     | book_crawler | crawling.py:290 |     [656] Indexed: Tihkal: The Continuation  - Shulgin, Alexander ; S
+2026-05-04 16:26:47,249 | INFO     | book_crawler | crawling.py:290 |     [657] Indexed: Dream Work  - Mary Oliver
+2026-05-04 16:26:50,822 | INFO     | book_crawler | crawling.py:290 |     [658] Indexed: Dream Work  - Mary Oliver
+2026-05-04 16:26:54,277 | INFO     | book_crawler | crawling.py:290 |     [659] Indexed: The Essential Rumi: New Expanded Edition  - Colema
+2026-05-04 16:26:57,708 | INFO     | book_crawler | crawling.py:290 |     [660] Indexed: The Essential Rumi: New Expanded Edition  - Colema
+2026-05-04 16:27:01,190 | INFO     | book_crawler | crawling.py:290 |     [661] Indexed: Meditations  - Marcus Aurelius
+2026-05-04 16:27:04,647 | INFO     | book_crawler | crawling.py:290 |     [662] Indexed: Meditations  - Marcus Aurelius
+2026-05-04 16:27:08,114 | INFO     | book_crawler | crawling.py:290 |     [663] Indexed: One Nation Under Blackmail. Vol. 1  - Webb, Whitne
+2026-05-04 16:27:11,545 | INFO     | book_crawler | crawling.py:290 |     [664] Indexed: One Nation Under Blackmail. Vol. 1  - Webb, Whitne
+2026-05-04 16:27:15,071 | INFO     | book_crawler | crawling.py:290 |     [665] Indexed: Romeo and Juliet (No Fear Shakespeare) Side-By-Sid
+2026-05-04 16:27:18,551 | INFO     | book_crawler | crawling.py:290 |     [666] Indexed: Romeo and Juliet (No Fear Shakespeare) Side-By-Sid
+2026-05-04 16:27:22,163 | INFO     | book_crawler | crawling.py:290 |     [667] Indexed: Initiation  - Haich, Elisabeth
+2026-05-04 16:27:25,576 | INFO     | book_crawler | crawling.py:290 |     [668] Indexed: Initiation  - Haich, Elisabeth
+2026-05-04 16:27:28,992 | INFO     | book_crawler | crawling.py:290 |     [669] Indexed: I saw Ramallah  - Barghouti, Mourid ; Said, Edward
+2026-05-04 16:27:32,437 | INFO     | book_crawler | crawling.py:290 |     [670] Indexed: I saw Ramallah  - Barghouti, Mourid ; Said, Edward
+2026-05-04 16:27:35,920 | INFO     | book_crawler | crawling.py:290 |     [671] Indexed: Etty Hillesum: An Interrupted Life the Diaries, 19
+2026-05-04 16:27:39,360 | INFO     | book_crawler | crawling.py:290 |     [672] Indexed: Etty Hillesum: An Interrupted Life the Diaries, 19
+2026-05-04 16:27:42,779 | INFO     | book_crawler | crawling.py:290 |     [673] Indexed: The Pillow Book (Penguin Classics)  - Shonagon, Se
+2026-05-04 16:27:46,216 | INFO     | book_crawler | crawling.py:290 |     [674] Indexed: The Pillow Book (Penguin Classics)  - Shonagon, Se
+2026-05-04 16:27:49,686 | INFO     | book_crawler | crawling.py:290 |     [675] Indexed: 84, Charing Cross Road - Hanff, Helene
+2026-05-04 16:27:53,336 | INFO     | book_crawler | crawling.py:290 |     [676] Indexed: 84, Charing Cross Road - Hanff, Helene
+2026-05-04 16:27:56,805 | INFO     | book_crawler | crawling.py:290 |     [677] Indexed: not fade away,a short life well lived - Shames, La
+2026-05-04 16:28:00,243 | INFO     | book_crawler | crawling.py:290 |     [678] Indexed: not fade away,a short life well lived - Shames, La
+2026-05-04 16:28:03,650 | INFO     | book_crawler | crawling.py:290 |     [679] Indexed: The Nazi and the Psychiatrist: Hermann Göring, dr.
+2026-05-04 16:28:07,338 | INFO     | book_crawler | crawling.py:290 |     [680] Indexed: The Nazi and the Psychiatrist: Hermann Göring, dr.
+2026-05-04 16:28:10,927 | INFO     | book_crawler | crawling.py:290 |     [681] Indexed: Based on a True Story: Not a Memoir  - Norm MacDon
+2026-05-04 16:28:14,376 | INFO     | book_crawler | crawling.py:290 |     [682] Indexed: Based on a True Story: Not a Memoir  - Norm MacDon
+2026-05-04 16:28:17,852 | INFO     | book_crawler | crawling.py:290 |     [683] Indexed: The Numerical Discourses of the Buddha: A Complete
+2026-05-04 16:28:21,278 | INFO     | book_crawler | crawling.py:290 |     [684] Indexed: The Numerical Discourses of the Buddha: A Complete
+2026-05-04 16:28:24,695 | INFO     | book_crawler | crawling.py:290 |     [685] Indexed: the philosophy of being - Renard, Henri
+2026-05-04 16:28:28,160 | INFO     | book_crawler | crawling.py:290 |     [686] Indexed: the philosophy of being - Renard, Henri
+2026-05-04 16:28:31,846 | INFO     | book_crawler | crawling.py:290 |     [687] Indexed: The Diary of a Young Girl - Anne Frank
+2026-05-04 16:28:35,272 | INFO     | book_crawler | crawling.py:290 |     [688] Indexed: The Diary of a Young Girl - Anne Frank
+2026-05-04 16:28:38,711 | INFO     | book_crawler | crawling.py:290 |     [689] Indexed: Genghis Khan and the Making of the Modern World  -
+2026-05-04 16:28:42,124 | INFO     | book_crawler | crawling.py:290 |     [690] Indexed: Genghis Khan and the Making of the Modern World  -
+2026-05-04 16:28:45,591 | INFO     | book_crawler | crawling.py:290 |     [691] Indexed: The Tempest: applause first folio editions - Willi
+2026-05-04 16:28:49,045 | INFO     | book_crawler | crawling.py:290 |     [692] Indexed: The Tempest: applause first folio editions - Willi
+2026-05-04 16:28:52,516 | INFO     | book_crawler | crawling.py:290 |     [693] Indexed: Sarimanok  - Hobman, Bob
+2026-05-04 16:28:56,040 | INFO     | book_crawler | crawling.py:290 |     [694] Indexed: Sarimanok  - Hobman, Bob
+2026-05-04 16:28:59,041 | INFO     | book_crawler | crawling.py:250 |   Fetching Category Page 2...
+2026-05-04 16:29:00,981 | INFO     | book_crawler | crawling.py:115 | Page detected (432104 bytes). Waiting for JS render...
+2026-05-04 16:29:06,045 | INFO     | book_crawler | crawling.py:118 | After JS wait: 432614 bytes
+2026-05-04 16:29:12,322 | INFO     | book_crawler | crawling.py:290 |     [695] Indexed: Garfield fat cat 3-Pack #1 - Jim Davis
+2026-05-04 16:29:15,805 | INFO     | book_crawler | crawling.py:290 |     [696] Indexed: Garfield fat cat 3-Pack #1 - Jim Davis
+2026-05-04 16:29:20,290 | INFO     | book_crawler | crawling.py:290 |     [697] Indexed: The Metamorphoses (Penguin Classics)  - Ovid ; Rae
+2026-05-04 16:29:23,729 | INFO     | book_crawler | crawling.py:290 |     [698] Indexed: The Metamorphoses (Penguin Classics)  - Ovid ; Rae
+2026-05-04 16:29:27,805 | INFO     | book_crawler | crawling.py:290 |     [699] Indexed: The Melting Point: High Command and War in the 21s
+2026-05-04 16:29:31,232 | INFO     | book_crawler | crawling.py:290 |     [700] Indexed: The Melting Point: High Command and War in the 21s
+2026-05-04 16:29:34,833 | INFO     | book_crawler | crawling.py:290 |     [701] Indexed: Tribute to Freud (New Directions)  - Doolittle, Hi
+2026-05-04 16:29:38,238 | INFO     | book_crawler | crawling.py:290 |     [702] Indexed: Tribute to Freud (New Directions)  - Doolittle, Hi
+2026-05-04 16:29:41,772 | INFO     | book_crawler | crawling.py:290 |     [703] Indexed: Pihkal: A Chemical Love Story  - Shulgin, Alexande
+2026-05-04 16:29:45,221 | INFO     | book_crawler | crawling.py:290 |     [704] Indexed: Pihkal: A Chemical Love Story  - Shulgin, Alexande
+2026-05-04 16:29:49,274 | INFO     | book_crawler | crawling.py:290 |     [705] Indexed: From Convict to Chief Constable: The Story of Thom
+2026-05-04 16:29:52,713 | INFO     | book_crawler | crawling.py:290 |     [706] Indexed: From Convict to Chief Constable: The Story of Thom
+2026-05-04 16:29:56,948 | INFO     | book_crawler | crawling.py:290 |     [707] Indexed: Don't Hold My Head Down - Holmes, Lucy-Anne
+2026-05-04 16:30:00,388 | INFO     | book_crawler | crawling.py:290 |     [708] Indexed: Don't Hold My Head Down - Holmes, Lucy-Anne
+2026-05-04 16:30:04,064 | INFO     | book_crawler | crawling.py:290 |     [709] Indexed: Short Stories in Turkish for Beginners - Richards,
+2026-05-04 16:30:07,480 | INFO     | book_crawler | crawling.py:290 |     [710] Indexed: Short Stories in Turkish for Beginners - Richards,
+2026-05-04 16:30:11,211 | INFO     | book_crawler | crawling.py:290 |     [711] Indexed: Garfield fat cat 3-Pack #7 (Garfield fat cat Three
+2026-05-04 16:30:14,601 | INFO     | book_crawler | crawling.py:290 |     [712] Indexed: Garfield fat cat 3-Pack #7 (Garfield fat cat Three
+2026-05-04 16:30:19,419 | INFO     | book_crawler | crawling.py:290 |     [713] Indexed: Nba Legends: Discover Basketball'S All-Time Greats
+2026-05-04 16:30:22,812 | INFO     | book_crawler | crawling.py:290 |     [714] Indexed: Nba Legends: Discover Basketball'S All-Time Greats
+2026-05-04 16:30:27,041 | INFO     | book_crawler | crawling.py:290 |     [715] Indexed: Hamlet: No Fear Shakespeare Deluxe Student Edition
+2026-05-04 16:30:30,712 | INFO     | book_crawler | crawling.py:290 |     [716] Indexed: Hamlet: No Fear Shakespeare Deluxe Student Edition
+2026-05-04 16:30:35,618 | INFO     | book_crawler | crawling.py:290 |     [717] Indexed: Twenty Love Poems and a Song of Despair  - Neruda,
+2026-05-04 16:30:39,116 | INFO     | book_crawler | crawling.py:290 |     [718] Indexed: Twenty Love Poems and a Song of Despair  - Neruda,
+2026-05-04 16:30:43,224 | INFO     | book_crawler | crawling.py:290 |     [719] Indexed: Good Boy: My Life in Seven Dogs  - Boylan, Jennife
+2026-05-04 16:30:46,838 | INFO     | book_crawler | crawling.py:290 |     [720] Indexed: Good Boy: My Life in Seven Dogs  - Boylan, Jennife
+2026-05-04 16:30:51,696 | INFO     | book_crawler | crawling.py:290 |     [721] Indexed: The Faraway Nearby  - Solnit, Rebecca
+2026-05-04 16:30:55,105 | INFO     | book_crawler | crawling.py:290 |     [722] Indexed: The Faraway Nearby  - Solnit, Rebecca
+2026-05-04 16:30:59,383 | INFO     | book_crawler | crawling.py:290 |     [723] Indexed: Kitchen Confidential: Adventures in the Culinary U
+2026-05-04 16:31:02,869 | INFO     | book_crawler | crawling.py:290 |     [724] Indexed: Kitchen Confidential: Adventures in the Culinary U
+2026-05-04 16:31:06,473 | INFO     | book_crawler | crawling.py:290 |     [725] Indexed: Reader'S Digest Laughter is the Best Medicine: All
+2026-05-04 16:31:10,130 | INFO     | book_crawler | crawling.py:290 |     [726] Indexed: Reader'S Digest Laughter is the Best Medicine: All
+2026-05-04 16:31:14,055 | INFO     | book_crawler | crawling.py:290 |     [727] Indexed: Scattered Minds: The Origins and Healing of Attent
+2026-05-04 16:31:17,543 | INFO     | book_crawler | crawling.py:290 |     [728] Indexed: Scattered Minds: The Origins and Healing of Attent
+2026-05-04 16:31:21,761 | INFO     | book_crawler | crawling.py:290 |     [729] Indexed: The Tale of Genji: The Authentic First Translation
+2026-05-04 16:31:25,233 | INFO     | book_crawler | crawling.py:290 |     [730] Indexed: The Tale of Genji: The Authentic First Translation
+2026-05-04 16:31:29,458 | INFO     | book_crawler | crawling.py:290 |     [731] Indexed: Lao Tzu: Tao te Ching: A Book About the way and th
+2026-05-04 16:31:33,109 | INFO     | book_crawler | crawling.py:290 |     [732] Indexed: Lao Tzu: Tao te Ching: A Book About the way and th
+2026-05-04 16:31:37,026 | INFO     | book_crawler | crawling.py:290 |     [733] Indexed: Autobiography of a Yogi  - Paramahansa Yogananda
+2026-05-04 16:31:40,533 | INFO     | book_crawler | crawling.py:290 |     [734] Indexed: Autobiography of a Yogi  - Paramahansa Yogananda
+2026-05-04 16:31:45,509 | INFO     | book_crawler | crawling.py:290 |     [735] Indexed: The William h. Gass Reader  - Gass, William H.
+2026-05-04 16:31:49,805 | INFO     | book_crawler | crawling.py:290 |     [736] Indexed: The William h. Gass Reader  - Gass, William H.
+2026-05-04 16:31:54,695 | INFO     | book_crawler | crawling.py:290 |     [737] Indexed: The Changeling: Revised Edition (New Mermaids)  - 
+2026-05-04 16:31:58,441 | INFO     | book_crawler | crawling.py:290 |     [738] Indexed: The Changeling: Revised Edition (New Mermaids)  - 
+2026-05-04 16:32:02,609 | INFO     | book_crawler | crawling.py:290 |     [739] Indexed: Emil and the Detectives (Oberon Modern Plays) - Ka
+2026-05-04 16:32:06,630 | INFO     | book_crawler | crawling.py:290 |     [740] Indexed: Emil and the Detectives (Oberon Modern Plays) - Ka
+2026-05-04 16:32:10,719 | INFO     | book_crawler | crawling.py:290 |     [741] Indexed: Reluctant Spy: My Secret Life in the Cia's war on 
+2026-05-04 16:32:15,748 | INFO     | book_crawler | crawling.py:290 |     [742] Indexed: Reluctant Spy: My Secret Life in the Cia's war on 
+2026-05-04 16:32:20,843 | INFO     | book_crawler | crawling.py:290 |     [743] Indexed: Milk and Honey: 10th Anniversary Collector's Editi
+2026-05-04 16:32:24,353 | INFO     | book_crawler | crawling.py:290 |     [744] Indexed: Milk and Honey: 10th Anniversary Collector's Editi
+2026-05-04 16:32:28,311 | INFO     | book_crawler | crawling.py:290 |     [745] Indexed: The Swedish art of Aging Exuberantly: Life Wisdom 
+2026-05-04 16:32:31,743 | INFO     | book_crawler | crawling.py:290 |     [746] Indexed: The Swedish art of Aging Exuberantly: Life Wisdom 
+2026-05-04 16:32:35,636 | INFO     | book_crawler | crawling.py:290 |     [747] Indexed: Girl, Interrupted  - Kaysen, Susanna
+2026-05-04 16:32:39,052 | INFO     | book_crawler | crawling.py:290 |     [748] Indexed: Girl, Interrupted  - Kaysen, Susanna
+2026-05-04 16:32:43,441 | INFO     | book_crawler | crawling.py:290 |     [749] Indexed: My Son Carlo: Carlo Acutis Through the Eyes of His
+2026-05-04 16:32:46,962 | INFO     | book_crawler | crawling.py:290 |     [750] Indexed: My Son Carlo: Carlo Acutis Through the Eyes of His
+2026-05-04 16:32:52,774 | INFO     | book_crawler | crawling.py:290 |     [751] Indexed: On Purpose: Ten Lessons on the Meaning of Life - H
+2026-05-04 16:32:56,313 | INFO     | book_crawler | crawling.py:290 |     [752] Indexed: On Purpose: Ten Lessons on the Meaning of Life - H
+2026-05-04 16:33:00,070 | INFO     | book_crawler | crawling.py:290 |     [753] Indexed: the life of christina of markyate - Fanous, Samuel
+2026-05-04 16:33:03,735 | INFO     | book_crawler | crawling.py:290 |     [754] Indexed: the life of christina of markyate - Fanous, Samuel
+2026-05-04 16:33:07,612 | INFO     | book_crawler | crawling.py:290 |     [755] Indexed: Chasing Evil: Shocking Crimes, Supernatural Forces

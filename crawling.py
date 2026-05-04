@@ -10,312 +10,354 @@ import requests
 from urllib.parse import urljoin
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
 from bs4 import BeautifulSoup
+import numpy as np
 
 # Constants from PDF and project requirements
 EXCHANGE_RATE = 3.01
 BASE_URL = "https://www.bookdelivery.com/il-en/"
-MAX_PAGES_PER_CATEGORY = 5  # Reverted to 5 as per PDF
-DELAY = 5
+TARGET_TOTAL_BOOKS = 5000  # New requirement
+MAX_PAGES_PER_CATEGORY = 5
+DELAY = 3 # Slightly reduced but still "significant" per PDF
 driver = None
 requests_session = requests.Session()
 
+
 def start_driver():
-    """Initializes a standard Selenium Chrome driver (as recommended in PDF)"""
-    start_time = time.time()
-    logger.debug("Initializing standard Chrome driver...")
+    """Starts a fresh Chrome driver with stealth flags. Kills any old driver first."""
+    global driver
+    # Kill old driver if it exists
+    if driver is not None:
+        try:
+            driver.quit()
+        except:
+            pass
+        driver = None
+
     options = Options()
     options.add_argument("--window-size=1920,1080")
-    # Note: Headless is often blocked by Cloudflare, keeping it visible for manual captcha solving
-    
+
+    # Friend's stealth flags
+    options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36")
+    options.add_argument("--disable-blink-features=AutomationControlled")
+    options.add_experimental_option("excludeSwitches", ["enable-automation"])
+    options.add_experimental_option('useAutomationExtension', False)
+
     try:
-        instance = webdriver.Chrome(options=options)
-        logger.info(f"Chrome driver successfully started in {time.time() - start_time:.2f}s")
-        return instance
+        service = Service()
+        driver = webdriver.Chrome(service=service, options=options)
+
+        # Hide the "navigator.webdriver" flag from JavaScript
+        driver.execute_cdp_cmd("Page.addScriptToEvaluateOnNewDocument", {
+            "source": """
+                Object.defineProperty(navigator, 'webdriver', {
+                    get: () => undefined
+                })
+            """
+        })
+
+        logger.info("Stealth Chrome driver started.")
+        return driver
     except Exception as e:
-        logger.critical(f"FAILED TO START CHROME DRIVER: {e}", exc_info=True)
+        logger.critical(f"FAILED TO START CHROME DRIVER: {e}")
         raise
 
-def is_blocked(soup):
-    """Detects if we are on a Cloudflare challenge or Captcha page"""
-    if not soup:
-        return True
-    
-    page_text = soup.get_text().lower()
-    blocking_terms = [
-        "just a moment",
-        "please solve the captcha",
-        "verify you are a human",
-        "checking your browser",
-        "access denied",
-        "enable cookies"
-    ]
-    
-    # If the page title is missing or very short, it's often a block
-    if not soup.title or "verify" in soup.title.get_text().lower():
-        return True
 
+def is_blocked(soup):
+    """Detects if blocked by Cloudflare/Captcha"""
+    if not soup: return True
+    page_text = soup.get_text().lower()
+    blocking_terms = ["just a moment", "solve the captcha", "verify you are a human", "access denied"]
+    if not soup.title or "verify" in soup.title.get_text().lower(): return True
     for term in blocking_terms:
-        if term in page_text:
-            return True
-            
+        if term in page_text: return True
     return False
 
+
 def sync_cookies():
-    """Transfers cookies from Selenium to the Requests session"""
+    """Syncs Selenium session to Requests session"""
     global driver, requests_session
     if driver:
-        logger.debug("Syncing Selenium cookies to Requests session...")
         for cookie in driver.get_cookies():
             requests_session.cookies.set(cookie['name'], cookie['value'])
-        # Also set a realistic User-Agent for requests
         user_agent = driver.execute_script("return navigator.userAgent")
         requests_session.headers.update({"User-Agent": user_agent})
 
+
 def get_soup_via_selenium(url, delay=5):
-    """Uses Selenium for navigation and links extraction (handles JS/Captcha)"""
+    """Navigates with Selenium. Restarts driver if session dies."""
     global driver
 
-    if driver is None:
-        driver = start_driver()
+    for attempt in range(3):
+        try:
+            if driver is None:
+                start_driver()
 
-    logger.info(f"Navigating to: {url}")
-    try:
-        driver.get(url)
-    except Exception as e:
-        logger.error(f"Navigation error for {url}: {e}")
-        return None
+            driver.get(url)
 
-    # Verification loop
-    while True:
-        html = driver.page_source
-        soup = BeautifulSoup(html, "html.parser")
-        
-        if is_blocked(soup):
-            logger.warning("=== MANUAL INTERVENTION REQUIRED ===")
-            logger.warning(f"Verification required for: {url}")
-            logger.info("Please solve the captcha in the browser window. The script will wait.")
-            time.sleep(5) # Check every 5 seconds
-        else:
-            # Check if we have actual content (e.g., categories or book links)
-            if "bookdelivery" in html.lower():
-                break
+            # Wait for real content (not captcha)
+            for _ in range(30):  # max 60 seconds waiting
+                try:
+                    html = driver.page_source
+                except Exception:
+                    # Session died while reading page — restart
+                    logger.warning("Session died during page_source read. Restarting driver...")
+                    start_driver()
+                    break  # break inner loop, retry outer loop
+
+                soup = BeautifulSoup(html, "html.parser")
+
+                if is_blocked(soup):
+                    logger.warning("=== MANUAL INTERVENTION REQUIRED: SOLVE CAPTCHA ===")
+                    time.sleep(5)
+                elif "bookdelivery" in html.lower():
+                    # Page shell loaded — wait for JS to fully render content
+                    logger.info(f"Page detected ({len(html)} bytes). Waiting for JS render...")
+                    time.sleep(5)  # let JavaScript populate the page
+                    html = driver.page_source  # re-read after JS render
+                    logger.info(f"After JS wait: {len(html)} bytes")
+                    sync_cookies()
+                    time.sleep(delay)
+                    return BeautifulSoup(html, "html.parser")
+                else:
+                    time.sleep(2)
             else:
-                logger.debug("Waiting for page content to populate...")
-                time.sleep(2)
+                # Exhausted 30 checks — probably stuck on captcha
+                logger.error(f"Timed out waiting for content on {url}")
 
-    sync_cookies() # Ensure requests has the latest session tokens
-    time.sleep(delay) # Politeness delay
-    return BeautifulSoup(driver.page_source, "html.parser")
+        except Exception as e:
+            logger.error(f"Selenium error (attempt {attempt+1}/3) for {url}: {e}")
+            start_driver()  # restart on any error
+            time.sleep(5)
+
+    return None
+
 
 def get_soup_via_requests(url):
-    """Uses requests for individual book pages as strictly required by Step 1.4 of the PDF"""
-    global requests_session
-    
-    logger.debug(f"Requesting book page: {url}")
+    """Requests book page using the requests library (as per PDF)"""
     try:
         response = requests_session.get(url, timeout=20)
-        if response.status_code != 200:
-            logger.error(f"Request failed for {url} with status {response.status_code}")
-            return None
-        
+        if response.status_code != 200: return None
         soup = BeautifulSoup(response.text, "html.parser")
-        if is_blocked(soup):
-            logger.warning(f"Requests session blocked for {url}. Captcha may have expired.")
-            return None
-            
-        return soup
-    except Exception as e:
-        logger.error(f"Request exception for {url}: {e}")
-        return None
+        return None if is_blocked(soup) else soup
+    except: return None
 
-def get_category_links(home_soup):
-    if not home_soup:
-        return {}
-
-    logger.info("Extracting category links...")
-    category_links = {}
-    for a in home_soup.find_all("a", href=True):
-        text = a.get_text(" ", strip=True)
-        href = a["href"]
-        full_url = urljoin(BASE_URL, href)
-        
-        if text and full_url.startswith("https://www.bookdelivery.com/il-en/books/"):
-            if text not in category_links:
-                category_links[text] = full_url
-                logger.debug(f"Found Category: {text}")
-
-    if not category_links:
-        logger.error("Failed to find any category links!")
-        
-    return category_links
-
-def get_book_links_from_category_page(category_soup):
-    if not category_soup:
-        return []
-    
-    book_links = set()
-    for a in category_soup.find_all("a", href=True):
-        href = a["href"]
-        full_url = urljoin(BASE_URL, href)
-        if "/book-" in full_url and "/p/" in full_url:
-            book_links.add(full_url)
-
-    return list(book_links)
-
-def make_page_url(category_url, page_num):
-    if page_num == 1:
-        return category_url
-    separator = "&" if "?" in category_url else "?"
-    return f"{category_url}{separator}page={page_num}"
-
-def crawl_bookdelivery():
-    global driver
-    all_books = []
-    visited_books = set()
-    total_start_time = time.time()
-
-    logger.info("=== Starting Crawl (Instruction Compliant Mode) ===")
-    
-    home_soup = get_soup_via_selenium(BASE_URL)
-    categories = get_category_links(home_soup)
-
-    for cat_name, cat_url in categories.items():
-        logger.info(f"Processing Category: {cat_name}")
-        previous_page_books = set()
-
-        for page_num in range(1, MAX_PAGES_PER_CATEGORY + 1):
-            page_url = make_page_url(cat_url, page_num)
-            logger.info(f"  Page {page_num}: {page_url}")
-
-            cat_soup = get_soup_via_selenium(page_url)
-            book_links = get_book_links_from_category_page(cat_soup)
-
-            if not book_links:
-                logger.warning(f"  No books found on page {page_num}. This might be a block or end of list.")
-                break
-
-            if set(book_links) == previous_page_books:
-                logger.info("  Reached duplicate page (end of category).")
-                break
-            previous_page_books = set(book_links)
-
-            for book_url in book_links:
-                if book_url in visited_books:
-                    continue
-                visited_books.add(book_url)
-
-                try:
-                    book_soup = get_soup_via_requests(book_url)
-                    if not book_soup:
-                        logger.info("  Refreshing session via Selenium...")
-                        get_soup_via_selenium(book_url)
-                        book_soup = get_soup_via_requests(book_url)
-
-                    if book_soup:
-                        book_data = get_book_data_from_soup(book_soup, cat_name, book_url)
-                        all_books.append(book_data)
-                        logger.info(f"    Indexed: {book_data.get('Title', 'Unknown')}")
-                except Exception as e:
-                    logger.error(f"    Failed {book_url}: {e}")
-
-                time.sleep(DELAY)
-
-    if driver:
-        driver.quit()
-        driver = None
-
-    logger.info(f"Crawl Done. Total: {len(all_books)} books. Time: {time.time() - total_start_time:.2f}s")
-    return all_books
-
-def extract_star_rating(soup):
-    rating_bars = soup.find_all('div', class_='rating-bar')
-    if not rating_bars: return "None"
-    total_stars, total_votes = 0, 0
-    for bar in rating_bars:
-        try:
-            stars = int(re.search(r'\d+', bar.find('span', class_='star-label').get_text()).group())
-            votes = int(re.search(r'\d+', bar.find('span', class_='vote-count').get_text()).group())
-            total_stars += stars * votes
-            total_votes += votes
-        except: continue
-    return math.ceil((total_stars / total_votes) * 100) / 100 if total_votes > 0 else "None"
 
 def get_book_data_from_soup(soup, category_source, book_url):
+    """Extracts all fields required by Step 1.4 of the PDF"""
     page_text = soup.get_text(" ", strip=True)
+    
+    # Title & Authors
     title = soup.find('h1').get_text(strip=True) if soup.find('h1') else "None"
     authors = ", ".join([a.get_text(strip=True) for a in soup.find_all('a', class_='font-color-bl link-underline')])
     
+    # Pricing
     price_nis = 0.0
     prices = [float(p) for p in re.findall(r"₪\s*([0-9]+(?:\.[0-9]+)?)", page_text)]
     book_prices = [p for p in prices if p > 40]
-    if book_prices:
-        price_nis = math.ceil(min(book_prices) * 100) / 100
+    if book_prices: price_nis = math.ceil(min(book_prices) * 100) / 100
     price_usd = math.ceil((price_nis / EXCHANGE_RATE) * 100) / 100
 
+    # Meta block extraction
     meta_match = re.search(r"Type\s+Physical Book(.+?)ISBN13\s+\d+", page_text, re.IGNORECASE)
     meta_block = meta_match.group(1) if meta_match else ""
     
     def extract_label(label):
-        match = re.search(label + r"\s+(.+?)\s+(?=Type|Author|Publisher|Collection|Year|Language|Pages|Format|Dimensions|Weight|ISBN13|$)", meta_block, re.IGNORECASE)
+        pattern = label + r"\s+(.+?)\s+(?=Type|Author|Publisher|Collection|Year|Language|Pages|Format|Dimensions|Weight|ISBN13|$)"
+        match = re.search(pattern, meta_block, re.IGNORECASE)
         return match.group(1).strip() if match else "None"
 
-    isbn_match = re.search(r"ISBN13\s+(\d+)", page_text, re.IGNORECASE)
+    # Dimensions & Weight
     dim_raw = extract_label("Dimensions")
     weight_raw = extract_label("Weight")
+    
+    # Synopsis
+    synopsis = ""
+    syn_match = re.search(r"Synopsis\s+(.+?)\s+Translate to english", page_text, re.IGNORECASE)
+    if syn_match: synopsis = syn_match.group(1).strip()
+
+    # Reviews & Ratings
+    num_reviews = 0
+    rev_match = re.search(r'(\d+)\s+reviews', page_text, re.IGNORECASE)
+    if rev_match: num_reviews = int(rev_match.group(1))
+    
+    def calc_stars():
+        bars = soup.find_all('div', class_='rating-bar')
+        ts, tv = 0, 0
+        for b in bars:
+            try:
+                s = int(re.search(r'\d+', b.find('span', class_='star-label').get_text()).group())
+                v = int(re.search(r'\d+', b.find('span', class_='vote-count').get_text()).group())
+                ts += s * v; tv += v
+            except: continue
+        return math.ceil((ts / tv) * 100) / 100 if tv > 0 else "None"
 
     return {
-        'url': book_url, 'Title': title, 'Category_Source': category_source, 
+        'url': book_url, 'Title': title, 'Category': category_source,
         'Categories': category_source, 'Authors': authors, 'Price NIS': price_nis, 'Price USD': price_usd,
-        'Year': extract_label("Year"), 'Synopsis': "", 'Synopsis Length': 0, 
-        'StarRating': extract_star_rating(soup), 'NumberOfReviews': 0,
+        'Year': extract_label("Year"), 'Synopsis': synopsis, 'Synopsis Length': len(synopsis), 
+        'StarRating': calc_stars(), 'NumberOfReviews': num_reviews,
         'Language': extract_label("Language"), 'Format': extract_label("Format"),
         'Dimensions': ", ".join(re.findall(r'[0-9.]+', dim_raw)), 'Dimensions unit': "cm" if "cm" in dim_raw.lower() else "",
         'Weight': "".join(re.findall(r'[0-9.]+', weight_raw)), 'Weight Unit': "kg" if "kg" in weight_raw.lower() else "gr",
-        'ISBN': isbn_match.group(1) if isbn_match else "None"
+        'ISBN': re.search(r"ISBN13\s+(\d+)", page_text, re.IGNORECASE).group(1) if re.search(r"ISBN13\s+(\d+)", page_text, re.IGNORECASE) else "None"
     }
 
-def cast_numeric(all_books):
-    df = pd.DataFrame(all_books)
-    for col in ['Price NIS', 'Price USD', 'Year']:
-        if col in df.columns: df[col] = pd.to_numeric(df[col], errors='coerce')
-    return df
+def crawl_bookdelivery():
+    global driver
+    all_books = []
+    visited_urls = set()
+    
+    # Resume Progress
+    if os.path.exists("output/books_raw.csv"):
+        try:
+            df_old = pd.read_csv("output/books_raw.csv")
+            all_books = df_old.to_dict('records')
+            visited_urls = set(df_old['url'].tolist())
+            logger.info(f"Resuming with {len(all_books)} books.")
+        except Exception as e:
+            logger.warning(f"Could not resume correctly: {e}, starting fresh.")
 
-def file_export(df):
+    if len(all_books) >= TARGET_TOTAL_BOOKS:
+        logger.info(f"Target of {TARGET_TOTAL_BOOKS} already met.")
+        return all_books
+
+    home_soup = get_soup_via_selenium(BASE_URL)
+    if home_soup is None:
+        logger.error("Failed to load home page.")
+        return all_books
+
+    categories = {}
+    for a in home_soup.find_all("a", href=True):
+        href = a["href"]
+        # Match both relative (/il-en/books/...) and absolute (https://.../il-en/books/...) URLs
+        if "/il-en/books/" in href and "/book-" not in href:
+            name = a.get_text(strip=True)
+            if name:  # skip empty-text links
+                categories[name] = href if href.startswith("http") else urljoin(BASE_URL, href)
+
+    logger.info(f"Found {len(categories)} categories to explore.")
+
+    for cat_name, cat_url in categories.items():
+        if len(all_books) >= TARGET_TOTAL_BOOKS: break
+        
+        logger.info(f"--- Category: {cat_name} (Current Total: {len(all_books)}) ---")
+        prev_links = set()
+        page_num = 1
+        
+        while len(all_books) < TARGET_TOTAL_BOOKS:
+            url = f"{cat_url}{'&' if '?' in cat_url else '?'}page={page_num}" if page_num > 1 else cat_url
+            logger.info(f"  Fetching Category Page {page_num}...")
+            
+            soup = get_soup_via_selenium(url)
+            if soup is None:
+                logger.error(f"  Navigation failed for {url}. Skipping category.")
+                break
+                
+            links = [urljoin(BASE_URL, a["href"]) for a in soup.find_all("a", href=True) if "/book-" in a["href"] and "/p/" in a["href"]]
+            
+            if not links:
+                logger.info(f"  No more books found in {cat_name} at page {page_num}.")
+                break
+                
+            if set(links) == prev_links:
+                logger.info(f"  Detected pagination loop/end at page {page_num}.")
+                break
+                
+            prev_links = set(links)
+            new_on_page = [l for l in links if l not in visited_urls]
+            
+            if not new_on_page:
+                logger.info(f"  All books on page {page_num} already visited. Skipping page.")
+                page_num += 1
+                continue
+
+            for link in new_on_page:
+                if len(all_books) >= TARGET_TOTAL_BOOKS: break
+                
+                visited_urls.add(link)
+                book_soup = get_soup_via_requests(link)
+                
+                if not book_soup: 
+                    logger.warning(f"    Failed requests for {link}. Retrying with Selenium sync...")
+                    get_soup_via_selenium(link)
+                    book_soup = get_soup_via_requests(link)
+                
+                if book_soup:
+                    try:
+                        data = get_book_data_from_soup(book_soup, cat_name, link)
+                        all_books.append(data)
+                        logger.info(f"    [{len(all_books)}] Indexed: {data['Title'][:50]}")
+                        
+                        # Save progress every 5 books for safety during long runs
+                        if len(all_books) % 5 == 0:
+                            pd.DataFrame(all_books).to_csv("output/books_raw.csv", index=False, encoding="utf-8-sig")
+                    except Exception as e:
+                        logger.error(f"    Error parsing {link}: {e}")
+                
+                time.sleep(DELAY)
+            
+            page_num += 1
+            
+    return all_books
+
+def process_and_save(data):
+    df = pd.DataFrame(data)
     os.makedirs("output", exist_ok=True)
+    
+    # Cast Numeric
+    for c in ['Price NIS', 'Price USD', 'Year', 'StarRating', 'NumberOfReviews', 'Synopsis Length']:
+        if c in df.columns:
+            df[c] = pd.to_numeric(df[c], errors='coerce')
+    
+    # Step 2.2: Raw JSON
+    def save_j(df_in, path):
+        recs = [{"id": str(i+1), **{k: v for k, v in r.items() if pd.notnull(v) and v != "None"}} for i, r in df_in.iterrows()]
+        with open(path, "w", encoding="utf-8") as f: json.dump({"records": {"record": recs}}, f, indent=4, ensure_ascii=False)
+
     df.to_csv("output/books_raw.csv", index=False, encoding="utf-8-sig")
-    records = [{"id": str(i+1), **{k: v for k, v in row.items() if pd.notnull(v) and v != "None"}} for i, row in df.iterrows()]
-    with open("output/books_raw.json", "w", encoding="utf-8") as f:
-        json.dump({"records": {"record": records}}, f, indent=4, ensure_ascii=False)
-
-def preview_and_sort(df):
+    save_j(df, "output/books_raw.json")
+    
+    # Step 3: Sorting
     df.head(10).to_csv("output/books_before_sort.csv", index=False, encoding="utf-8-sig")
-    df_sorted = df.sort_values(by="Title").head(10)
-    df_sorted.to_csv("output/books_after_sort.csv", index=False, encoding="utf-8-sig")
-    return df
-
-def process_data(df):
-    median_price = df['Price NIS'].median()
-    df['IsExpensive'] = (df['Price NIS'] > median_price).astype(int)
-    df['NumberOfAuthors'] = df['Authors'].apply(lambda x: len(str(x).split(',')) if x != "None" else 0)
+    df_sorted = df.sort_values(by="Title")
+    df_sorted.head(10).to_csv("output/books_after_sort.csv", index=False, encoding="utf-8-sig")
+    
+    # Step 4: Features
+    if 'Price NIS' in df.columns:
+        df['IsExpensive'] = (df['Price NIS'] > df['Price NIS'].median()).astype(int)
+    if 'Authors' in df.columns:
+        df['NumberOfAuthors'] = df['Authors'].apply(lambda x: len([a for a in str(x).split(',') if a.strip()]) if x != "None" else 0)
     df.to_csv("output/books_processed.csv", index=False, encoding="utf-8-sig")
-    return df
-
-def calculate_summary_statistics(df):
-    summary = df[['Price USD', 'Year']].describe().T
+    save_j(df, "output/books_processed.json")
+    df.head(10).to_csv("output/books_processed_preview.csv", index=False, encoding="utf-8-sig")
+    
+    # Step 5: Summary
+    cols = ['Price USD', 'Year', 'StarRating', 'NumberOfReviews', 'NumberOfAuthors']
+    existing_cols = [c for c in cols if c in df.columns]
+    summary = df[existing_cols].agg(['mean', 'std', 'min', 'max', 'median']).T
     summary['total_rows'] = len(df)
     summary.to_csv("output/books_summary.csv")
-    return summary
+    
+    # Step 2.3: Example
+    save_j(df.head(1), "output/books_example.json")
+    logger.info("All output files generated.")
 
 if __name__ == "__main__":
-    try:
-        data = crawl_bookdelivery()
-        if data:
-            df = cast_numeric(data)
-            file_export(df)
-            preview_and_sort(df)
-            df = process_data(df)
-            calculate_summary_statistics(df)
-            logger.info("Process Complete")
-    except Exception as e:
-        logger.critical(f"App Crash: {e}", exc_info=True)
+    while True:
+        try:
+            final_data = crawl_bookdelivery()
+            if final_data:
+                process_and_save(final_data)
+                if len(final_data) >= TARGET_TOTAL_BOOKS:
+                    logger.info("Target reached. Script terminating.")
+                    break
+                else:
+                    logger.info(f"Crawled {len(final_data)} books. Target not yet met. Restarting loop...")
+            else:
+                logger.warning("No data returned. Retrying in 1 minute...")
+                time.sleep(60)
+        except Exception as e:
+            logger.critical(f"Main loop crash: {e}. Restarting in 1 minute...", exc_info=True)
+            time.sleep(60)
