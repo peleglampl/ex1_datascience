@@ -7,8 +7,7 @@ import os
 import json
 import pandas as pd
 from urllib.parse import urljoin
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
+import undetected_chromedriver as uc
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -16,66 +15,96 @@ from bs4 import BeautifulSoup
 
 EXCHANGE_RATE = 3.01
 BASE_URL = "https://www.bookdelivery.com/il-en/"
-MAX_PAGES_PER_CATEGORY = 5
+MAX_PAGES_PER_CATEGORY = 10  # Increased from 5
 DELAY = 5
-already_verified = False
 driver = None
 
+# Persistence: Path for saving browser session (cookies, trust, etc.)
+USER_DATA_DIR = os.path.join(os.getcwd(), "chrome_session")
 
 def start_driver():
     start_time = time.time()
-    logger.debug("Initializing Chrome driver with options...")
-    options = Options()
+    logger.debug("Initializing Undetected Chrome Driver with session persistence...")
+    
+    options = uc.ChromeOptions()
+    options.add_argument(f"--user-data-dir={USER_DATA_DIR}")
     options.add_argument("--window-size=1920,1080")
-    # In cloud environments, headless is mandatory
-    # options.add_argument("--headless=new") 
+    
+    # Fix for hanging in some environments
     options.add_argument("--disable-gpu")
     options.add_argument("--no-sandbox")
-    options.add_argument("--disable-dev-shm-usage")
     
     try:
-        instance = webdriver.Chrome(options=options)
-        logger.info(f"Chrome driver successfully started in {time.time() - start_time:.2f}s")
+        # Undetected-chromedriver handles the bypass naturally
+        instance = uc.Chrome(options=options, headless=False) 
+        logger.info(f"Undetected Chrome driver started in {time.time() - start_time:.2f}s")
         return instance
     except Exception as e:
-        logger.critical(f"FAILED TO START CHROME DRIVER: {e}", exc_info=True)
+        logger.critical(f"FAILED TO START UC DRIVER: {e}", exc_info=True)
         raise
 
+def is_blocked(soup):
+    """Check if we are hitting a Cloudflare challenge or captcha page"""
+    if not soup:
+        return True
+    
+    page_text = soup.get_text().lower()
+    blocking_terms = [
+        "just a moment",
+        "please solve the captcha",
+        "verify you are a human",
+        "checking your browser",
+        "access denied"
+    ]
+    
+    for term in blocking_terms:
+        if term in page_text:
+            return True
+    return False
 
 def get_soup_from_url(url, delay=5):
-    global driver, already_verified
+    global driver
 
-    logger.debug(f"Attempting to fetch URL: {url}")
+    logger.debug(f"Fetching: {url}")
     if driver is None:
-        logger.warning("Driver session not found. Creating new instance.")
         driver = start_driver()
 
     try:
-        fetch_start = time.time()
         driver.get(url)
-        logger.debug(f"Page load triggered for {url}. Took {time.time() - fetch_start:.2f}s for initial response.")
     except Exception as e:
-        logger.error(f"FATAL TRANSPORT ERROR for {url}: {e}")
-        # If it hangs, it might be a driver issue. Consider restarting driver.
+        logger.error(f"Transport error for {url}: {e}")
         return None
 
-    if not already_verified:
-        logger.warning("=== INTERVENTION REQUIRED: Please solve verification in the browser window ===")
-        # Note: In Cloud Run, input() will hang forever because there's no terminal.
-        # This is likely why the program "just stops".
-        input("Solve the verification in Chrome, then press ENTER here...")
-        already_verified = True
+    # Initial check for blocking
+    html = driver.page_source
+    soup = BeautifulSoup(html, "html.parser")
+    
+    if is_blocked(soup):
+        logger.warning(f"=== BLOCK DETECTED at {url} ===")
+        logger.info("The site is asking for verification. Please solve it in the browser window.")
+        # We wait until the blocking text is gone or a specific element appears
+        timeout = 300 # 5 minutes
+        start_wait = time.time()
+        while is_blocked(soup) and (time.time() - start_wait < timeout):
+            time.sleep(2)
+            html = driver.page_source
+            soup = BeautifulSoup(html, "html.parser")
+            
+        if is_blocked(soup):
+            logger.error("Timed out waiting for manual verification.")
+            return None
+        else:
+            logger.info("Verification cleared. Continuing...")
 
-    logger.debug(f"Enforcing mandatory politeness delay of {delay}s...")
+    logger.debug(f"Waiting {delay}s...")
     time.sleep(delay)
 
     try:
         html = driver.page_source
         soup = BeautifulSoup(html, "html.parser")
-        logger.info(f"Successfully parsed {len(html)} bytes from {url}")
         return soup
     except Exception as e:
-        logger.error(f"Failed to extract page source/parse HTML for {url}: {e}")
+        logger.error(f"Parse error for {url}: {e}")
         return None
 
 

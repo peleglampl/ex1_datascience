@@ -1,0 +1,32 @@
+2026-05-04 09:20:48,804 | DEBUG    | book_crawler | crawling.py:48 | Attempting to fetch URL: https://www.bookdelivery.com/il-en/books/biographies-literature-literay-studies
+2026-05-04 09:20:48,804 | WARNING  | book_crawler | crawling.py:50 | Driver session not found. Creating new instance.
+2026-05-04 09:20:48,804 | DEBUG    | book_crawler | crawling.py:27 | Initializing Chrome driver with options...
+2026-05-04 09:20:53,151 | INFO     | book_crawler | crawling.py:38 | Chrome driver successfully started in 4.35s
+2026-05-04 09:20:55,076 | DEBUG    | book_crawler | crawling.py:56 | Page load triggered for https://www.bookdelivery.com/il-en/books/biographies-literature-literay-studies. Took 1.92s for initial response.
+2026-05-04 09:20:55,077 | WARNING  | book_crawler | crawling.py:63 | === INTERVENTION REQUIRED: Please solve verification in the browser window ===
+2026-05-04 09:21:24,316 | DEBUG    | book_crawler | crawling.py:69 | Enforcing mandatory politeness delay of 5s...
+2026-05-04 09:21:29,420 | INFO     | book_crawler | crawling.py:75 | Successfully parsed 429697 bytes from https://www.bookdelivery.com/il-en/books/biographies-literature-literay-studies
+2026-05-04 09:21:38,068 | DEBUG    | book_crawler | crawling.py:48 | Attempting to fetch URL: https://www.bookdelivery.com/il-en/books/arts?page=6
+2026-05-04 09:21:38,069 | WARNING  | book_crawler | crawling.py:50 | Driver session not found. Creating new instance.
+2026-05-04 09:21:38,069 | DEBUG    | book_crawler | crawling.py:27 | Initializing Chrome driver with options...
+2026-05-04 09:21:39,465 | INFO     | book_crawler | crawling.py:38 | Chrome driver successfully started in 1.40s
+2026-05-04 09:21:40,967 | DEBUG    | book_crawler | crawling.py:56 | Page load triggered for https://www.bookdelivery.com/il-en/books/arts?page=6. Took 1.50s for initial response.
+2026-05-04 09:21:40,967 | WARNING  | book_crawler | crawling.py:63 | === INTERVENTION REQUIRED: Please solve verification in the browser window ===
+2026-05-04 09:21:58,650 | DEBUG    | book_crawler | crawling.py:69 | Enforcing mandatory politeness delay of 5s...
+2026-05-04 09:22:03,750 | INFO     | book_crawler | crawling.py:75 | Successfully parsed 428420 bytes from https://www.bookdelivery.com/il-en/books/arts?page=6
+2026-05-04 09:22:14,226 | DEBUG    | book_crawler | crawling.py:48 | Attempting to fetch URL: https://www.bookdelivery.com/il-en/
+2026-05-04 09:22:14,226 | WARNING  | book_crawler | crawling.py:50 | Driver session not found. Creating new instance.
+2026-05-04 09:22:14,226 | DEBUG    | book_crawler | crawling.py:27 | Initializing Chrome driver with options...
+2026-05-04 09:22:15,558 | INFO     | book_crawler | crawling.py:38 | Chrome driver successfully started in 1.33s
+2026-05-04 09:22:17,624 | DEBUG    | book_crawler | crawling.py:56 | Page load triggered for https://www.bookdelivery.com/il-en/. Took 2.07s for initial response.
+2026-05-04 09:22:17,626 | WARNING  | book_crawler | crawling.py:63 | === INTERVENTION REQUIRED: Please solve verification in the browser window ===
+2026-05-04 09:23:09,283 | DEBUG    | book_crawler | crawling.py:69 | Enforcing mandatory politeness delay of 5s...
+2026-05-04 09:23:14,293 | INFO     | book_crawler | crawling.py:75 | Successfully parsed 9894 bytes from https://www.bookdelivery.com/il-en/
+2026-05-04 09:23:14,293 | INFO     | book_crawler | crawling.py:87 | Starting category extraction from homepage...
+2026-05-04 09:23:14,294 | INFO     | book_crawler | crawling.py:107 | Extraction complete. Found 0 valid categories.
+2026-05-04 09:23:23,449 | DEBUG    | book_crawler | crawling.py:48 | Attempting to fetch URL: https://www.bookdelivery.com/il-en/
+2026-05-04 09:23:23,449 | WARNING  | book_crawler | crawling.py:50 | Driver session not found. Creating new instance.
+2026-05-04 09:23:23,451 | DEBUG    | book_crawler | crawling.py:27 | Initializing Chrome driver with options...
+2026-05-04 09:23:24,790 | INFO     | book_crawler | crawling.py:38 | Chrome driver successfully started in 1.34s
+2026-05-04 09:23:26,152 | DEBUG    | book_crawler | crawling.py:56 | Page load triggered for https://www.bookdelivery.com/il-en/. Took 1.36s for initial response.
+2026-05-04 09:23:26,152 | WARNING  | book_crawler | crawling.py:63 | === INTERVENTION REQUIRED: Please solve verification in the browser window ===
