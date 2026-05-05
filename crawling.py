@@ -19,7 +19,7 @@ EXCHANGE_RATE = 3.01
 BASE_URL = "https://www.bookdelivery.com/il-en/"
 TARGET_TOTAL_BOOKS = 5000  # New requirement
 MAX_PAGES_PER_CATEGORY = 5
-DELAY = 3 # Slightly reduced but still "significant" per PDF
+DELAY = 3
 driver = None
 requests_session = requests.Session()
 
@@ -154,9 +154,22 @@ def get_book_data_from_soup(soup, category_source, book_url):
     
     # Pricing
     price_nis = 0.0
-    prices = [float(p) for p in re.findall(r"₪\s*([0-9]+(?:\.[0-9]+)?)", page_text)]
-    book_prices = [p for p in prices if p > 40]
-    if book_prices: price_nis = math.ceil(min(book_prices) * 100) / 100
+    # חיפוש מחיר בתוך אלמנטים ספציפיים שמופיעים באתר
+    price_tags = soup.find_all(string=re.compile(r'₪'))
+    for tag in price_tags:
+        amounts = re.findall(r'(\d+(?:\.\d+)?)', tag)
+        if amounts:
+            val = float(amounts[0])
+            if val > 10:  # סינון מחירים נמוכים מדי שאינם מחיר הספר
+                price_nis = math.ceil(val * 100) / 100
+                break
+
+    if price_nis == 0:  # ניסיון נוסף לפי class
+        p_tag = soup.find('span', class_=re.compile('price', re.I))
+        if p_tag:
+            amounts = re.findall(r'(\d+(?:\.\d+)?)', p_tag.get_text())
+            if amounts: price_nis = math.ceil(float(amounts[0]) * 100) / 100
+
     price_usd = math.ceil((price_nis / EXCHANGE_RATE) * 100) / 100
 
     # Meta block extraction
@@ -179,8 +192,8 @@ def get_book_data_from_soup(soup, category_source, book_url):
 
     # Reviews & Ratings
     num_reviews = 0
-    rev_match = re.search(r'(\d+)\s+reviews', page_text, re.IGNORECASE)
-    if rev_match: num_reviews = int(rev_match.group(1))
+    rev_text = re.search(r'(\d+)\s+reviews', page_text, re.IGNORECASE)
+    if rev_text: num_reviews = int(rev_text.group(1))
     
     def calc_stars():
         bars = soup.find_all('div', class_='rating-bar')
@@ -193,22 +206,124 @@ def get_book_data_from_soup(soup, category_source, book_url):
             except: continue
         return math.ceil((ts / tv) * 100) / 100 if tv > 0 else "None"
 
+    star_rating = "None"
+    if num_reviews > 0:
+        star_rating = calc_stars()
+
     return {
         'url': book_url, 'Title': title, 'Category': category_source,
         'Categories': category_source, 'Authors': authors, 'Price NIS': price_nis, 'Price USD': price_usd,
         'Year': extract_label("Year"), 'Synopsis': synopsis, 'Synopsis Length': len(synopsis), 
-        'StarRating': calc_stars(), 'NumberOfReviews': num_reviews,
+        'StarRating': star_rating, 'NumberOfReviews': num_reviews,
         'Language': extract_label("Language"), 'Format': extract_label("Format"),
         'Dimensions': ", ".join(re.findall(r'[0-9.]+', dim_raw)), 'Dimensions unit': "cm" if "cm" in dim_raw.lower() else "",
         'Weight': "".join(re.findall(r'[0-9.]+', weight_raw)), 'Weight Unit': "kg" if "kg" in weight_raw.lower() else "gr",
         'ISBN': re.search(r"ISBN13\s+(\d+)", page_text, re.IGNORECASE).group(1) if re.search(r"ISBN13\s+(\d+)", page_text, re.IGNORECASE) else "None"
     }
 
+# def crawl_bookdelivery():
+#     global driver
+#     all_books = []
+#     visited_urls = set()
+#
+#     # Resume Progress
+#     if os.path.exists("output/books_raw.csv"):
+#         try:
+#             df_old = pd.read_csv("output/books_raw.csv")
+#             all_books = df_old.to_dict('records')
+#             visited_urls = set(df_old['url'].tolist())
+#             logger.info(f"Resuming with {len(all_books)} books.")
+#         except Exception as e:
+#             logger.warning(f"Could not resume correctly: {e}, starting fresh.")
+#
+#     if len(all_books) >= TARGET_TOTAL_BOOKS:
+#         logger.info(f"Target of {TARGET_TOTAL_BOOKS} already met.")
+#         return all_books
+#
+#     home_soup = get_soup_via_selenium(BASE_URL)
+#     if home_soup is None:
+#         logger.error("Failed to load home page.")
+#         return all_books
+#
+#     categories = {}
+#     for a in home_soup.find_all("a", href=True):
+#         href = a["href"]
+#         # Match both relative (/il-en/books/...) and absolute (https://.../il-en/books/...) URLs
+#         if "/il-en/books/" in href and "/book-" not in href:
+#             name = a.get_text(strip=True)
+#             if name:  # skip empty-text links
+#                 categories[name] = href if href.startswith("http") else urljoin(BASE_URL, href)
+#
+#     logger.info(f"Found {len(categories)} categories to explore.")
+#
+#     for cat_name, cat_url in categories.items():
+#         if len(all_books) >= TARGET_TOTAL_BOOKS: break
+#
+#         logger.info(f"--- Category: {cat_name} (Current Total: {len(all_books)}) ---")
+#         prev_links = set()
+#         page_num = 1
+#
+#         while len(all_books) < TARGET_TOTAL_BOOKS:
+#             url = f"{cat_url}{'&' if '?' in cat_url else '?'}page={page_num}" if page_num > 1 else cat_url
+#             logger.info(f"  Fetching Category Page {page_num}...")
+#
+#             soup = get_soup_via_selenium(url)
+#             if soup is None:
+#                 logger.error(f"  Navigation failed for {url}. Skipping category.")
+#                 break
+#
+#             links = [urljoin(BASE_URL, a["href"]) for a in soup.find_all("a", href=True) if "/book-" in a["href"] and "/p/" in a["href"]]
+#
+#             if not links:
+#                 logger.info(f"  No more books found in {cat_name} at page {page_num}.")
+#                 break
+#
+#             if set(links) == prev_links:
+#                 logger.info(f"  Detected pagination loop/end at page {page_num}.")
+#                 break
+#
+#             prev_links = set(links)
+#             new_on_page = [l for l in links if l not in visited_urls]
+#
+#             if not new_on_page:
+#                 logger.info(f"  All books on page {page_num} already visited. Skipping page.")
+#                 page_num += 1
+#                 continue
+#
+#             for link in new_on_page:
+#                 if len(all_books) >= TARGET_TOTAL_BOOKS: break
+#
+#                 visited_urls.add(link)
+#                 book_soup = get_soup_via_requests(link)
+#
+#                 if not book_soup:
+#                     logger.warning(f"    Failed requests for {link}. Retrying with Selenium sync...")
+#                     get_soup_via_selenium(link)
+#                     book_soup = get_soup_via_requests(link)
+#
+#                 if book_soup:
+#                     try:
+#                         data = get_book_data_from_soup(book_soup, cat_name, link)
+#                         all_books.append(data)
+#                         logger.info(f"    [{len(all_books)}] Indexed: {data['Title'][:50]}")
+#
+#                         # Save progress every 5 books for safety during long runs
+#                         if len(all_books) % 5 == 0:
+#                             pd.DataFrame(all_books).to_csv("output/books_raw.csv", index=False, encoding="utf-8-sig")
+#                     except Exception as e:
+#                         logger.error(f"    Error parsing {link}: {e}")
+#
+#                 time.sleep(DELAY)
+#
+#             page_num += 1
+#
+#     return all_books
+
 def crawl_bookdelivery():
     global driver
     all_books = []
     visited_urls = set()
-    
+
     # Resume Progress
     if os.path.exists("output/books_raw.csv"):
         try:
@@ -219,10 +334,6 @@ def crawl_bookdelivery():
         except Exception as e:
             logger.warning(f"Could not resume correctly: {e}, starting fresh.")
 
-    if len(all_books) >= TARGET_TOTAL_BOOKS:
-        logger.info(f"Target of {TARGET_TOTAL_BOOKS} already met.")
-        return all_books
-
     home_soup = get_soup_via_selenium(BASE_URL)
     if home_soup is None:
         logger.error("Failed to load home page.")
@@ -231,75 +342,90 @@ def crawl_bookdelivery():
     categories = {}
     for a in home_soup.find_all("a", href=True):
         href = a["href"]
-        # Match both relative (/il-en/books/...) and absolute (https://.../il-en/books/...) URLs
         if "/il-en/books/" in href and "/book-" not in href:
             name = a.get_text(strip=True)
-            if name:  # skip empty-text links
+            if name:
                 categories[name] = href if href.startswith("http") else urljoin(BASE_URL, href)
 
     logger.info(f"Found {len(categories)} categories to explore.")
 
     for cat_name, cat_url in categories.items():
-        if len(all_books) >= TARGET_TOTAL_BOOKS: break
-        
-        logger.info(f"--- Category: {cat_name} (Current Total: {len(all_books)}) ---")
+
+        print("\n" + "=" * 80)
+        print(f" CATEGORY START: {cat_name}")
+        print("=" * 80)
+
         prev_links = set()
-        page_num = 1
-        
-        while len(all_books) < TARGET_TOTAL_BOOKS:
+
+        for page_num in range(1, MAX_PAGES_PER_CATEGORY + 1):
+
             url = f"{cat_url}{'&' if '?' in cat_url else '?'}page={page_num}" if page_num > 1 else cat_url
-            logger.info(f"  Fetching Category Page {page_num}...")
-            
+
+            print(f"\n Page {page_num} | URL: {url}")
+
             soup = get_soup_via_selenium(url)
             if soup is None:
-                logger.error(f"  Navigation failed for {url}. Skipping category.")
+                print(f" Failed page {page_num} in {cat_name}")
                 break
-                
-            links = [urljoin(BASE_URL, a["href"]) for a in soup.find_all("a", href=True) if "/book-" in a["href"] and "/p/" in a["href"]]
-            
-            if not links:
-                logger.info(f"  No more books found in {cat_name} at page {page_num}.")
-                break
-                
-            if set(links) == prev_links:
-                logger.info(f"  Detected pagination loop/end at page {page_num}.")
-                break
-                
-            prev_links = set(links)
-            new_on_page = [l for l in links if l not in visited_urls]
-            
-            if not new_on_page:
-                logger.info(f"  All books on page {page_num} already visited. Skipping page.")
-                page_num += 1
-                continue
 
-            for link in new_on_page:
-                if len(all_books) >= TARGET_TOTAL_BOOKS: break
-                
+            raw_links = [
+                urljoin(BASE_URL, a["href"])
+                for a in soup.find_all("a", href=True)
+                if "/book-" in a["href"] and "/p/" in a["href"]
+            ]
+            links = list(
+                dict.fromkeys(raw_links))  # מסנן כפילויות כך שיישארו 50 ספרים
+
+            if not links:
+                print(" No books found on page — stopping category early.")
+                break
+
+            if set(links) == prev_links:
+                print(" Pagination loop detected — stopping category.")
+                break
+
+            prev_links = set(links)
+
+            for i, link in enumerate(links, 1):
+
+                if link in visited_urls:
+                    continue
+
                 visited_urls.add(link)
+
+                print(f"\n [{len(all_books)+1}] Loading book {i}/{len(links)}")
+                print(f"{link}")
+
                 book_soup = get_soup_via_requests(link)
-                
-                if not book_soup: 
-                    logger.warning(f"    Failed requests for {link}. Retrying with Selenium sync...")
-                    get_soup_via_selenium(link)
-                    book_soup = get_soup_via_requests(link)
-                
+
+                if not book_soup:
+                    print("Requests failed — retrying with Selenium")
+                    book_soup = get_soup_via_selenium(link)
+
                 if book_soup:
                     try:
                         data = get_book_data_from_soup(book_soup, cat_name, link)
                         all_books.append(data)
-                        logger.info(f"    [{len(all_books)}] Indexed: {data['Title'][:50]}")
-                        
-                        # Save progress every 5 books for safety during long runs
+
+                        print(f" TITLE: {data['Title']}")
+                        print(f"Price NIS: {data['Price NIS']} | USD: {data['Price USD']}")
+                        print(f"Rating: {data['StarRating']}")
+                        print(f" Authors: {data['Authors']}")
+                        print("-" * 60)
+
+                        # Save progress every 5 books
                         if len(all_books) % 5 == 0:
-                            pd.DataFrame(all_books).to_csv("output/books_raw.csv", index=False, encoding="utf-8-sig")
+                            pd.DataFrame(all_books).to_csv(
+                                "output/books_raw.csv",
+                                index=False,
+                                encoding="utf-8-sig"
+                            )
+
                     except Exception as e:
-                        logger.error(f"    Error parsing {link}: {e}")
-                
+                        print(f" Error parsing book: {e}")
+
                 time.sleep(DELAY)
-            
-            page_num += 1
-            
+
     return all_books
 
 def process_and_save(data):
@@ -313,8 +439,19 @@ def process_and_save(data):
     
     # Step 2.2: Raw JSON
     def save_j(df_in, path):
-        recs = [{"id": str(i+1), **{k: v for k, v in r.items() if pd.notnull(v) and v != "None"}} for i, r in df_in.iterrows()]
-        with open(path, "w", encoding="utf-8") as f: json.dump({"records": {"record": recs}}, f, indent=4, ensure_ascii=False)
+        recs = []
+        for i, r in df_in.iterrows():
+            row_dict = {"id": str(i + 1)}
+            for k, v in r.items():
+                # הוספת השדה רק אם הוא לא null, לא None ולא המחרוזת "None"[cite: 1]
+                if pd.notnull(v) and v is not None and str(
+                        v).strip().lower() != "none" and str(v).strip() != "":
+                    row_dict[k] = v
+            recs.append(row_dict)
+
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump({"records": {"record": recs}}, f, indent=4,
+                      ensure_ascii=False)
 
     df.to_csv("output/books_raw.csv", index=False, encoding="utf-8-sig")
     save_j(df, "output/books_raw.json")
