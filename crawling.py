@@ -16,7 +16,7 @@ import numpy as np
 
 # Constants from PDF and project requirements
 EXCHANGE_RATE = 3.01
-BASE_URL = "https://www.bookdelivery.com/il-en/"
+BASE_URL = "https://www.bookdelivery.com"
 TARGET_TOTAL_BOOKS = 5000  # New requirement
 MAX_PAGES_PER_CATEGORY = 5
 DELAY = 3
@@ -88,7 +88,6 @@ def sync_cookies():
 def get_soup_via_selenium(url, delay=5):
     """Navigates with Selenium. Restarts driver if session dies."""
     global driver
-
     for attempt in range(3):
         try:
             if driver is None:
@@ -144,82 +143,127 @@ def get_soup_via_requests(url):
     except: return None
 
 
-def get_book_data_from_soup(soup, category_source, book_url):
-    """Extracts all fields required by Step 1.4 of the PDF"""
-    page_text = soup.get_text(" ", strip=True)
-    
-    # Title & Authors
-    title = soup.find('h1').get_text(strip=True) if soup.find('h1') else "None"
-    authors = ", ".join([a.get_text(strip=True) for a in soup.find_all('a', class_='font-color-bl link-underline')])
-    
-    # Pricing
-    price_nis = 0.0
-    # חיפוש מחיר בתוך אלמנטים ספציפיים שמופיעים באתר
-    price_tags = soup.find_all(string=re.compile(r'₪'))
-    for tag in price_tags:
-        amounts = re.findall(r'(\d+(?:\.\d+)?)', tag)
-        if amounts:
-            val = float(amounts[0])
-            if val > 10:  # סינון מחירים נמוכים מדי שאינם מחיר הספר
-                price_nis = math.ceil(val * 100) / 100
-                break
-
-    if price_nis == 0:  # ניסיון נוסף לפי class
-        p_tag = soup.find('span', class_=re.compile('price', re.I))
-        if p_tag:
-            amounts = re.findall(r'(\d+(?:\.\d+)?)', p_tag.get_text())
-            if amounts: price_nis = math.ceil(float(amounts[0]) * 100) / 100
-
-    price_usd = math.ceil((price_nis / EXCHANGE_RATE) * 100) / 100
-
-    # Meta block extraction
-    meta_match = re.search(r"Type\s+Physical Book(.+?)ISBN13\s+\d+", page_text, re.IGNORECASE)
-    meta_block = meta_match.group(1) if meta_match else ""
-    
-    def extract_label(label):
-        pattern = label + r"\s+(.+?)\s+(?=Type|Author|Publisher|Collection|Year|Language|Pages|Format|Dimensions|Weight|ISBN13|$)"
-        match = re.search(pattern, meta_block, re.IGNORECASE)
-        return match.group(1).strip() if match else "None"
-
-    # Dimensions & Weight
-    dim_raw = extract_label("Dimensions")
-    weight_raw = extract_label("Weight")
-    
-    # Synopsis
-    synopsis = ""
-    syn_match = re.search(r"Synopsis\s+(.+?)\s+Translate to english", page_text, re.IGNORECASE)
-    if syn_match: synopsis = syn_match.group(1).strip()
-
-    # Reviews & Ratings
-    num_reviews = 0
-    rev_text = re.search(r'(\d+)\s+reviews', page_text, re.IGNORECASE)
-    if rev_text: num_reviews = int(rev_text.group(1))
-    
-    def calc_stars():
-        bars = soup.find_all('div', class_='rating-bar')
-        ts, tv = 0, 0
-        for b in bars:
-            try:
-                s = int(re.search(r'\d+', b.find('span', class_='star-label').get_text()).group())
-                v = int(re.search(r'\d+', b.find('span', class_='vote-count').get_text()).group())
-                ts += s * v; tv += v
-            except: continue
-        return math.ceil((ts / tv) * 100) / 100 if tv > 0 else "None"
-
-    star_rating = "None"
-    if num_reviews > 0:
-        star_rating = calc_stars()
-
-    return {
-        'url': book_url, 'Title': title, 'Category': category_source,
-        'Categories': category_source, 'Authors': authors, 'Price NIS': price_nis, 'Price USD': price_usd,
-        'Year': extract_label("Year"), 'Synopsis': synopsis, 'Synopsis Length': len(synopsis), 
-        'StarRating': star_rating, 'NumberOfReviews': num_reviews,
-        'Language': extract_label("Language"), 'Format': extract_label("Format"),
-        'Dimensions': ", ".join(re.findall(r'[0-9.]+', dim_raw)), 'Dimensions unit': "cm" if "cm" in dim_raw.lower() else "",
-        'Weight': "".join(re.findall(r'[0-9.]+', weight_raw)), 'Weight Unit': "kg" if "kg" in weight_raw.lower() else "gr",
-        'ISBN': re.search(r"ISBN13\s+(\d+)", page_text, re.IGNORECASE).group(1) if re.search(r"ISBN13\s+(\d+)", page_text, re.IGNORECASE) else "None"
-    }
+# def get_book_data_from_soup(soup, category_source, book_url):
+#     """Extracts all fields required by Step 1.4 of the PDF"""
+#     page_text = soup.get_text(" ", strip=True)
+#
+#     # Title
+#     title = soup.find('h1').get_text(strip=True) if soup.find('h1') else "None"
+#
+#     # Authors
+#     authors = ", ".join([a.get_text(strip=True) for a in soup.find_all('a', class_='font-color-bl link-underline')])
+#
+#     # Pricing
+#     price_nis = 0.0
+#     price_tags = soup.find_all(string=re.compile(r'₪'))
+#     for tag in price_tags:
+#         amounts = re.findall(r'(\d+(?:\.\d+)?)', tag)
+#         if amounts:
+#             val = float(amounts[0])
+#             if val > 10:  # סינון מחירים נמוכים מדי שאינם מחיר הספר
+#                 price_nis = math.ceil(val * 100) / 100
+#                 break
+#
+#     if price_nis == 0:  # ניסיון נוסף לפי class
+#         p_tag = soup.find('span', class_=re.compile('price', re.I))
+#         if p_tag:
+#             amounts = re.findall(r'(\d+(?:\.\d+)?)', p_tag.get_text())
+#             if amounts: price_nis = math.ceil(float(amounts[0]) * 100) / 100
+#
+#     price_usd = math.ceil((price_nis / EXCHANGE_RATE) * 100) / 100
+#
+#     # Meta block extraction
+#     meta_match = re.search(r"Type\s+Physical Book(.+?)ISBN13\s+\d+", page_text, re.IGNORECASE)
+#     meta_block = meta_match.group(1) if meta_match else ""
+#
+#     def extract_label(label):
+#         pattern = label + r"\s+(.+?)\s+(?=Type|Author|Publisher|Collection|Year|Language|Pages|Format|Dimensions|Weight|ISBN13|$)"
+#         match = re.search(pattern, meta_block, re.IGNORECASE)
+#         return match.group(1).strip() if match else "None"
+#
+#     # Dimensions & Weight
+#     dim_raw = extract_label("Dimensions")
+#     weight_raw = extract_label("Weight")
+#
+#     # Synopsis
+#     synopsis = ""
+#     syn_match = re.search(r"Synopsis\s+(.+?)\s+Translate to english", page_text, re.IGNORECASE)
+#     if syn_match: synopsis = syn_match.group(1).strip()
+#
+#     # Reviews & Ratings
+#     num_reviews = 0
+#     rev_text = re.search(r'(\d+)\s+reviews', page_text, re.IGNORECASE)
+#     if rev_text: num_reviews = int(rev_text.group(1))
+#
+#     # Category
+#     category = category_source
+#
+#     # Categories
+#     categories_div = soup.find('div', {'id': 'metadata-categorías'})
+#     if categories_div:
+#         # Find all anchor tags within that div
+#         category_links = categories_div.find_all('a')
+#         # Extract text and join with commas
+#         categories_field = ", ".join([link.get_text(strip=True) for link in category_links])
+#     else:
+#         categories_field = "None"
+#
+#     def calc_stars(soup):
+#         # Target the JSON-LD script block where the distribution/average is stored
+#         import json
+#         script_tag = soup.find('script', type='application/ld+json')
+#         if script_tag:
+#             try:
+#                 data = json.loads(script_tag.string)
+#                 # The HTML shows aggregateRating is inside the Product object[cite: 2]
+#                 if 'aggregateRating' in data:
+#                     raw_rating = float(data['aggregateRating']['ratingValue'])
+#                     # Round up to 2 decimal digits as per PDF Step 1.4
+#                     return math.ceil(raw_rating * 100) / 100
+#             except Exception as e:
+#                 logger.error(f"Error parsing rating JSON: {e}")
+#
+#         # Fallback: Scrape the text '4,9' from the valoracion span if JSON fails
+#         val_span = soup.find('a', id='valoracion')
+#         if val_span:
+#             text_rating = val_span.find('span', style='display:none;')
+#             if text_rating:
+#                 # Replaces comma with dot for float conversion
+#                 val = float(text_rating.find('span').text.replace(',', '.'))
+#                 return math.ceil(val * 100) / 100
+#
+#         return "None"
+#
+#     #  Rating
+#     num_reviews = 0
+#     review_match = re.search(r'(\d+)\s+reviews', page_text, re.IGNORECASE)
+#     if review_match:
+#         num_reviews = int(review_match.group(1))
+#
+#     # Star Rating
+#     star_rating = calc_stars(soup) if num_reviews > 0 else "None"
+#
+#     return {
+#         'url': book_url,
+#         'Title': title,
+#         'Category': category,
+#         'Categories': categories_field,
+#         'Authors': authors,
+#         'Price NIS': price_nis,
+#         'Price USD': price_usd,
+#         'Year': extract_label("Year"),
+#         'Synopsis': synopsis,
+#         'Synopsis Length': len(synopsis),
+#         'StarRating': star_rating,
+#         'NumberOfReviews': num_reviews,
+#         'Language': extract_label("Language"),
+#         'Format': extract_label("Format"),
+#         'Dimensions': ", ".join(re.findall(r'[0-9.]+', dim_raw)),
+#         'Dimensions unit': "cm" if "cm" in dim_raw.lower() else "",
+#         'Weight': "".join(re.findall(r'[0-9.]+', weight_raw)),
+#         'Weight Unit': "kg" if "kg" in weight_raw.lower() else "gr",
+#         'ISBN': re.search(r"ISBN13\s+(\d+)", page_text, re.IGNORECASE).group(1) if re.search(r"ISBN13\s+(\d+)", page_text, re.IGNORECASE) else "None"
+#     }
 
 # def crawl_bookdelivery():
 #     global driver
@@ -319,6 +363,109 @@ def get_book_data_from_soup(soup, category_source, book_url):
 #
 #     return all_books
 
+def extract_metadata_label(meta_block, label):
+    """Helper to extract specific values from the metadata text block."""
+    pattern = label + r"\s+(.+?)\s+(?=Type|Author|Publisher|Collection|Year|Language|Pages|Format|Dimensions|Weight|ISBN13|Categories|$)"
+    match = re.search(pattern, meta_block, re.IGNORECASE)
+    return match.group(1).strip() if match else "None"
+
+def get_star_rating(soup, num_reviews):
+    """Computes StarRating from JSON-LD or hidden HTML as per PDF Step 1.4."""
+    if num_reviews == 0:
+        return "None"
+
+    # Method 1: JSON-LD (Most accurate for 'Star Distribution')[cite: 2]
+    script_tag = soup.find('script', type='application/ld+json')
+    if script_tag:
+        try:
+            data = json.loads(script_tag.string)
+            if 'aggregateRating' in data:
+                raw_val = float(data['aggregateRating']['ratingValue'])
+                return math.ceil(raw_val * 100) / 100
+        except: pass
+
+    # Method 2: Fallback to hidden span[cite: 2]
+    val_span = soup.find('a', id='valoracion')
+    if val_span:
+        hidden_data = val_span.find('span', style=re.compile('display:none'))
+        if hidden_data:
+            try:
+                raw_text = hidden_data.find('span').get_text(strip=True).replace(',', '.')
+                return math.ceil(float(raw_text) * 100) / 100
+            except: pass
+    return "None"
+
+def get_prices(soup):
+    """Extracts and calculates NIS and USD prices rounded up."""
+    price_nis = 0.0
+    price_tags = soup.find_all(string=re.compile(r'₪'))
+    for tag in price_tags:
+        amounts = re.findall(r'(\d+(?:\.\d+)?)', tag)
+        if amounts:
+            val = float(amounts[0])
+            if val > 10:
+                price_nis = math.ceil(val * 100) / 100
+                break
+    price_usd = math.ceil((price_nis / EXCHANGE_RATE) * 100) / 100
+    return price_nis, price_usd
+
+def get_categories_plural(soup):
+    """Extracts comma-separated categories from metadata[cite: 1, 2]."""
+    categories_div = soup.find('div', {'id': 'metadata-categorías'})
+    if categories_div:
+        links = categories_div.find_all('a')
+        return ", ".join([link.get_text(strip=True) for link in links])
+    return "None"
+
+def get_book_data_from_soup(soup, category_source, book_url):
+    """Orchestrates data extraction into a clean dictionary."""
+    page_text = soup.get_text(" ", strip=True)
+
+    # 1. Basic Info
+    title_tag = soup.find('p', class_='tituloProducto') or soup.find('h1')
+    title = title_tag.get_text(strip=True) if title_tag else "None"
+    authors = ", ".join([a.get_text(strip=True) for a in soup.find_all('a', class_='font-color-bl link-underline')])
+
+    # 2. Prices & Ratings
+    price_nis, price_usd = get_prices(soup)
+    num_reviews = 0
+    rev_match = re.search(r'(\d+)\s+reviews', page_text, re.IGNORECASE)
+    if rev_match: num_reviews = int(rev_match.group(1))
+    star_rating = get_star_rating(soup, num_reviews)
+
+    # 3. Metadata block parsing
+    meta_match = re.search(r"Type\s+Physical Book(.+?)ISBN13\s+\d+", page_text, re.IGNORECASE)
+    meta_block = meta_match.group(1) if meta_match else ""
+
+    dim_raw = extract_metadata_label(meta_block, "Dimensions")
+    weight_raw = extract_metadata_label(meta_block, "Weight")
+    syn_match = re.search(r"Synopsis\s+(.+?)\s+Translate to english", page_text, re.IGNORECASE)
+    synopsis = syn_match.group(1).strip() if syn_match else ""
+
+    return {
+        'url': book_url,
+        'Title': title,
+        'Category': category_source,  # Where you crawled it from
+        'Categories': get_categories_plural(soup),  # From page tags
+        'Authors': authors,
+        'Price NIS': price_nis,
+        'Price USD': price_usd,
+        'Year': extract_metadata_label(meta_block, "Year"),
+        'Synopsis': synopsis,
+        'Synopsis Length': len(synopsis),
+        'StarRating': star_rating,
+        'NumberOfReviews': num_reviews,
+        'Language': extract_metadata_label(meta_block, "Language"),
+        'Format': extract_metadata_label(meta_block, "Format"),
+        'Dimensions': ", ".join(re.findall(r'[0-9.]+', dim_raw)),
+        'Dimensions unit': "cm" if "cm" in dim_raw.lower() else "",
+        'Weight': "".join(re.findall(r'[0-9.]+', weight_raw)),
+        'Weight Unit': "kg" if "kg" in weight_raw.lower() else "gr",
+        'ISBN': re.search(r"ISBN13\s+(\d+)", page_text, re.IGNORECASE).group(1) if re.search(r"ISBN13\s+(\d+)",
+                                                                                             page_text,
+                                                                                             re.IGNORECASE) else "None"
+    }
+
 def crawl_bookdelivery():
     global driver
     all_books = []
@@ -374,7 +521,7 @@ def crawl_bookdelivery():
                 if "/book-" in a["href"] and "/p/" in a["href"]
             ]
             links = list(
-                dict.fromkeys(raw_links))  # מסנן כפילויות כך שיישארו 50 ספרים
+                dict.fromkeys(raw_links))
 
             if not links:
                 print(" No books found on page — stopping category early.")
@@ -410,6 +557,9 @@ def crawl_bookdelivery():
                         print(f" TITLE: {data['Title']}")
                         print(f"Price NIS: {data['Price NIS']} | USD: {data['Price USD']}")
                         print(f"Rating: {data['StarRating']}")
+                        print(f"Number of Rating: {data['NumberOfReviews']}")
+                        print(f"Category: {data['Category']}")
+                        print(f"Categories: {data['Categories']}")
                         print(f" Authors: {data['Authors']}")
                         print("-" * 60)
 
@@ -425,14 +575,14 @@ def crawl_bookdelivery():
                         print(f" Error parsing book: {e}")
 
                 time.sleep(DELAY)
-
     return all_books
+
 
 def process_and_save(data):
     df = pd.DataFrame(data)
     os.makedirs("output", exist_ok=True)
     
-    # Cast Numeric
+    # Step 1: Cast Numeric
     for c in ['Price NIS', 'Price USD', 'Year', 'StarRating', 'NumberOfReviews', 'Synopsis Length']:
         if c in df.columns:
             df[c] = pd.to_numeric(df[c], errors='coerce')
@@ -443,7 +593,6 @@ def process_and_save(data):
         for i, r in df_in.iterrows():
             row_dict = {"id": str(i + 1)}
             for k, v in r.items():
-                # הוספת השדה רק אם הוא לא null, לא None ולא המחרוזת "None"[cite: 1]
                 if pd.notnull(v) and v is not None and str(
                         v).strip().lower() != "none" and str(v).strip() != "":
                     row_dict[k] = v
