@@ -17,7 +17,7 @@ import numpy as np
 # Constants from PDF and project requirements
 EXCHANGE_RATE = 3.01
 BASE_URL = "https://www.bookdelivery.com"
-TARGET_TOTAL_BOOKS = 5000  # New requirement
+# TARGET_TOTAL_BOOKS = 5000  # New requirement
 MAX_PAGES_PER_CATEGORY = 5
 DELAY = 3
 driver = None
@@ -374,7 +374,7 @@ def get_star_rating(soup, num_reviews):
     if num_reviews == 0:
         return "None"
 
-    # Method 1: JSON-LD (Most accurate for 'Star Distribution')[cite: 2]
+    # Method 1: JSON-LD (Most accurate for 'Star Distribution')
     script_tag = soup.find('script', type='application/ld+json')
     if script_tag:
         try:
@@ -384,7 +384,7 @@ def get_star_rating(soup, num_reviews):
                 return math.ceil(raw_val * 100) / 100
         except: pass
 
-    # Method 2: Fallback to hidden span[cite: 2]
+    # Method 2: Fallback to hidden span
     val_span = soup.find('a', id='valoracion')
     if val_span:
         hidden_data = val_span.find('span', style=re.compile('display:none'))
@@ -628,7 +628,7 @@ def process_and_save(data):
     
     # Step 2.3: Example
     save_j(df.head(1), "output/books_example.json")
-    logger.info("All output files generated.")
+    # logger.info("All output files generated.")
 
 if __name__ == "__main__":
     while True:
@@ -636,14 +636,14 @@ if __name__ == "__main__":
             final_data = crawl_bookdelivery()
             if final_data:
                 process_and_save(final_data)
-                if len(final_data) >= TARGET_TOTAL_BOOKS:
-                    logger.info("Target reached. Script terminating.")
-                    break
-                else:
-                    logger.info(f"Crawled {len(final_data)} books. Target not yet met. Restarting loop...")
+                # if len(final_data) >= TARGET_TOTAL_BOOKS:
+                #     logger.info("Target reached. Script terminating.")
+                #     break
+                # else:
+                #     logger.info(f"Crawled {len(final_data)} books. Target not yet met. Restarting loop...")
             else:
-                logger.warning("No data returned. Retrying in 1 minute...")
+                # logger.warning("No data returned. Retrying in 1 minute...")
                 time.sleep(60)
         except Exception as e:
-            logger.critical(f"Main loop crash: {e}. Restarting in 1 minute...", exc_info=True)
+            # logger.critical(f"Main loop crash: {e}. Restarting in 1 minute...", exc_info=True)
             time.sleep(60)
