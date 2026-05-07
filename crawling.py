@@ -21,6 +21,7 @@ BASE_URL = "https://www.bookdelivery.com"
 MAX_PAGES_PER_CATEGORY = 5
 DELAY = 3
 driver = None
+RESET_CRAWL = True
 requests_session = requests.Session()
 
 
@@ -265,7 +266,7 @@ def crawl_bookdelivery():
     visited_urls = set()
 
     # Resume Progress
-    if os.path.exists("output/books_raw.csv"):
+    if not RESET_CRAWL and os.path.exists("output/books_raw.csv"):
         try:
             df_old = pd.read_csv("output/books_raw.csv")
             all_books = df_old.to_dict('records')
