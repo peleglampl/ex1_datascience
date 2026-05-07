@@ -143,226 +143,6 @@ def get_soup_via_requests(url):
     except: return None
 
 
-# def get_book_data_from_soup(soup, category_source, book_url):
-#     """Extracts all fields required by Step 1.4 of the PDF"""
-#     page_text = soup.get_text(" ", strip=True)
-#
-#     # Title
-#     title = soup.find('h1').get_text(strip=True) if soup.find('h1') else "None"
-#
-#     # Authors
-#     authors = ", ".join([a.get_text(strip=True) for a in soup.find_all('a', class_='font-color-bl link-underline')])
-#
-#     # Pricing
-#     price_nis = 0.0
-#     price_tags = soup.find_all(string=re.compile(r'₪'))
-#     for tag in price_tags:
-#         amounts = re.findall(r'(\d+(?:\.\d+)?)', tag)
-#         if amounts:
-#             val = float(amounts[0])
-#             if val > 10:  # סינון מחירים נמוכים מדי שאינם מחיר הספר
-#                 price_nis = math.ceil(val * 100) / 100
-#                 break
-#
-#     if price_nis == 0:  # ניסיון נוסף לפי class
-#         p_tag = soup.find('span', class_=re.compile('price', re.I))
-#         if p_tag:
-#             amounts = re.findall(r'(\d+(?:\.\d+)?)', p_tag.get_text())
-#             if amounts: price_nis = math.ceil(float(amounts[0]) * 100) / 100
-#
-#     price_usd = math.ceil((price_nis / EXCHANGE_RATE) * 100) / 100
-#
-#     # Meta block extraction
-#     meta_match = re.search(r"Type\s+Physical Book(.+?)ISBN13\s+\d+", page_text, re.IGNORECASE)
-#     meta_block = meta_match.group(1) if meta_match else ""
-#
-#     def extract_label(label):
-#         pattern = label + r"\s+(.+?)\s+(?=Type|Author|Publisher|Collection|Year|Language|Pages|Format|Dimensions|Weight|ISBN13|$)"
-#         match = re.search(pattern, meta_block, re.IGNORECASE)
-#         return match.group(1).strip() if match else "None"
-#
-#     # Dimensions & Weight
-#     dim_raw = extract_label("Dimensions")
-#     weight_raw = extract_label("Weight")
-#
-#     # Synopsis
-#     synopsis = ""
-#     syn_match = re.search(r"Synopsis\s+(.+?)\s+Translate to english", page_text, re.IGNORECASE)
-#     if syn_match: synopsis = syn_match.group(1).strip()
-#
-#     # Reviews & Ratings
-#     num_reviews = 0
-#     rev_text = re.search(r'(\d+)\s+reviews', page_text, re.IGNORECASE)
-#     if rev_text: num_reviews = int(rev_text.group(1))
-#
-#     # Category
-#     category = category_source
-#
-#     # Categories
-#     categories_div = soup.find('div', {'id': 'metadata-categorías'})
-#     if categories_div:
-#         # Find all anchor tags within that div
-#         category_links = categories_div.find_all('a')
-#         # Extract text and join with commas
-#         categories_field = ", ".join([link.get_text(strip=True) for link in category_links])
-#     else:
-#         categories_field = "None"
-#
-#     def calc_stars(soup):
-#         # Target the JSON-LD script block where the distribution/average is stored
-#         import json
-#         script_tag = soup.find('script', type='application/ld+json')
-#         if script_tag:
-#             try:
-#                 data = json.loads(script_tag.string)
-#                 # The HTML shows aggregateRating is inside the Product object[cite: 2]
-#                 if 'aggregateRating' in data:
-#                     raw_rating = float(data['aggregateRating']['ratingValue'])
-#                     # Round up to 2 decimal digits as per PDF Step 1.4
-#                     return math.ceil(raw_rating * 100) / 100
-#             except Exception as e:
-#                 logger.error(f"Error parsing rating JSON: {e}")
-#
-#         # Fallback: Scrape the text '4,9' from the valoracion span if JSON fails
-#         val_span = soup.find('a', id='valoracion')
-#         if val_span:
-#             text_rating = val_span.find('span', style='display:none;')
-#             if text_rating:
-#                 # Replaces comma with dot for float conversion
-#                 val = float(text_rating.find('span').text.replace(',', '.'))
-#                 return math.ceil(val * 100) / 100
-#
-#         return "None"
-#
-#     #  Rating
-#     num_reviews = 0
-#     review_match = re.search(r'(\d+)\s+reviews', page_text, re.IGNORECASE)
-#     if review_match:
-#         num_reviews = int(review_match.group(1))
-#
-#     # Star Rating
-#     star_rating = calc_stars(soup) if num_reviews > 0 else "None"
-#
-#     return {
-#         'url': book_url,
-#         'Title': title,
-#         'Category': category,
-#         'Categories': categories_field,
-#         'Authors': authors,
-#         'Price NIS': price_nis,
-#         'Price USD': price_usd,
-#         'Year': extract_label("Year"),
-#         'Synopsis': synopsis,
-#         'Synopsis Length': len(synopsis),
-#         'StarRating': star_rating,
-#         'NumberOfReviews': num_reviews,
-#         'Language': extract_label("Language"),
-#         'Format': extract_label("Format"),
-#         'Dimensions': ", ".join(re.findall(r'[0-9.]+', dim_raw)),
-#         'Dimensions unit': "cm" if "cm" in dim_raw.lower() else "",
-#         'Weight': "".join(re.findall(r'[0-9.]+', weight_raw)),
-#         'Weight Unit': "kg" if "kg" in weight_raw.lower() else "gr",
-#         'ISBN': re.search(r"ISBN13\s+(\d+)", page_text, re.IGNORECASE).group(1) if re.search(r"ISBN13\s+(\d+)", page_text, re.IGNORECASE) else "None"
-#     }
-
-# def crawl_bookdelivery():
-#     global driver
-#     all_books = []
-#     visited_urls = set()
-#
-#     # Resume Progress
-#     if os.path.exists("output/books_raw.csv"):
-#         try:
-#             df_old = pd.read_csv("output/books_raw.csv")
-#             all_books = df_old.to_dict('records')
-#             visited_urls = set(df_old['url'].tolist())
-#             logger.info(f"Resuming with {len(all_books)} books.")
-#         except Exception as e:
-#             logger.warning(f"Could not resume correctly: {e}, starting fresh.")
-#
-#     if len(all_books) >= TARGET_TOTAL_BOOKS:
-#         logger.info(f"Target of {TARGET_TOTAL_BOOKS} already met.")
-#         return all_books
-#
-#     home_soup = get_soup_via_selenium(BASE_URL)
-#     if home_soup is None:
-#         logger.error("Failed to load home page.")
-#         return all_books
-#
-#     categories = {}
-#     for a in home_soup.find_all("a", href=True):
-#         href = a["href"]
-#         # Match both relative (/il-en/books/...) and absolute (https://.../il-en/books/...) URLs
-#         if "/il-en/books/" in href and "/book-" not in href:
-#             name = a.get_text(strip=True)
-#             if name:  # skip empty-text links
-#                 categories[name] = href if href.startswith("http") else urljoin(BASE_URL, href)
-#
-#     logger.info(f"Found {len(categories)} categories to explore.")
-#
-#     for cat_name, cat_url in categories.items():
-#         if len(all_books) >= TARGET_TOTAL_BOOKS: break
-#
-#         logger.info(f"--- Category: {cat_name} (Current Total: {len(all_books)}) ---")
-#         prev_links = set()
-#         page_num = 1
-#
-#         while len(all_books) < TARGET_TOTAL_BOOKS:
-#             url = f"{cat_url}{'&' if '?' in cat_url else '?'}page={page_num}" if page_num > 1 else cat_url
-#             logger.info(f"  Fetching Category Page {page_num}...")
-#
-#             soup = get_soup_via_selenium(url)
-#             if soup is None:
-#                 logger.error(f"  Navigation failed for {url}. Skipping category.")
-#                 break
-#
-#             links = [urljoin(BASE_URL, a["href"]) for a in soup.find_all("a", href=True) if "/book-" in a["href"] and "/p/" in a["href"]]
-#
-#             if not links:
-#                 logger.info(f"  No more books found in {cat_name} at page {page_num}.")
-#                 break
-#
-#             if set(links) == prev_links:
-#                 logger.info(f"  Detected pagination loop/end at page {page_num}.")
-#                 break
-#
-#             prev_links = set(links)
-#             new_on_page = [l for l in links if l not in visited_urls]
-#
-#             if not new_on_page:
-#                 logger.info(f"  All books on page {page_num} already visited. Skipping page.")
-#                 page_num += 1
-#                 continue
-#
-#             for link in new_on_page:
-#                 if len(all_books) >= TARGET_TOTAL_BOOKS: break
-#
-#                 visited_urls.add(link)
-#                 book_soup = get_soup_via_requests(link)
-#
-#                 if not book_soup:
-#                     logger.warning(f"    Failed requests for {link}. Retrying with Selenium sync...")
-#                     get_soup_via_selenium(link)
-#                     book_soup = get_soup_via_requests(link)
-#
-#                 if book_soup:
-#                     try:
-#                         data = get_book_data_from_soup(book_soup, cat_name, link)
-#                         all_books.append(data)
-#                         logger.info(f"    [{len(all_books)}] Indexed: {data['Title'][:50]}")
-#
-#                         # Save progress every 5 books for safety during long runs
-#                         if len(all_books) % 5 == 0:
-#                             pd.DataFrame(all_books).to_csv("output/books_raw.csv", index=False, encoding="utf-8-sig")
-#                     except Exception as e:
-#                         logger.error(f"    Error parsing {link}: {e}")
-#
-#                 time.sleep(DELAY)
-#
-#             page_num += 1
-#
-#     return all_books
-
 def extract_metadata_label(meta_block, label):
     """Helper to extract specific values from the metadata text block."""
     pattern = label + r"\s+(.+?)\s+(?=Type|Author|Publisher|Collection|Year|Language|Pages|Format|Dimensions|Weight|ISBN13|Categories|$)"
@@ -396,17 +176,30 @@ def get_star_rating(soup, num_reviews):
     return "None"
 
 def get_prices(soup):
-    """Extracts and calculates NIS and USD prices rounded up."""
-    price_nis = 0.0
-    price_tags = soup.find_all(string=re.compile(r'₪'))
-    for tag in price_tags:
-        amounts = re.findall(r'(\d+(?:\.\d+)?)', tag)
-        if amounts:
-            val = float(amounts[0])
-            if val > 10:
-                price_nis = math.ceil(val * 100) / 100
-                break
-    price_usd = math.ceil((price_nis / EXCHANGE_RATE) * 100) / 100
+    """Extracts product price from current book page."""
+
+    texts = soup.find_all(string=re.compile(r'₪'))
+
+    prices = []
+
+    for t in texts:
+        matches = re.findall(r'₪\s*(\d+(?:\.\d+)?)', str(t))
+
+        for m in matches:
+            val = float(m)
+
+            # realistic book prices only
+            if 30 <= val <= 1000:
+                prices.append(val)
+
+    if not prices:
+        return 0.0, 0.0
+
+    # usually actual product price is the highest visible price
+    price_nis = max(prices)
+
+    price_usd = round(price_nis / EXCHANGE_RATE, 2)
+
     return price_nis, price_usd
 
 def get_categories_plural(soup):
@@ -631,7 +424,6 @@ def process_and_save(data):
     # logger.info("All output files generated.")
 
 if __name__ == "__main__":
-    while True:
         try:
             final_data = crawl_bookdelivery()
             if final_data:
