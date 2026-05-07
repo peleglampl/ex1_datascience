@@ -1449,3 +1449,617 @@ Stacktrace:
 2026-05-07 12:39:05,546 | INFO     | book_crawler | crawling.py:118 | After JS wait: 438351 bytes
 2026-05-07 12:39:12,231 | INFO     | book_crawler | crawling.py:115 | Page detected (437839 bytes). Waiting for JS render...
 2026-05-07 12:39:16,331 | INFO     | book_crawler | crawling.py:115 | Page detected (438711 bytes). Waiting for JS render...
+2026-05-07 12:43:17,936 | INFO     | book_crawler | crawling.py:273 | Resuming with 4305 books.
+2026-05-07 12:43:19,858 | INFO     | book_crawler | crawling.py:60 | Stealth Chrome driver started.
+2026-05-07 12:43:24,521 | INFO     | book_crawler | crawling.py:115 | Page detected (44332 bytes). Waiting for JS render...
+2026-05-07 12:43:29,609 | INFO     | book_crawler | crawling.py:118 | After JS wait: 545263 bytes
+2026-05-07 12:43:34,896 | INFO     | book_crawler | crawling.py:290 | Found 20 categories to explore.
+2026-05-07 12:43:36,423 | INFO     | book_crawler | crawling.py:115 | Page detected (46602 bytes). Waiting for JS render...
+2026-05-07 12:43:41,477 | INFO     | book_crawler | crawling.py:118 | After JS wait: 433802 bytes
+2026-05-07 12:43:49,394 | INFO     | book_crawler | crawling.py:115 | Page detected (435521 bytes). Waiting for JS render...
+2026-05-07 12:44:21,219 | INFO     | book_crawler | crawling.py:60 | Stealth Chrome driver started.
+2026-05-07 12:44:25,216 | INFO     | book_crawler | crawling.py:115 | Page detected (44332 bytes). Waiting for JS render...
+2026-05-07 12:44:30,242 | INFO     | book_crawler | crawling.py:118 | After JS wait: 44332 bytes
+2026-05-07 12:44:35,324 | INFO     | book_crawler | crawling.py:290 | Found 0 categories to explore.
+2026-05-07 12:45:47,903 | INFO     | book_crawler | crawling.py:60 | Stealth Chrome driver started.
+2026-05-07 12:45:52,335 | INFO     | book_crawler | crawling.py:115 | Page detected (44332 bytes). Waiting for JS render...
+2026-05-07 12:45:57,354 | INFO     | book_crawler | crawling.py:118 | After JS wait: 44332 bytes
+2026-05-07 12:46:02,400 | INFO     | book_crawler | crawling.py:290 | Found 0 categories to explore.
+2026-05-07 12:51:25,497 | INFO     | book_crawler | crawling.py:61 | Stealth Chrome driver started.
+2026-05-07 12:51:30,869 | INFO     | book_crawler | crawling.py:116 | Page detected (44332 bytes). Waiting for JS render...
+2026-05-07 12:51:36,036 | INFO     | book_crawler | crawling.py:119 | After JS wait: 545344 bytes
+2026-05-07 12:51:41,227 | INFO     | book_crawler | crawling.py:291 | Found 20 categories to explore.
+2026-05-07 12:51:43,296 | INFO     | book_crawler | crawling.py:116 | Page detected (433292 bytes). Waiting for JS render...
+2026-05-07 12:51:48,363 | INFO     | book_crawler | crawling.py:119 | After JS wait: 433802 bytes
+2026-05-07 12:55:07,452 | INFO     | book_crawler | crawling.py:116 | Page detected (435511 bytes). Waiting for JS render...
+2026-05-07 12:55:12,503 | INFO     | book_crawler | crawling.py:119 | After JS wait: 435511 bytes
+2026-05-07 13:00:07,636 | INFO     | book_crawler | crawling.py:61 | Stealth Chrome driver started.
+2026-05-07 13:00:14,348 | INFO     | book_crawler | crawling.py:116 | Page detected (44332 bytes). Waiting for JS render...
+2026-05-07 13:00:19,449 | INFO     | book_crawler | crawling.py:119 | After JS wait: 545344 bytes
+2026-05-07 13:00:24,595 | INFO     | book_crawler | crawling.py:291 | Found 20 categories to explore.
+2026-05-07 13:00:26,746 | INFO     | book_crawler | crawling.py:116 | Page detected (433802 bytes). Waiting for JS render...
+2026-05-07 13:00:31,811 | INFO     | book_crawler | crawling.py:119 | After JS wait: 433802 bytes
+2026-05-07 13:01:35,157 | INFO     | book_crawler | crawling.py:116 | Page detected (457451 bytes). Waiting for JS render...
+2026-05-07 13:01:40,229 | INFO     | book_crawler | crawling.py:119 | After JS wait: 457450 bytes
+2026-05-07 13:04:26,952 | INFO     | book_crawler | crawling.py:116 | Page detected (435511 bytes). Waiting for JS render...
+2026-05-07 13:04:32,018 | INFO     | book_crawler | crawling.py:119 | After JS wait: 435511 bytes
+2026-05-07 13:07:51,196 | INFO     | book_crawler | crawling.py:116 | Page detected (435498 bytes). Waiting for JS render...
+2026-05-07 13:07:56,263 | INFO     | book_crawler | crawling.py:119 | After JS wait: 436008 bytes
+2026-05-07 13:11:06,376 | INFO     | book_crawler | crawling.py:116 | Page detected (434204 bytes). Waiting for JS render...
+2026-05-07 13:11:11,637 | INFO     | book_crawler | crawling.py:119 | After JS wait: 434204 bytes
+2026-05-07 13:14:26,396 | INFO     | book_crawler | crawling.py:116 | Page detected (433943 bytes). Waiting for JS render...
+2026-05-07 13:14:31,446 | INFO     | book_crawler | crawling.py:119 | After JS wait: 434147 bytes
+2026-05-07 13:17:53,514 | INFO     | book_crawler | crawling.py:116 | Page detected (434218 bytes). Waiting for JS render...
+2026-05-07 13:17:58,581 | INFO     | book_crawler | crawling.py:119 | After JS wait: 434218 bytes
+2026-05-07 13:20:54,895 | INFO     | book_crawler | crawling.py:116 | Page detected (438365 bytes). Waiting for JS render...
+2026-05-07 13:20:59,970 | INFO     | book_crawler | crawling.py:119 | After JS wait: 438365 bytes
+2026-05-07 13:23:43,430 | INFO     | book_crawler | crawling.py:116 | Page detected (436780 bytes). Waiting for JS render...
+2026-05-07 13:23:48,510 | INFO     | book_crawler | crawling.py:119 | After JS wait: 436780 bytes
+2026-05-07 13:26:45,327 | INFO     | book_crawler | crawling.py:116 | Page detected (434664 bytes). Waiting for JS render...
+2026-05-07 13:26:50,428 | INFO     | book_crawler | crawling.py:119 | After JS wait: 434664 bytes
+2026-05-07 13:29:57,809 | INFO     | book_crawler | crawling.py:116 | Page detected (436013 bytes). Waiting for JS render...
+2026-05-07 13:30:02,875 | INFO     | book_crawler | crawling.py:119 | After JS wait: 436008 bytes
+2026-05-07 13:33:18,629 | INFO     | book_crawler | crawling.py:116 | Page detected (437385 bytes). Waiting for JS render...
+2026-05-07 13:33:23,698 | INFO     | book_crawler | crawling.py:119 | After JS wait: 437895 bytes
+2026-05-07 13:36:30,538 | INFO     | book_crawler | crawling.py:116 | Page detected (438042 bytes). Waiting for JS render...
+2026-05-07 13:36:35,599 | INFO     | book_crawler | crawling.py:119 | After JS wait: 438042 bytes
+2026-05-07 13:39:43,113 | INFO     | book_crawler | crawling.py:116 | Page detected (439582 bytes). Waiting for JS render...
+2026-05-07 13:39:48,163 | INFO     | book_crawler | crawling.py:119 | After JS wait: 439577 bytes
+2026-05-07 13:42:54,529 | INFO     | book_crawler | crawling.py:116 | Page detected (437481 bytes). Waiting for JS render...
+2026-05-07 13:42:59,587 | INFO     | book_crawler | crawling.py:119 | After JS wait: 437481 bytes
+2026-05-07 13:46:06,765 | INFO     | book_crawler | crawling.py:116 | Page detected (438711 bytes). Waiting for JS render...
+2026-05-07 13:46:11,817 | INFO     | book_crawler | crawling.py:119 | After JS wait: 438711 bytes
+2026-05-07 13:49:18,316 | INFO     | book_crawler | crawling.py:116 | Page detected (435393 bytes). Waiting for JS render...
+2026-05-07 13:49:23,365 | INFO     | book_crawler | crawling.py:119 | After JS wait: 435389 bytes
+2026-05-07 13:52:11,299 | INFO     | book_crawler | crawling.py:116 | Page detected (440185 bytes). Waiting for JS render...
+2026-05-07 13:52:16,357 | INFO     | book_crawler | crawling.py:119 | After JS wait: 440185 bytes
+2026-05-07 13:54:56,815 | INFO     | book_crawler | crawling.py:116 | Page detected (436285 bytes). Waiting for JS render...
+2026-05-07 13:55:01,865 | INFO     | book_crawler | crawling.py:119 | After JS wait: 436795 bytes
+2026-05-07 13:58:08,266 | INFO     | book_crawler | crawling.py:116 | Page detected (439137 bytes). Waiting for JS render...
+2026-05-07 13:58:13,333 | INFO     | book_crawler | crawling.py:119 | After JS wait: 439132 bytes
+2026-05-07 14:01:20,999 | INFO     | book_crawler | crawling.py:116 | Page detected (435010 bytes). Waiting for JS render...
+2026-05-07 14:01:26,082 | INFO     | book_crawler | crawling.py:119 | After JS wait: 435010 bytes
+2026-05-07 14:04:29,515 | INFO     | book_crawler | crawling.py:116 | Page detected (437801 bytes). Waiting for JS render...
+2026-05-07 14:04:34,566 | INFO     | book_crawler | crawling.py:119 | After JS wait: 437801 bytes
+2026-05-07 14:07:17,824 | INFO     | book_crawler | crawling.py:116 | Page detected (438897 bytes). Waiting for JS render...
+2026-05-07 14:07:22,877 | INFO     | book_crawler | crawling.py:119 | After JS wait: 438897 bytes
+2026-05-07 14:10:24,686 | INFO     | book_crawler | crawling.py:116 | Page detected (437929 bytes). Waiting for JS render...
+2026-05-07 14:10:29,747 | INFO     | book_crawler | crawling.py:119 | After JS wait: 437929 bytes
+2026-05-07 14:13:33,631 | INFO     | book_crawler | crawling.py:116 | Page detected (436475 bytes). Waiting for JS render...
+2026-05-07 14:13:38,718 | INFO     | book_crawler | crawling.py:119 | After JS wait: 436475 bytes
+2026-05-07 14:16:58,048 | INFO     | book_crawler | crawling.py:116 | Page detected (437121 bytes). Waiting for JS render...
+2026-05-07 14:17:03,124 | INFO     | book_crawler | crawling.py:119 | After JS wait: 437121 bytes
+2026-05-07 14:20:25,895 | INFO     | book_crawler | crawling.py:116 | Page detected (438418 bytes). Waiting for JS render...
+2026-05-07 14:20:30,996 | INFO     | book_crawler | crawling.py:119 | After JS wait: 438418 bytes
+2026-05-07 14:23:37,197 | INFO     | book_crawler | crawling.py:116 | Page detected (437606 bytes). Waiting for JS render...
+2026-05-07 14:23:42,283 | INFO     | book_crawler | crawling.py:119 | After JS wait: 437606 bytes
+2026-05-07 14:26:43,378 | INFO     | book_crawler | crawling.py:116 | Page detected (437642 bytes). Waiting for JS render...
+2026-05-07 14:26:48,460 | INFO     | book_crawler | crawling.py:119 | After JS wait: 437642 bytes
+2026-05-07 14:29:43,183 | INFO     | book_crawler | crawling.py:116 | Page detected (436001 bytes). Waiting for JS render...
+2026-05-07 14:29:48,223 | INFO     | book_crawler | crawling.py:119 | After JS wait: 436511 bytes
+2026-05-07 14:32:48,967 | INFO     | book_crawler | crawling.py:116 | Page detected (438088 bytes). Waiting for JS render...
+2026-05-07 14:32:54,026 | INFO     | book_crawler | crawling.py:119 | After JS wait: 438598 bytes
+2026-05-07 14:36:05,595 | INFO     | book_crawler | crawling.py:116 | Page detected (434578 bytes). Waiting for JS render...
+2026-05-07 14:36:10,651 | INFO     | book_crawler | crawling.py:119 | After JS wait: 435088 bytes
+2026-05-07 14:39:22,896 | INFO     | book_crawler | crawling.py:116 | Page detected (431644 bytes). Waiting for JS render...
+2026-05-07 14:39:27,947 | INFO     | book_crawler | crawling.py:119 | After JS wait: 432154 bytes
+2026-05-07 14:42:52,702 | INFO     | book_crawler | crawling.py:116 | Page detected (432012 bytes). Waiting for JS render...
+2026-05-07 14:42:57,768 | INFO     | book_crawler | crawling.py:119 | After JS wait: 432012 bytes
+2026-05-07 14:46:28,845 | INFO     | book_crawler | crawling.py:116 | Page detected (434101 bytes). Waiting for JS render...
+2026-05-07 14:46:33,918 | INFO     | book_crawler | crawling.py:119 | After JS wait: 434096 bytes
+2026-05-07 14:49:47,448 | INFO     | book_crawler | crawling.py:116 | Page detected (433120 bytes). Waiting for JS render...
+2026-05-07 14:49:52,519 | INFO     | book_crawler | crawling.py:119 | After JS wait: 433120 bytes
+2026-05-07 14:53:14,020 | INFO     | book_crawler | crawling.py:116 | Page detected (48377 bytes). Waiting for JS render...
+2026-05-07 14:53:19,089 | INFO     | book_crawler | crawling.py:119 | After JS wait: 432800 bytes
+2026-05-07 14:56:31,485 | INFO     | book_crawler | crawling.py:116 | Page detected (434041 bytes). Waiting for JS render...
+2026-05-07 14:56:36,579 | INFO     | book_crawler | crawling.py:119 | After JS wait: 434041 bytes
+2026-05-07 14:59:39,395 | INFO     | book_crawler | crawling.py:116 | Page detected (434185 bytes). Waiting for JS render...
+2026-05-07 14:59:44,467 | INFO     | book_crawler | crawling.py:119 | After JS wait: 434679 bytes
+2026-05-07 15:01:07,310 | INFO     | book_crawler | crawling.py:116 | Page detected (461182 bytes). Waiting for JS render...
+2026-05-07 15:01:12,396 | INFO     | book_crawler | crawling.py:119 | After JS wait: 461182 bytes
+2026-05-07 15:03:31,157 | INFO     | book_crawler | crawling.py:116 | Page detected (433963 bytes). Waiting for JS render...
+2026-05-07 15:03:36,226 | INFO     | book_crawler | crawling.py:119 | After JS wait: 433963 bytes
+2026-05-07 15:06:10,524 | INFO     | book_crawler | crawling.py:116 | Page detected (434158 bytes). Waiting for JS render...
+2026-05-07 15:06:15,581 | INFO     | book_crawler | crawling.py:119 | After JS wait: 434153 bytes
+2026-05-07 15:08:54,287 | INFO     | book_crawler | crawling.py:116 | Page detected (442124 bytes). Waiting for JS render...
+2026-05-07 15:08:59,327 | INFO     | book_crawler | crawling.py:119 | After JS wait: 442124 bytes
+2026-05-07 15:11:09,515 | INFO     | book_crawler | crawling.py:116 | Page detected (441062 bytes). Waiting for JS render...
+2026-05-07 15:11:14,570 | INFO     | book_crawler | crawling.py:119 | After JS wait: 441062 bytes
+2026-05-07 15:14:12,641 | INFO     | book_crawler | crawling.py:116 | Page detected (444018 bytes). Waiting for JS render...
+2026-05-07 15:14:17,680 | INFO     | book_crawler | crawling.py:119 | After JS wait: 444018 bytes
+2026-05-07 15:17:28,223 | INFO     | book_crawler | crawling.py:116 | Page detected (442421 bytes). Waiting for JS render...
+2026-05-07 15:17:33,270 | INFO     | book_crawler | crawling.py:119 | After JS wait: 442931 bytes
+2026-05-07 15:20:40,407 | INFO     | book_crawler | crawling.py:116 | Page detected (443025 bytes). Waiting for JS render...
+2026-05-07 15:20:45,460 | INFO     | book_crawler | crawling.py:119 | After JS wait: 444045 bytes
+2026-05-07 15:23:48,854 | INFO     | book_crawler | crawling.py:116 | Page detected (434444 bytes). Waiting for JS render...
+2026-05-07 15:23:53,942 | INFO     | book_crawler | crawling.py:119 | After JS wait: 434954 bytes
+2026-05-07 15:26:24,976 | INFO     | book_crawler | crawling.py:116 | Page detected (437320 bytes). Waiting for JS render...
+2026-05-07 15:26:30,040 | INFO     | book_crawler | crawling.py:119 | After JS wait: 437320 bytes
+2026-05-07 15:29:12,413 | INFO     | book_crawler | crawling.py:116 | Page detected (435091 bytes). Waiting for JS render...
+2026-05-07 15:29:17,481 | INFO     | book_crawler | crawling.py:119 | After JS wait: 435086 bytes
+2026-05-07 15:32:13,346 | INFO     | book_crawler | crawling.py:116 | Page detected (437022 bytes). Waiting for JS render...
+2026-05-07 15:32:18,420 | INFO     | book_crawler | crawling.py:119 | After JS wait: 437022 bytes
+2026-05-07 15:35:20,971 | INFO     | book_crawler | crawling.py:116 | Page detected (437781 bytes). Waiting for JS render...
+2026-05-07 15:35:26,020 | INFO     | book_crawler | crawling.py:119 | After JS wait: 438291 bytes
+2026-05-07 15:38:59,935 | INFO     | book_crawler | crawling.py:116 | Page detected (438448 bytes). Waiting for JS render...
+2026-05-07 15:39:05,002 | INFO     | book_crawler | crawling.py:119 | After JS wait: 438448 bytes
+2026-05-07 15:42:10,981 | INFO     | book_crawler | crawling.py:116 | Page detected (437994 bytes). Waiting for JS render...
+2026-05-07 15:42:16,032 | INFO     | book_crawler | crawling.py:119 | After JS wait: 438478 bytes
+2026-05-07 15:45:42,601 | INFO     | book_crawler | crawling.py:116 | Page detected (438270 bytes). Waiting for JS render...
+2026-05-07 15:45:47,656 | INFO     | book_crawler | crawling.py:119 | After JS wait: 438270 bytes
+2026-05-07 15:49:09,832 | INFO     | book_crawler | crawling.py:116 | Page detected (438832 bytes). Waiting for JS render...
+2026-05-07 15:49:14,878 | INFO     | book_crawler | crawling.py:119 | After JS wait: 438832 bytes
+2026-05-07 15:52:37,591 | INFO     | book_crawler | crawling.py:116 | Page detected (439388 bytes). Waiting for JS render...
+2026-05-07 15:52:42,641 | INFO     | book_crawler | crawling.py:119 | After JS wait: 439388 bytes
+2026-05-07 15:56:19,644 | INFO     | book_crawler | crawling.py:116 | Page detected (435572 bytes). Waiting for JS render...
+2026-05-07 15:56:24,707 | INFO     | book_crawler | crawling.py:119 | After JS wait: 435572 bytes
+2026-05-07 15:59:42,489 | INFO     | book_crawler | crawling.py:116 | Page detected (433861 bytes). Waiting for JS render...
+2026-05-07 15:59:47,541 | INFO     | book_crawler | crawling.py:119 | After JS wait: 434371 bytes
+2026-05-07 16:03:11,147 | INFO     | book_crawler | crawling.py:116 | Page detected (434419 bytes). Waiting for JS render...
+2026-05-07 16:03:16,194 | INFO     | book_crawler | crawling.py:119 | After JS wait: 434419 bytes
+2026-05-07 16:06:31,555 | INFO     | book_crawler | crawling.py:116 | Page detected (433459 bytes). Waiting for JS render...
+2026-05-07 16:06:36,619 | INFO     | book_crawler | crawling.py:119 | After JS wait: 433459 bytes
+2026-05-07 16:09:53,974 | INFO     | book_crawler | crawling.py:116 | Page detected (405756 bytes). Waiting for JS render...
+2026-05-07 16:09:59,024 | INFO     | book_crawler | crawling.py:119 | After JS wait: 405756 bytes
+2026-05-07 16:12:53,360 | INFO     | book_crawler | crawling.py:116 | Page detected (47366 bytes). Waiting for JS render...
+2026-05-07 16:12:58,409 | INFO     | book_crawler | crawling.py:119 | After JS wait: 439545 bytes
+2026-05-07 16:15:41,225 | INFO     | book_crawler | crawling.py:116 | Page detected (441037 bytes). Waiting for JS render...
+2026-05-07 16:15:46,291 | INFO     | book_crawler | crawling.py:119 | After JS wait: 441037 bytes
+2026-05-07 16:16:55,137 | INFO     | book_crawler | crawling.py:116 | Page detected (456305 bytes). Waiting for JS render...
+2026-05-07 16:17:00,208 | INFO     | book_crawler | crawling.py:119 | After JS wait: 456305 bytes
+2026-05-07 16:18:16,412 | INFO     | book_crawler | crawling.py:116 | Page detected (46858 bytes). Waiting for JS render...
+2026-05-07 16:18:21,489 | INFO     | book_crawler | crawling.py:119 | After JS wait: 440884 bytes
+2026-05-07 16:20:22,656 | INFO     | book_crawler | crawling.py:116 | Page detected (438973 bytes). Waiting for JS render...
+2026-05-07 16:20:27,714 | INFO     | book_crawler | crawling.py:119 | After JS wait: 438973 bytes
+2026-05-07 16:22:52,757 | INFO     | book_crawler | crawling.py:116 | Page detected (437975 bytes). Waiting for JS render...
+2026-05-07 16:22:57,832 | INFO     | book_crawler | crawling.py:119 | After JS wait: 437975 bytes
+2026-05-07 16:24:21,505 | ERROR    | book_crawler | crawling.py:130 | Selenium error (attempt 1/3) for https://www.bookdelivery.com/il-en/book-hand-stitched-quilts-choose-from-27-block-designs-and-hand-piece-your-own-unique-quilts/9781782216711/p/55004170: Message: unknown error: net::ERR_INTERNET_DISCONNECTED
+  (Session info: chrome=147.0.7727.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff68594a8e5+14e45]
+	chromedriver!GetHandleVerifier [0x7ff68594a950+14eb0]
+	chromedriver!(No symbol) [0x7ff6856bd6ed]
+	chromedriver!(No symbol) [0x7ff6856ba224]
+	chromedriver!(No symbol) [0x7ff6856aa191]
+	chromedriver!(No symbol) [0x7ff6856ac07f]
+	chromedriver!(No symbol) [0x7ff6856aa733]
+	chromedriver!(No symbol) [0x7ff6856a9efb]
+	chromedriver!(No symbol) [0x7ff6856a9bb1]
+	chromedriver!(No symbol) [0x7ff6856a77e1]
+	chromedriver!(No symbol) [0x7ff6856a7f42]
+	chromedriver!(No symbol) [0x7ff6856c19a6]
+	chromedriver!(No symbol) [0x7ff685765664]
+	chromedriver!(No symbol) [0x7ff68574002a]
+	chromedriver!(No symbol) [0x7ff68576483b]
+	chromedriver!(No symbol) [0x7ff6857090e8]
+	chromedriver!(No symbol) [0x7ff685709fc3]
+	chromedriver!GetHandleVerifier [0x7ff685c60149+32a6a9]
+	chromedriver!GetHandleVerifier [0x7ff685c5a715+324c75]
+	chromedriver!GetHandleVerifier [0x7ff685c7c012+346572]
+	chromedriver!GetHandleVerifier [0x7ff685967cb5+32215]
+	chromedriver!GetHandleVerifier [0x7ff68597087c+3addc]
+	chromedriver!GetHandleVerifier [0x7ff6859540e4+1e644]
+	chromedriver!GetHandleVerifier [0x7ff685954296+1e7f6]
+	chromedriver!GetHandleVerifier [0x7ff685938737+2c97]
+	KERNEL32!BaseThreadInitThunk [0x7ffa149d259d+1d]
+	ntdll!RtlUserThreadStart [0x7ffa1584af78+28]
+
+2026-05-07 16:24:26,931 | INFO     | book_crawler | crawling.py:61 | Stealth Chrome driver started.
+2026-05-07 16:24:38,210 | ERROR    | book_crawler | crawling.py:130 | Selenium error (attempt 2/3) for https://www.bookdelivery.com/il-en/book-hand-stitched-quilts-choose-from-27-block-designs-and-hand-piece-your-own-unique-quilts/9781782216711/p/55004170: Message: unknown error: net::ERR_INTERNET_DISCONNECTED
+  (Session info: chrome=147.0.7727.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff68594a8e5+14e45]
+	chromedriver!GetHandleVerifier [0x7ff68594a950+14eb0]
+	chromedriver!(No symbol) [0x7ff6856bd6ed]
+	chromedriver!(No symbol) [0x7ff6856ba224]
+	chromedriver!(No symbol) [0x7ff6856aa191]
+	chromedriver!(No symbol) [0x7ff6856ac07f]
+	chromedriver!(No symbol) [0x7ff6856aa733]
+	chromedriver!(No symbol) [0x7ff6856a9efb]
+	chromedriver!(No symbol) [0x7ff6856a9bb1]
+	chromedriver!(No symbol) [0x7ff6856a77e1]
+	chromedriver!(No symbol) [0x7ff6856a7f42]
+	chromedriver!(No symbol) [0x7ff6856c19a6]
+	chromedriver!(No symbol) [0x7ff685765664]
+	chromedriver!(No symbol) [0x7ff68574002a]
+	chromedriver!(No symbol) [0x7ff68576483b]
+	chromedriver!(No symbol) [0x7ff6857090e8]
+	chromedriver!(No symbol) [0x7ff685709fc3]
+	chromedriver!GetHandleVerifier [0x7ff685c60149+32a6a9]
+	chromedriver!GetHandleVerifier [0x7ff685c5a715+324c75]
+	chromedriver!GetHandleVerifier [0x7ff685c7c012+346572]
+	chromedriver!GetHandleVerifier [0x7ff685967cb5+32215]
+	chromedriver!GetHandleVerifier [0x7ff68597087c+3addc]
+	chromedriver!GetHandleVerifier [0x7ff6859540e4+1e644]
+	chromedriver!GetHandleVerifier [0x7ff685954296+1e7f6]
+	chromedriver!GetHandleVerifier [0x7ff685938737+2c97]
+	KERNEL32!BaseThreadInitThunk [0x7ffa149d259d+1d]
+	ntdll!RtlUserThreadStart [0x7ffa1584af78+28]
+
+2026-05-07 16:24:42,022 | INFO     | book_crawler | crawling.py:61 | Stealth Chrome driver started.
+2026-05-07 16:24:59,450 | ERROR    | book_crawler | crawling.py:130 | Selenium error (attempt 3/3) for https://www.bookdelivery.com/il-en/book-hand-stitched-quilts-choose-from-27-block-designs-and-hand-piece-your-own-unique-quilts/9781782216711/p/55004170: Message: unknown error: net::ERR_INTERNET_DISCONNECTED
+  (Session info: chrome=147.0.7727.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff68594a8e5+14e45]
+	chromedriver!GetHandleVerifier [0x7ff68594a950+14eb0]
+	chromedriver!(No symbol) [0x7ff6856bd6ed]
+	chromedriver!(No symbol) [0x7ff6856ba224]
+	chromedriver!(No symbol) [0x7ff6856aa191]
+	chromedriver!(No symbol) [0x7ff6856ac07f]
+	chromedriver!(No symbol) [0x7ff6856aa733]
+	chromedriver!(No symbol) [0x7ff6856a9efb]
+	chromedriver!(No symbol) [0x7ff6856a9bb1]
+	chromedriver!(No symbol) [0x7ff6856a77e1]
+	chromedriver!(No symbol) [0x7ff6856a7f42]
+	chromedriver!(No symbol) [0x7ff6856c19a6]
+	chromedriver!(No symbol) [0x7ff685765664]
+	chromedriver!(No symbol) [0x7ff68574002a]
+	chromedriver!(No symbol) [0x7ff68576483b]
+	chromedriver!(No symbol) [0x7ff6857090e8]
+	chromedriver!(No symbol) [0x7ff685709fc3]
+	chromedriver!GetHandleVerifier [0x7ff685c60149+32a6a9]
+	chromedriver!GetHandleVerifier [0x7ff685c5a715+324c75]
+	chromedriver!GetHandleVerifier [0x7ff685c7c012+346572]
+	chromedriver!GetHandleVerifier [0x7ff685967cb5+32215]
+	chromedriver!GetHandleVerifier [0x7ff68597087c+3addc]
+	chromedriver!GetHandleVerifier [0x7ff6859540e4+1e644]
+	chromedriver!GetHandleVerifier [0x7ff685954296+1e7f6]
+	chromedriver!GetHandleVerifier [0x7ff685938737+2c97]
+	KERNEL32!BaseThreadInitThunk [0x7ffa149d259d+1d]
+	ntdll!RtlUserThreadStart [0x7ffa1584af78+28]
+
+2026-05-07 16:25:03,147 | INFO     | book_crawler | crawling.py:61 | Stealth Chrome driver started.
+2026-05-07 16:25:23,572 | ERROR    | book_crawler | crawling.py:130 | Selenium error (attempt 1/3) for https://www.bookdelivery.com/il-en/book-thailand-travel-atlas/9780804851374/p/50824630: Message: unknown error: net::ERR_INTERNET_DISCONNECTED
+  (Session info: chrome=147.0.7727.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff68594a8e5+14e45]
+	chromedriver!GetHandleVerifier [0x7ff68594a950+14eb0]
+	chromedriver!(No symbol) [0x7ff6856bd6ed]
+	chromedriver!(No symbol) [0x7ff6856ba224]
+	chromedriver!(No symbol) [0x7ff6856aa191]
+	chromedriver!(No symbol) [0x7ff6856ac07f]
+	chromedriver!(No symbol) [0x7ff6856aa733]
+	chromedriver!(No symbol) [0x7ff6856a9efb]
+	chromedriver!(No symbol) [0x7ff6856a9bb1]
+	chromedriver!(No symbol) [0x7ff6856a77e1]
+	chromedriver!(No symbol) [0x7ff6856a7f42]
+	chromedriver!(No symbol) [0x7ff6856c19a6]
+	chromedriver!(No symbol) [0x7ff685765664]
+	chromedriver!(No symbol) [0x7ff68574002a]
+	chromedriver!(No symbol) [0x7ff68576483b]
+	chromedriver!(No symbol) [0x7ff6857090e8]
+	chromedriver!(No symbol) [0x7ff685709fc3]
+	chromedriver!GetHandleVerifier [0x7ff685c60149+32a6a9]
+	chromedriver!GetHandleVerifier [0x7ff685c5a715+324c75]
+	chromedriver!GetHandleVerifier [0x7ff685c7c012+346572]
+	chromedriver!GetHandleVerifier [0x7ff685967cb5+32215]
+	chromedriver!GetHandleVerifier [0x7ff68597087c+3addc]
+	chromedriver!GetHandleVerifier [0x7ff6859540e4+1e644]
+	chromedriver!GetHandleVerifier [0x7ff685954296+1e7f6]
+	chromedriver!GetHandleVerifier [0x7ff685938737+2c97]
+	KERNEL32!BaseThreadInitThunk [0x7ffa149d259d+1d]
+	ntdll!RtlUserThreadStart [0x7ffa1584af78+28]
+
+2026-05-07 16:25:27,140 | INFO     | book_crawler | crawling.py:61 | Stealth Chrome driver started.
+2026-05-07 16:25:38,385 | ERROR    | book_crawler | crawling.py:130 | Selenium error (attempt 2/3) for https://www.bookdelivery.com/il-en/book-thailand-travel-atlas/9780804851374/p/50824630: Message: unknown error: net::ERR_INTERNET_DISCONNECTED
+  (Session info: chrome=147.0.7727.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff68594a8e5+14e45]
+	chromedriver!GetHandleVerifier [0x7ff68594a950+14eb0]
+	chromedriver!(No symbol) [0x7ff6856bd6ed]
+	chromedriver!(No symbol) [0x7ff6856ba224]
+	chromedriver!(No symbol) [0x7ff6856aa191]
+	chromedriver!(No symbol) [0x7ff6856ac07f]
+	chromedriver!(No symbol) [0x7ff6856aa733]
+	chromedriver!(No symbol) [0x7ff6856a9efb]
+	chromedriver!(No symbol) [0x7ff6856a9bb1]
+	chromedriver!(No symbol) [0x7ff6856a77e1]
+	chromedriver!(No symbol) [0x7ff6856a7f42]
+	chromedriver!(No symbol) [0x7ff6856c19a6]
+	chromedriver!(No symbol) [0x7ff685765664]
+	chromedriver!(No symbol) [0x7ff68574002a]
+	chromedriver!(No symbol) [0x7ff68576483b]
+	chromedriver!(No symbol) [0x7ff6857090e8]
+	chromedriver!(No symbol) [0x7ff685709fc3]
+	chromedriver!GetHandleVerifier [0x7ff685c60149+32a6a9]
+	chromedriver!GetHandleVerifier [0x7ff685c5a715+324c75]
+	chromedriver!GetHandleVerifier [0x7ff685c7c012+346572]
+	chromedriver!GetHandleVerifier [0x7ff685967cb5+32215]
+	chromedriver!GetHandleVerifier [0x7ff68597087c+3addc]
+	chromedriver!GetHandleVerifier [0x7ff6859540e4+1e644]
+	chromedriver!GetHandleVerifier [0x7ff685954296+1e7f6]
+	chromedriver!GetHandleVerifier [0x7ff685938737+2c97]
+	KERNEL32!BaseThreadInitThunk [0x7ffa149d259d+1d]
+	ntdll!RtlUserThreadStart [0x7ffa1584af78+28]
+
+2026-05-07 16:25:42,016 | INFO     | book_crawler | crawling.py:61 | Stealth Chrome driver started.
+2026-05-07 16:25:59,408 | ERROR    | book_crawler | crawling.py:130 | Selenium error (attempt 3/3) for https://www.bookdelivery.com/il-en/book-thailand-travel-atlas/9780804851374/p/50824630: Message: unknown error: net::ERR_INTERNET_DISCONNECTED
+  (Session info: chrome=147.0.7727.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff68594a8e5+14e45]
+	chromedriver!GetHandleVerifier [0x7ff68594a950+14eb0]
+	chromedriver!(No symbol) [0x7ff6856bd6ed]
+	chromedriver!(No symbol) [0x7ff6856ba224]
+	chromedriver!(No symbol) [0x7ff6856aa191]
+	chromedriver!(No symbol) [0x7ff6856ac07f]
+	chromedriver!(No symbol) [0x7ff6856aa733]
+	chromedriver!(No symbol) [0x7ff6856a9efb]
+	chromedriver!(No symbol) [0x7ff6856a9bb1]
+	chromedriver!(No symbol) [0x7ff6856a77e1]
+	chromedriver!(No symbol) [0x7ff6856a7f42]
+	chromedriver!(No symbol) [0x7ff6856c19a6]
+	chromedriver!(No symbol) [0x7ff685765664]
+	chromedriver!(No symbol) [0x7ff68574002a]
+	chromedriver!(No symbol) [0x7ff68576483b]
+	chromedriver!(No symbol) [0x7ff6857090e8]
+	chromedriver!(No symbol) [0x7ff685709fc3]
+	chromedriver!GetHandleVerifier [0x7ff685c60149+32a6a9]
+	chromedriver!GetHandleVerifier [0x7ff685c5a715+324c75]
+	chromedriver!GetHandleVerifier [0x7ff685c7c012+346572]
+	chromedriver!GetHandleVerifier [0x7ff685967cb5+32215]
+	chromedriver!GetHandleVerifier [0x7ff68597087c+3addc]
+	chromedriver!GetHandleVerifier [0x7ff6859540e4+1e644]
+	chromedriver!GetHandleVerifier [0x7ff685954296+1e7f6]
+	chromedriver!GetHandleVerifier [0x7ff685938737+2c97]
+	KERNEL32!BaseThreadInitThunk [0x7ffa149d259d+1d]
+	ntdll!RtlUserThreadStart [0x7ffa1584af78+28]
+
+2026-05-07 16:26:02,958 | INFO     | book_crawler | crawling.py:61 | Stealth Chrome driver started.
+2026-05-07 16:26:23,406 | ERROR    | book_crawler | crawling.py:130 | Selenium error (attempt 1/3) for https://www.bookdelivery.com/il-en/book-reef-fish-identification-tropical-pacific-2nd-edition/9781878348609/p/48419601: Message: unknown error: net::ERR_INTERNET_DISCONNECTED
+  (Session info: chrome=147.0.7727.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff68594a8e5+14e45]
+	chromedriver!GetHandleVerifier [0x7ff68594a950+14eb0]
+	chromedriver!(No symbol) [0x7ff6856bd6ed]
+	chromedriver!(No symbol) [0x7ff6856ba224]
+	chromedriver!(No symbol) [0x7ff6856aa191]
+	chromedriver!(No symbol) [0x7ff6856ac07f]
+	chromedriver!(No symbol) [0x7ff6856aa733]
+	chromedriver!(No symbol) [0x7ff6856a9efb]
+	chromedriver!(No symbol) [0x7ff6856a9bb1]
+	chromedriver!(No symbol) [0x7ff6856a77e1]
+	chromedriver!(No symbol) [0x7ff6856a7f42]
+	chromedriver!(No symbol) [0x7ff6856c19a6]
+	chromedriver!(No symbol) [0x7ff685765664]
+	chromedriver!(No symbol) [0x7ff68574002a]
+	chromedriver!(No symbol) [0x7ff68576483b]
+	chromedriver!(No symbol) [0x7ff6857090e8]
+	chromedriver!(No symbol) [0x7ff685709fc3]
+	chromedriver!GetHandleVerifier [0x7ff685c60149+32a6a9]
+	chromedriver!GetHandleVerifier [0x7ff685c5a715+324c75]
+	chromedriver!GetHandleVerifier [0x7ff685c7c012+346572]
+	chromedriver!GetHandleVerifier [0x7ff685967cb5+32215]
+	chromedriver!GetHandleVerifier [0x7ff68597087c+3addc]
+	chromedriver!GetHandleVerifier [0x7ff6859540e4+1e644]
+	chromedriver!GetHandleVerifier [0x7ff685954296+1e7f6]
+	chromedriver!GetHandleVerifier [0x7ff685938737+2c97]
+	KERNEL32!BaseThreadInitThunk [0x7ffa149d259d+1d]
+	ntdll!RtlUserThreadStart [0x7ffa1584af78+28]
+
+2026-05-07 16:26:27,233 | INFO     | book_crawler | crawling.py:61 | Stealth Chrome driver started.
+2026-05-07 16:26:44,621 | ERROR    | book_crawler | crawling.py:130 | Selenium error (attempt 2/3) for https://www.bookdelivery.com/il-en/book-reef-fish-identification-tropical-pacific-2nd-edition/9781878348609/p/48419601: Message: unknown error: net::ERR_INTERNET_DISCONNECTED
+  (Session info: chrome=147.0.7727.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff68594a8e5+14e45]
+	chromedriver!GetHandleVerifier [0x7ff68594a950+14eb0]
+	chromedriver!(No symbol) [0x7ff6856bd6ed]
+	chromedriver!(No symbol) [0x7ff6856ba224]
+	chromedriver!(No symbol) [0x7ff6856aa191]
+	chromedriver!(No symbol) [0x7ff6856ac07f]
+	chromedriver!(No symbol) [0x7ff6856aa733]
+	chromedriver!(No symbol) [0x7ff6856a9efb]
+	chromedriver!(No symbol) [0x7ff6856a9bb1]
+	chromedriver!(No symbol) [0x7ff6856a77e1]
+	chromedriver!(No symbol) [0x7ff6856a7f42]
+	chromedriver!(No symbol) [0x7ff6856c19a6]
+	chromedriver!(No symbol) [0x7ff685765664]
+	chromedriver!(No symbol) [0x7ff68574002a]
+	chromedriver!(No symbol) [0x7ff68576483b]
+	chromedriver!(No symbol) [0x7ff6857090e8]
+	chromedriver!(No symbol) [0x7ff685709fc3]
+	chromedriver!GetHandleVerifier [0x7ff685c60149+32a6a9]
+	chromedriver!GetHandleVerifier [0x7ff685c5a715+324c75]
+	chromedriver!GetHandleVerifier [0x7ff685c7c012+346572]
+	chromedriver!GetHandleVerifier [0x7ff685967cb5+32215]
+	chromedriver!GetHandleVerifier [0x7ff68597087c+3addc]
+	chromedriver!GetHandleVerifier [0x7ff6859540e4+1e644]
+	chromedriver!GetHandleVerifier [0x7ff685954296+1e7f6]
+	chromedriver!GetHandleVerifier [0x7ff685938737+2c97]
+	KERNEL32!BaseThreadInitThunk [0x7ffa149d259d+1d]
+	ntdll!RtlUserThreadStart [0x7ffa1584af78+28]
+
+2026-05-07 16:26:48,159 | INFO     | book_crawler | crawling.py:61 | Stealth Chrome driver started.
+2026-05-07 16:26:58,461 | INFO     | book_crawler | crawling.py:116 | Page detected (185276 bytes). Waiting for JS render...
+2026-05-07 16:27:03,467 | INFO     | book_crawler | crawling.py:119 | After JS wait: 185276 bytes
+2026-05-07 16:28:33,083 | INFO     | book_crawler | crawling.py:116 | Page detected (435490 bytes). Waiting for JS render...
+2026-05-07 16:28:38,141 | INFO     | book_crawler | crawling.py:119 | After JS wait: 435490 bytes
+2026-05-07 16:30:57,080 | INFO     | book_crawler | crawling.py:116 | Page detected (439975 bytes). Waiting for JS render...
+2026-05-07 16:31:02,124 | INFO     | book_crawler | crawling.py:119 | After JS wait: 439975 bytes
+2026-05-07 16:34:20,316 | INFO     | book_crawler | crawling.py:116 | Page detected (436728 bytes). Waiting for JS render...
+2026-05-07 16:34:25,367 | INFO     | book_crawler | crawling.py:119 | After JS wait: 436728 bytes
+2026-05-07 16:37:42,051 | INFO     | book_crawler | crawling.py:116 | Page detected (438233 bytes). Waiting for JS render...
+2026-05-07 16:37:47,110 | INFO     | book_crawler | crawling.py:119 | After JS wait: 438233 bytes
+2026-05-07 16:41:13,822 | INFO     | book_crawler | crawling.py:116 | Page detected (435892 bytes). Waiting for JS render...
+2026-05-07 16:41:18,918 | INFO     | book_crawler | crawling.py:119 | After JS wait: 435892 bytes
+2026-05-07 16:45:26,785 | INFO     | book_crawler | crawling.py:116 | Page detected (441013 bytes). Waiting for JS render...
+2026-05-07 16:45:31,842 | INFO     | book_crawler | crawling.py:119 | After JS wait: 441013 bytes
+2026-05-07 16:47:43,712 | INFO     | book_crawler | crawling.py:116 | Page detected (438482 bytes). Waiting for JS render...
+2026-05-07 16:47:48,753 | INFO     | book_crawler | crawling.py:119 | After JS wait: 438482 bytes
+2026-05-07 16:50:40,539 | INFO     | book_crawler | crawling.py:116 | Page detected (439104 bytes). Waiting for JS render...
+2026-05-07 16:50:45,583 | INFO     | book_crawler | crawling.py:119 | After JS wait: 439104 bytes
+2026-05-07 16:53:42,587 | INFO     | book_crawler | crawling.py:116 | Page detected (439976 bytes). Waiting for JS render...
+2026-05-07 16:53:58,480 | ERROR    | book_crawler | crawling.py:130 | Selenium error (attempt 1/3) for https://www.bookdelivery.com/il-en/books/medicine?page=4: Message: invalid session id: session deleted as the browser has closed the connection
+from disconnected: not connected to DevTools
+  (Session info: chrome=147.0.7727.138); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#invalidsessionidexception
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff68594a8e5+14e45]
+	chromedriver!GetHandleVerifier [0x7ff68594a950+14eb0]
+	chromedriver!(No symbol) [0x7ff6856bd6ed]
+	chromedriver!(No symbol) [0x7ff6856a8762]
+	chromedriver!(No symbol) [0x7ff6856cf00c]
+	chromedriver!(No symbol) [0x7ff685747170]
+	chromedriver!(No symbol) [0x7ff685764122]
+	chromedriver!(No symbol) [0x7ff6857090e8]
+	chromedriver!(No symbol) [0x7ff685709fc3]
+	chromedriver!GetHandleVerifier [0x7ff685c60149+32a6a9]
+	chromedriver!GetHandleVerifier [0x7ff685c5a715+324c75]
+	chromedriver!GetHandleVerifier [0x7ff685c7c012+346572]
+	chromedriver!GetHandleVerifier [0x7ff685967cb5+32215]
+	chromedriver!GetHandleVerifier [0x7ff68597087c+3addc]
+	chromedriver!GetHandleVerifier [0x7ff6859540e4+1e644]
+	chromedriver!GetHandleVerifier [0x7ff685954296+1e7f6]
+	chromedriver!GetHandleVerifier [0x7ff685938737+2c97]
+	KERNEL32!BaseThreadInitThunk [0x7ffa149d259d+1d]
+	ntdll!RtlUserThreadStart [0x7ffa1584af78+28]
+
+2026-05-07 16:54:04,635 | INFO     | book_crawler | crawling.py:61 | Stealth Chrome driver started.
+2026-05-07 16:54:25,815 | INFO     | book_crawler | crawling.py:116 | Page detected (440040 bytes). Waiting for JS render...
+2026-05-07 16:54:30,888 | INFO     | book_crawler | crawling.py:119 | After JS wait: 440040 bytes
+2026-05-07 16:57:35,951 | INFO     | book_crawler | crawling.py:116 | Page detected (438964 bytes). Waiting for JS render...
+2026-05-07 16:57:41,024 | INFO     | book_crawler | crawling.py:119 | After JS wait: 438964 bytes
+2026-05-07 16:58:46,635 | ERROR    | book_crawler | crawling.py:130 | Selenium error (attempt 1/3) for https://www.bookdelivery.com/il-en/book-emt-exam-for-dummies-with-online-practice/9781118768174/p/43809864: Message: unknown error: net::ERR_INTERNET_DISCONNECTED
+  (Session info: chrome=147.0.7727.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff68594a8e5+14e45]
+	chromedriver!GetHandleVerifier [0x7ff68594a950+14eb0]
+	chromedriver!(No symbol) [0x7ff6856bd6ed]
+	chromedriver!(No symbol) [0x7ff6856ba224]
+	chromedriver!(No symbol) [0x7ff6856aa191]
+	chromedriver!(No symbol) [0x7ff6856ac07f]
+	chromedriver!(No symbol) [0x7ff6856aa733]
+	chromedriver!(No symbol) [0x7ff6856a9efb]
+	chromedriver!(No symbol) [0x7ff6856a9bb1]
+	chromedriver!(No symbol) [0x7ff6856a77e1]
+	chromedriver!(No symbol) [0x7ff6856a7f42]
+	chromedriver!(No symbol) [0x7ff6856c19a6]
+	chromedriver!(No symbol) [0x7ff685765664]
+	chromedriver!(No symbol) [0x7ff68574002a]
+	chromedriver!(No symbol) [0x7ff68576483b]
+	chromedriver!(No symbol) [0x7ff6857090e8]
+	chromedriver!(No symbol) [0x7ff685709fc3]
+	chromedriver!GetHandleVerifier [0x7ff685c60149+32a6a9]
+	chromedriver!GetHandleVerifier [0x7ff685c5a715+324c75]
+	chromedriver!GetHandleVerifier [0x7ff685c7c012+346572]
+	chromedriver!GetHandleVerifier [0x7ff685967cb5+32215]
+	chromedriver!GetHandleVerifier [0x7ff68597087c+3addc]
+	chromedriver!GetHandleVerifier [0x7ff6859540e4+1e644]
+	chromedriver!GetHandleVerifier [0x7ff685954296+1e7f6]
+	chromedriver!GetHandleVerifier [0x7ff685938737+2c97]
+	KERNEL32!BaseThreadInitThunk [0x7ffa149d259d+1d]
+	ntdll!RtlUserThreadStart [0x7ffa1584af78+28]
+
+2026-05-07 16:58:50,204 | INFO     | book_crawler | crawling.py:61 | Stealth Chrome driver started.
+2026-05-07 16:59:01,412 | ERROR    | book_crawler | crawling.py:130 | Selenium error (attempt 2/3) for https://www.bookdelivery.com/il-en/book-emt-exam-for-dummies-with-online-practice/9781118768174/p/43809864: Message: unknown error: net::ERR_INTERNET_DISCONNECTED
+  (Session info: chrome=147.0.7727.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff68594a8e5+14e45]
+	chromedriver!GetHandleVerifier [0x7ff68594a950+14eb0]
+	chromedriver!(No symbol) [0x7ff6856bd6ed]
+	chromedriver!(No symbol) [0x7ff6856ba224]
+	chromedriver!(No symbol) [0x7ff6856aa191]
+	chromedriver!(No symbol) [0x7ff6856ac07f]
+	chromedriver!(No symbol) [0x7ff6856aa733]
+	chromedriver!(No symbol) [0x7ff6856a9efb]
+	chromedriver!(No symbol) [0x7ff6856a9bb1]
+	chromedriver!(No symbol) [0x7ff6856a77e1]
+	chromedriver!(No symbol) [0x7ff6856a7f42]
+	chromedriver!(No symbol) [0x7ff6856c19a6]
+	chromedriver!(No symbol) [0x7ff685765664]
+	chromedriver!(No symbol) [0x7ff68574002a]
+	chromedriver!(No symbol) [0x7ff68576483b]
+	chromedriver!(No symbol) [0x7ff6857090e8]
+	chromedriver!(No symbol) [0x7ff685709fc3]
+	chromedriver!GetHandleVerifier [0x7ff685c60149+32a6a9]
+	chromedriver!GetHandleVerifier [0x7ff685c5a715+324c75]
+	chromedriver!GetHandleVerifier [0x7ff685c7c012+346572]
+	chromedriver!GetHandleVerifier [0x7ff685967cb5+32215]
+	chromedriver!GetHandleVerifier [0x7ff68597087c+3addc]
+	chromedriver!GetHandleVerifier [0x7ff6859540e4+1e644]
+	chromedriver!GetHandleVerifier [0x7ff685954296+1e7f6]
+	chromedriver!GetHandleVerifier [0x7ff685938737+2c97]
+	KERNEL32!BaseThreadInitThunk [0x7ffa149d259d+1d]
+	ntdll!RtlUserThreadStart [0x7ffa1584af78+28]
+
+2026-05-07 16:59:04,858 | INFO     | book_crawler | crawling.py:61 | Stealth Chrome driver started.
+2026-05-07 16:59:16,042 | ERROR    | book_crawler | crawling.py:130 | Selenium error (attempt 3/3) for https://www.bookdelivery.com/il-en/book-emt-exam-for-dummies-with-online-practice/9781118768174/p/43809864: Message: unknown error: net::ERR_INTERNET_DISCONNECTED
+  (Session info: chrome=147.0.7727.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff68594a8e5+14e45]
+	chromedriver!GetHandleVerifier [0x7ff68594a950+14eb0]
+	chromedriver!(No symbol) [0x7ff6856bd6ed]
+	chromedriver!(No symbol) [0x7ff6856ba224]
+	chromedriver!(No symbol) [0x7ff6856aa191]
+	chromedriver!(No symbol) [0x7ff6856ac07f]
+	chromedriver!(No symbol) [0x7ff6856aa733]
+	chromedriver!(No symbol) [0x7ff6856a9efb]
+	chromedriver!(No symbol) [0x7ff6856a9bb1]
+	chromedriver!(No symbol) [0x7ff6856a77e1]
+	chromedriver!(No symbol) [0x7ff6856a7f42]
+	chromedriver!(No symbol) [0x7ff6856c19a6]
+	chromedriver!(No symbol) [0x7ff685765664]
+	chromedriver!(No symbol) [0x7ff68574002a]
+	chromedriver!(No symbol) [0x7ff68576483b]
+	chromedriver!(No symbol) [0x7ff6857090e8]
+	chromedriver!(No symbol) [0x7ff685709fc3]
+	chromedriver!GetHandleVerifier [0x7ff685c60149+32a6a9]
+	chromedriver!GetHandleVerifier [0x7ff685c5a715+324c75]
+	chromedriver!GetHandleVerifier [0x7ff685c7c012+346572]
+	chromedriver!GetHandleVerifier [0x7ff685967cb5+32215]
+	chromedriver!GetHandleVerifier [0x7ff68597087c+3addc]
+	chromedriver!GetHandleVerifier [0x7ff6859540e4+1e644]
+	chromedriver!GetHandleVerifier [0x7ff685954296+1e7f6]
+	chromedriver!GetHandleVerifier [0x7ff685938737+2c97]
+	KERNEL32!BaseThreadInitThunk [0x7ffa149d259d+1d]
+	ntdll!RtlUserThreadStart [0x7ffa1584af78+28]
+
+2026-05-07 16:59:19,508 | INFO     | book_crawler | crawling.py:61 | Stealth Chrome driver started.
+2026-05-07 17:01:51,252 | INFO     | book_crawler | crawling.py:116 | Page detected (442882 bytes). Waiting for JS render...
+2026-05-07 17:01:56,306 | INFO     | book_crawler | crawling.py:119 | After JS wait: 442882 bytes
+2026-05-07 17:03:58,769 | INFO     | book_crawler | crawling.py:116 | Page detected (440594 bytes). Waiting for JS render...
+2026-05-07 17:04:03,816 | INFO     | book_crawler | crawling.py:119 | After JS wait: 441104 bytes
+2026-05-07 17:06:50,832 | INFO     | book_crawler | crawling.py:116 | Page detected (62267 bytes). Waiting for JS render...
+2026-05-07 17:06:55,891 | INFO     | book_crawler | crawling.py:119 | After JS wait: 438989 bytes
+2026-05-07 17:09:57,995 | INFO     | book_crawler | crawling.py:116 | Page detected (442176 bytes). Waiting for JS render...
+2026-05-07 17:10:03,046 | INFO     | book_crawler | crawling.py:119 | After JS wait: 442176 bytes
+2026-05-07 17:13:30,474 | INFO     | book_crawler | crawling.py:116 | Page detected (442248 bytes). Waiting for JS render...
+2026-05-07 17:13:35,526 | INFO     | book_crawler | crawling.py:119 | After JS wait: 442243 bytes
+2026-05-07 17:16:49,426 | INFO     | book_crawler | crawling.py:116 | Page detected (434556 bytes). Waiting for JS render...
+2026-05-07 17:16:54,470 | INFO     | book_crawler | crawling.py:119 | After JS wait: 434551 bytes
+2026-05-07 17:18:15,306 | INFO     | book_crawler | crawling.py:116 | Page detected (133439 bytes). Waiting for JS render...
+2026-05-07 17:18:20,368 | INFO     | book_crawler | crawling.py:119 | After JS wait: 436848 bytes
+2026-05-07 17:19:57,932 | INFO     | book_crawler | crawling.py:116 | Page detected (435301 bytes). Waiting for JS render...
+2026-05-07 17:20:02,964 | INFO     | book_crawler | crawling.py:119 | After JS wait: 435301 bytes
+2026-05-07 17:21:45,632 | INFO     | book_crawler | crawling.py:116 | Page detected (434798 bytes). Waiting for JS render...
+2026-05-07 17:21:50,675 | INFO     | book_crawler | crawling.py:119 | After JS wait: 434798 bytes
+2026-05-07 17:24:29,984 | INFO     | book_crawler | crawling.py:116 | Page detected (436972 bytes). Waiting for JS render...
+2026-05-07 17:24:35,030 | INFO     | book_crawler | crawling.py:119 | After JS wait: 436972 bytes
+2026-05-07 17:27:25,965 | INFO     | book_crawler | crawling.py:116 | Page detected (440627 bytes). Waiting for JS render...
+2026-05-07 17:27:31,031 | INFO     | book_crawler | crawling.py:119 | After JS wait: 440627 bytes
+2026-05-07 17:27:52,048 | INFO     | book_crawler | crawling.py:116 | Page detected (436388 bytes). Waiting for JS render...
+2026-05-07 17:27:57,090 | INFO     | book_crawler | crawling.py:119 | After JS wait: 436388 bytes
+2026-05-07 17:29:58,968 | INFO     | book_crawler | crawling.py:116 | Page detected (437849 bytes). Waiting for JS render...
+2026-05-07 17:30:04,019 | INFO     | book_crawler | crawling.py:119 | After JS wait: 437844 bytes
+2026-05-07 17:32:50,593 | INFO     | book_crawler | crawling.py:116 | Page detected (439756 bytes). Waiting for JS render...
+2026-05-07 17:32:55,642 | INFO     | book_crawler | crawling.py:119 | After JS wait: 439756 bytes
+2026-05-07 17:35:46,725 | INFO     | book_crawler | crawling.py:116 | Page detected (439135 bytes). Waiting for JS render...
+2026-05-07 17:35:51,777 | INFO     | book_crawler | crawling.py:119 | After JS wait: 439135 bytes
+2026-05-07 17:38:56,024 | INFO     | book_crawler | crawling.py:116 | Page detected (437328 bytes). Waiting for JS render...
+2026-05-07 17:39:01,069 | INFO     | book_crawler | crawling.py:119 | After JS wait: 437328 bytes
+2026-05-07 17:39:33,856 | INFO     | book_crawler | crawling.py:116 | Page detected (439999 bytes). Waiting for JS render...
+2026-05-07 17:39:38,905 | INFO     | book_crawler | crawling.py:119 | After JS wait: 439999 bytes
+2026-05-07 17:40:14,670 | INFO     | book_crawler | crawling.py:116 | Page detected (439145 bytes). Waiting for JS render...
+2026-05-07 17:40:19,725 | INFO     | book_crawler | crawling.py:119 | After JS wait: 439140 bytes
+2026-05-07 17:41:09,470 | INFO     | book_crawler | crawling.py:116 | Page detected (439068 bytes). Waiting for JS render...
+2026-05-07 17:41:14,526 | INFO     | book_crawler | crawling.py:119 | After JS wait: 439068 bytes
+2026-05-07 17:42:31,386 | INFO     | book_crawler | crawling.py:116 | Page detected (440314 bytes). Waiting for JS render...
+2026-05-07 17:42:36,460 | INFO     | book_crawler | crawling.py:119 | After JS wait: 440314 bytes
+2026-05-07 17:44:22,884 | INFO     | book_crawler | crawling.py:116 | Page detected (443611 bytes). Waiting for JS render...
+2026-05-07 17:44:27,945 | INFO     | book_crawler | crawling.py:119 | After JS wait: 443611 bytes
+2026-05-07 17:45:40,600 | INFO     | book_crawler | crawling.py:116 | Page detected (440219 bytes). Waiting for JS render...
+2026-05-07 17:45:45,667 | INFO     | book_crawler | crawling.py:119 | After JS wait: 440219 bytes
+2026-05-07 17:47:39,064 | INFO     | book_crawler | crawling.py:116 | Page detected (441241 bytes). Waiting for JS render...
+2026-05-07 17:47:44,140 | INFO     | book_crawler | crawling.py:119 | After JS wait: 441241 bytes
+2026-05-07 17:50:26,102 | INFO     | book_crawler | crawling.py:116 | Page detected (440836 bytes). Waiting for JS render...
+2026-05-07 17:50:31,166 | INFO     | book_crawler | crawling.py:119 | After JS wait: 440836 bytes
+2026-05-07 17:53:39,506 | INFO     | book_crawler | crawling.py:116 | Page detected (442306 bytes). Waiting for JS render...
+2026-05-07 17:53:44,564 | INFO     | book_crawler | crawling.py:119 | After JS wait: 442306 bytes
